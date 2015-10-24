@@ -1,0 +1,6 @@
+*.pdf
+*.aux
+*.log
+*.out
+*.pdf
+.atom-build.json
