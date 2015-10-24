@@ -1,9 +1,7 @@
-!Propuesta/HorarioCursos.pdf
-
-*.pdf
 *.aux
 *.log
 *.out
-*.pdf
 *.toc
+*.pdf
 .atom-build.json
+!HorariosCursos.pdf
