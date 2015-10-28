@@ -20,21 +20,21 @@ abstract class IInstante {
     virtual string toString(void);
 
     /**
-     * @breif El operador == indica si dos instantes coinciden en el tiempo.
+     * @breif Indica si dos instantes coinciden en el tiempo.
      */
-    virtual boolean operator==(IInstante);
+    virtual boolean igual(IInstante);
 
     /**
-     * @breif El operador > indica si el instante es posterior al instante con
+     * @breif Indica si el instante es posterior al instante con
      *        el cual se compara.
      */
-    virtual boolean operator>(IInstante);
+    virtual boolean posterior(IInstante);
 
     /**
-     * @breif El operador < indica si el instante es previo al instante con el
+     * @breif Indica si el instante es previo al instante con el
      *        cual se compara.
      */
-    virtual boolean operator<(IInstante);
+    virtual boolean previo(IInstante);
 };
 
 #endif
