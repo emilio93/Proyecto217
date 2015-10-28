@@ -26,34 +26,53 @@ abstract class IPeriodo {
     virtual IInstante getFinal(void);
 
     /**
-     * @breif El operador == indica si dos periodos son iguales, esto es, que
+     * @breif Indica si dos periodos son iguales, esto es, que
      *        sus instantes iniciales y finales sean iguales.
      */
-    virtual bolean operator==(void);
-
-    /**
-     * @breif El operador >= indica si un periodo contiene o es el mismo periodo
+    virtual bolean igual(IPeriodo);
+    
+        /**
+     * @breif Indica si un periodo contiene o es el mismo periodo
      *        que el periodo con el cual se está comparando.
      */
-    virtual boolean operator>=(IPeriodo);
+    virtual boolean contieneInclusivo(IPeriodo);
+    
+        /**
+     * @breif Indica si un periodo contiene el periodo con 
+     *        el cual se está comparando.
+     */
+    virtual boolean contieneExclusivo(IPeriodo);
 
     /**
-     * @breif El operador <= indica si un periodo es el mismo, o está contenido
+     * @breif Indica si un periodo es el mismo, o está contenido
      *        en el periodo con el cual se está comparando.
      */
-    virtual boolean operator<=(IPeriodo);
-
-    /**
-     * @breif El operador > indica si un periodo es mayor en duración con
+    virtual boolean enInclusivo(IPeriodo);
+    
+        /**
+     * @breif Indica si un periodo está contenido
+     *        en el periodo con el cual se está comparando.
+     */
+    virtual boolean enExclusivo(IPeriodo);
+    
+        /**
+     * @breif Indica si dos periodos son iguales en duración, esto es, que
+     *        la diferencia de sus instantes inicial y final, sea iguales.
+     */
+    virtual bolean igualDuracion(IPeriodo);
+    
+        /**
+     * @breif Indica si un periodo es mayor en duración con
      *        respecto al otro periodo.
      */
-    virtual boolean operator>(IPeriodo);
+    virtual boolean mayorDuracion(IPeriodo);
 
     /**
-     * @breif El operador < indica si un periodo es menor en duración con
+     * @breif Indica si un periodo es menor en duración con
      *        respecto al otro periodo.
      */
-    virtual boolean operator<(IPeriodo);
+    virtual boolean menorDuracion(IPeriodo);
+
 };
 
 #endif
