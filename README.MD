@@ -13,3 +13,6 @@ Universidad de Costa Rica.
 ##TODO
 * Terminar headers
 * Estudiar SQL y MySQL Connector/C++
+
+
+![oops](http://giphy.com/static/img/error_pages/text/oops.gif)
