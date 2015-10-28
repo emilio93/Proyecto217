@@ -9,6 +9,7 @@ Universidad de Costa Rica.
 ##Enlaces Importantes/Interesantes
 * Tutorial SQL: http://www.tutorialspoint.com/sql/
 * MySQL Connector/C++: http://dev.mysql.com/doc/connector-cpp/en/
+* Guia de estilo de google para CPP: https://google-styleguide.googlecode.com/svn/trunk/cppguide.html
 
 ##TODO
 * Terminar headers
