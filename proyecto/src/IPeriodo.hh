@@ -12,6 +12,11 @@
 abstract class IPeriodo {
 
     /**
+     * @breif Destructor por defecto.
+     */
+    virtual ~IPeriodo() {}
+
+    /**
      * @breif Devuelve el Instante inicial del periodo. Se debe asegurar que
      *        el instante inicial previo al final.
      * @return  El instante inicial del periodo.
@@ -30,15 +35,15 @@ abstract class IPeriodo {
      *        sus instantes iniciales y finales sean iguales.
      */
     virtual bolean igual(IPeriodo);
-    
+
         /**
      * @breif Indica si un periodo contiene o es el mismo periodo
      *        que el periodo con el cual se está comparando.
      */
     virtual boolean contieneInclusivo(IPeriodo);
-    
+
         /**
-     * @breif Indica si un periodo contiene el periodo con 
+     * @breif Indica si un periodo contiene el periodo con
      *        el cual se está comparando.
      */
     virtual boolean contieneExclusivo(IPeriodo);
@@ -48,19 +53,19 @@ abstract class IPeriodo {
      *        en el periodo con el cual se está comparando.
      */
     virtual boolean enInclusivo(IPeriodo);
-    
+
         /**
      * @breif Indica si un periodo está contenido
      *        en el periodo con el cual se está comparando.
      */
     virtual boolean enExclusivo(IPeriodo);
-    
+
         /**
      * @breif Indica si dos periodos son iguales en duración, esto es, que
      *        la diferencia de sus instantes inicial y final, sea iguales.
      */
     virtual bolean igualDuracion(IPeriodo);
-    
+
         /**
      * @breif Indica si un periodo es mayor en duración con
      *        respecto al otro periodo.

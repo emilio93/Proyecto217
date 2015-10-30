@@ -12,6 +12,8 @@
  */
 abstract class IInstante {
 
+    virtual ~IInstante() {};
+
     /**
      * @breif Esta es la manera en que el instante se representa mediante un
      *        string característico a si.
