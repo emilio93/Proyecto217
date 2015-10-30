@@ -1,7 +1,10 @@
+#LaTeX
 *.aux
 *.log
 *.out
 *.toc
 *.pdf
+
+#Emilio
 .atom-build.json
 !HorariosCursos.pdf
