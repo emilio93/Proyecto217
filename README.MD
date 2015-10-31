@@ -1,5 +1,12 @@
 #Proyecto ie0217
 
+##TODO
+* Terminar headers
+* Estudiar SQL y MySQL Connector/C++
+* Revisar notas de la reunion del 31-10-2015
+* Organizar clases con sus metodos según las listas
+* Hacer los headers para estas clases
+
 ##¿Que es?
 
 Una librería en C++ con la capacidad de generar un horario de cursos
@@ -11,9 +18,6 @@ Universidad de Costa Rica.
 * MySQL Connector/C++: http://dev.mysql.com/doc/connector-cpp/en/
 * Guia de estilo de google para CPP: https://google-styleguide.googlecode.com/svn/trunk/cppguide.html
 
-##TODO
-* Terminar headers
-* Estudiar SQL y MySQL Connector/C++
 
 
 ![oops](http://giphy.com/static/img/error_pages/text/oops.gif)
