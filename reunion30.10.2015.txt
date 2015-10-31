@@ -1,0 +1,169 @@
+AGENDA
+Revisión Git
+Cosas que no están en el git, aun
+Revisión MySQL
+	Como usar
+		apache
+		php
+		phpmyadmin
+Ideas pensadas y no implementadas
+Ideas nuevas
+Proceso Asignar Profesores a cursos
+    Discusión del procedimiento general
+    Dudas del procedimiento general
+    Funcionamiento de los métodos involucrados
+    Distribución de Métodos
+
+instalacion apache php phpmyadmin
+
+Metodo en Horario
+agarrar Planes de bd en una colección List - planes
+	iterar planes
+
+BD::
+
+ser
+convertir los datos de la BD a los objetos
+
+/**
+ *
+ */
+
+
+
+Plan::getBloques();
+Bloque::getCursos();
+
+/**
+ * Indica si los cursos del bloque no tienen traslape.
+ * @return {[type]} [description]
+ */
+Bloque::funciona();
+
+
+/*NO*/static Curso::getCursos(*Bloque)//NO
+
+revisar cursos en comun entre todos los planes
+agregar a lista de excepciones Curso - booleno asignado
+
+Horario horario = new Horario();
+List<Plan> listaPlan = Serialization::getPlanes();
+for(i = listaPlan; i++) {
+	List<Bloque> listaBloque = listaPlan.at(i).getBloques();
+	for(j = listaBloque; j++) {
+		List<Curso> listaCurso = listaBloque.getCursos();
+		for(k = listaCurso; k++) {
+			Curso cursoActual = listaCurso.at(k);
+			for(int l = 0; l < cursoActual.getCantidaGrupos(); l++) {
+				Grupo grupoActual = new Grupo(Curso);
+
+				/** DEBERIA SER UN METODO EN GRUPO que se llame asignarHorario
+				for (int m = 0; l < grupoAcutal.getCurso().getClasesEnSemana()) {
+					Profesor profesor = gupoActual.BuscarProfesor();
+
+					//Primero profe luego horario
+					matchear profesor con posible periodos
+
+				}
+				**/
+
+
+				/**ELEGIR HORARIO Y PROFESOR**/
+
+
+
+				grupoActual.setProfesor()
+				grupoActual.putEnHorario(horario);
+			}
+		}
+	}
+}
+
+void Grupo::setProfesor(Profesor * profe) {
+	this->profesor = profe;
+	profe->horasAsignadas -= this->getCurso().getCantidadHoras();
+	profe->actualizarHorario(this); //eliminarPeriodos del horario del profe
+									//Para después
+}
+
+
+Profesor Grupo::buscarProfesor() {
+	int i = 0;
+	//obtiene profes que dan este curso, desde la BD
+	List<Profesor> profesores = Profesor::getProfesores(this->getCurso());
+	Dictionary<Periodo,boolean> periodosCursos = this->getCurso().getPeriodosCurso();
+	for(i = 0; i < profesores.size(); i++) {
+		Dictionary<Periodo,boolean> periodosProfe = profesores.at(i).getHorarios());
+		/**dictionary.val() es el booleano
+		/**dictionary.key() es el periodo
+		for(k = 0; k < periodosCursos.size(); k++) {
+			buscarProfesQueCalcenConEstePeriodo()
+			if (!profeQueCalzaYSuPerido.val()){
+				this->setProfesor(profe);
+				break;
+			}
+		}
+	}
+	return profesores.at(i);
+}
+
+Dictionary<Periodo,boolean> Profesor::getHorario() {
+	/* Obtiene un diccionario(array 2xn) de los periodos del profe y si está o no
+	asignado
+}
+
+
+
+Plan::getBloques();
+id
+
+
+
+
+
+Como linkear los cursos ya añadidos en otros planes!!!!!
+
+Tabla Plan
+id Nombre   ...
+1  TELECO
+2  REDES
+3  POTENCIA
+
+Tabla Bloque
+id idPlan Semestre
+1  1      4
+2  1	  5
+3  2      4
+
+Tabla Curso
+id idBloque ...
+1
+2
+3
+
+Tabla Grupo
+
+
+Tabla PeriodosGrupo
+
+
+Tabla Profesor
+id nombre
+
+
+Tabla PeriodosProfesor
+id idProfesor inicio fin   asignado
+1	1			L-9  L-11	true
+2	1			J-9  L-11	false
+3   2
+
+Tabla PeriodosPosibles
+
+
+
+
+
+
+/*************************************
+Tabla Horario
+id idCurso idProfesor idPeriodo??
