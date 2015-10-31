@@ -1,0 +1,28 @@
+/*
+Posibles Horas de cursos
+7-9
+9-11
+11-13
+13-15
+15-17
+17-19
+19-21
+7-10
+10-13
+13-16
+16-19
+19-22
+
+Combinaciones de días para cursos
+1 DÍa
+LUNES
+MARTES
+MIERCOLES
+JUEVES
+VIERNES
+2 Días
+LUNES-JUEVES
+MARTES-VIERNES
+3 Días?
+LUNES-MIERCOLES-VIERNES
+*/

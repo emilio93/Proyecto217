@@ -3,7 +3,7 @@
 
 /**
  * @breif Días de la semana e indefinido que representa cualquier día.
- *        De esta manera, indefinido no de puede comparar con los otros días.
+ *        De esta manera, indefinido no se puede comparar con los otros días.
  */
 enum Dia {
     LUNES       = 1,

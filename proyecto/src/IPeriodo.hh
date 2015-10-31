@@ -78,6 +78,15 @@ abstract class IPeriodo {
      */
     virtual boolean menorDuracion(IPeriodo);
 
+    /**
+     *  @breif Indica si dos periodos tienen un sub-periodo en común. Si el
+     *         intante final del primero, es el inicial del segundo, no hay
+     *         traslape, esto es, la duración del sub-periodo debe ser mayor a
+     *         0.
+     * @param  IPeriodo Periodo contra el cual se verifica si hay traslape.
+     * @return          Treu en caso que haya traslape, false en caso contrario.
+     */
+    virtual boolean traslapa(IPeriodo);
 };
 
 #endif
