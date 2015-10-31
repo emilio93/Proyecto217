@@ -31,6 +31,22 @@ class Instante : public IInstante {
          */
         int minuto;
 
+        /**
+         * @breif Chequea que el instante sea adecuado segun los rangos
+         *        especificados para los minutos y las horas.
+         * @return  True si es uin tiempo que cumple las restricciones.
+         */
+        boolean chequearRestricciones(void);
+
+        /**
+         * @breif Devuelve un instante corregido a partir de otro instante,
+         *        asegurandose que cumpla las resticciones de los rangos de
+         *        horas y minutos.
+         * @param  instante Instante que se desea corregir
+         * @return          [description]
+         */
+        Instante getInstante(Instante instante);
+
     public:
 
         /**
