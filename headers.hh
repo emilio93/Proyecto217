@@ -19,8 +19,8 @@ public:
  *  \return 
 */	std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
 
-     ___getPlanes(void); //esto era parte de un serialization asi que no se si iría en esta clase	
-     ___getBloques(void);// método para traer una lista de los bloques ocupamos que retorne una lista
+     List <Planes> getPlanes(void); //esto era parte de un serialization asi que no se si iría en esta clase	
+     List <Bloque> getBloques(void);// método para traer una lista de los bloques ocupamos que retorne una lista
 	
 
 };
@@ -43,7 +43,7 @@ public:
  *  \return 
 */
 	std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
-	___ getCursos(void);// ocupamos una lista también
+	List<Cursos> getCursos(void);// ocupamos una lista también
 	
 
 };
