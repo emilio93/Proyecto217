@@ -138,7 +138,7 @@ Instante * Instante::getInstante(Instante * instante) {
     if (instante->chequearRestricciones()) {
         return instante;
     } else {
-        corregido = new Instante();
+        corregido = new Instante(instante->getDia(), instante->getHora(), instante->getMinuto());
         if (!Misc::enRango(instante->getDia(), 0, 7)) {
             corregido->setDia(INDEFINIDO);
         }
