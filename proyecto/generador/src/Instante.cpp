@@ -73,7 +73,7 @@ virtual bool Instante::previo(Instante * instante) {
     Instante * segundo = this->getInstante(instante);
 
     /*
-        Para que un instante sea posterior debe darse alguno se estos casos:
+        Para que un instante sea previo debe darse alguno se estos casos:
             -que el primer día sea previo, siempre y cuando ninguno sea
                 INDEFINIDO.
             -que sean el mismo día, y que la hora del primero sea previa.
