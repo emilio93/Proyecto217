@@ -47,7 +47,7 @@ class Instante : public IInstante {
          * @param  instante Instante que se desea corregir
          * @return          Un Instante dentro de los rangos adecuados.
          */
-        Instante * getInstante(Instante instante);
+        Instante * getInstante(Instante * instante);
 
     public:
 
