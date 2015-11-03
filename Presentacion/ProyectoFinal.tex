@@ -1,0 +1,254 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    progressstyle=fixedCircCnt,   %either fixedCircCnt, movCircCnt, or corner
+%    rotationcw,          % change the rotation direction from counter-clockwise to clockwise
+%    shownavsym          % show the navigation symbols
+  ]{AAUsimple}
+  
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+% Change the bar and sidebar colors:
+\setbeamercolor{AAUsimple}{fg=orange!20,bg=orange}
+\setbeamercolor{sidebar}{bg=orange!20}
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=black}
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=white}
+% Change the normal text color background:
+%\setbeamercolor{normal text}{fg=black,bg=gray!10}
+% ... and you can of course change a lot more - see the beamer user manual.
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+\usepackage{helvet}
+\usepackage[labelformat=empty]{caption}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{%
+  \href{#1}{{\usebeamercolor[bg]{AAUsimple}#2}}%
+}
+
+\title{Proyecto Grupal: Librería Para Generación de Horarios}
+\subtitle{}  % could also be a conference name
+\date{\today}
+
+\author{
+Emilio Rojas - B15680\\
+  Juan Sánchez - B16068\\
+  Marco Montero - A94000\\
+  \href{mailto:}{{\tt}}
+}
+
+% - Give the names in the same order as they appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation. See the beamer manual for an example
+
+\institute[
+%  {\includegraphics[scale=0.2]{aau_segl}}\\ %insert a company, department or university logo
+  IE0217 - Estructuras de datos abstractas y algoritmos\\
+  Escuela de Ingenieria Eléctrica\\
+  Universidad de Costa Rica
+] % optional - is placed in the bottom of the sidebar on every slide
+{% is placed on the bottom of the title page
+  IE0217 - Estructuras de datos abstractas y algoritmos\\\
+  Escuela de Ingenieria Eléctrica\\
+  Universidad de Costa Rica
+  
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+% specify a logo on the titlepage (you can specify additional logos an include them in 
+% institute command below
+\pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new} % placed on the title page
+%\pgfdeclareimage[height=1.5cm]{titlepagelogo2}{AAUgraphics/aau_logo_new} % placed on the title page
+\titlegraphic{% is placed on the bottom of the title page
+  \pgfuseimage{titlepagelogo}
+%  \hspace{1cm}\pgfuseimage{titlepagelogo2}
+}
+
+\begin{document}
+% the titlepage
+\aauwavesbg
+
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page
+\titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}{Índice}{}
+%\tableofcontents
+%
+%\begin{figure}[!h]
+%\begin{flushright}
+%\includegraphics[width=.65\textwidth]{./AAUgraphics/data.jpg}
+%%\caption{ \scriptsize } 
+%\end{flushright}
+%\end{figure}
+%\end{frame}
+%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%
+
+
+%%%%%%%
+\section{Introducción}
+
+\begin{frame}{Texto ...}{}
+\begin{block}{}
+  \begin{itemize}
+  \item bullets... Porque es importante, vision general, objetivos y alcvance tentativo (realista ojalá xD)
+  \end{itemize}
+
+%para colocar una figura...descomente esto!
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=0.9\textwidth]{./AAUgraphics/arbol.png}
+%\caption{ \scriptsize } 
+%\end{figure}
+
+\end{block}
+\end{frame}
+
+
+
+
+\section{Implementación}
+% motivation for creating this theme
+\begin{frame}{Como lo vamos a hacer}{}
+\begin{block}{}
+
+\begin{itemize}
+\item Más bullets... Planteamiento de la solución. Descrpción del diagrama de flujo del algoritmo, clases y métodos. explicar el encapsulamiento de clases que planeamos utilizar.
+\end{itemize}
+  
+\end{block}
+\end{frame}
+
+
+
+
+
+\section{Características}
+% motivation for creating this theme
+\begin{frame}{Características}{}
+\begin{block}{}
+
+\begin{itemize}
+
+\item Hablar de mySQL y porque lo utilizamos. También se puede mencionar la librería de c++ para accesar los datos y demás cosas relacionadfas con las bases de datos (estructura y keys importantes)
+
+\end{itemize}
+
+%Imagen
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=0.80\textwidth]{./AAUgraphics/insertion.png}
+%\caption{ \scriptsize } 
+%\end{figure}
+ 
+\end{block}
+\end{frame}
+
+
+
+
+\section{En conclusión y logros hasta el momento }
+\begin{frame}{Texto}{}
+\begin{block}{}
+
+\begin{itemize}
+\item Problemas fundamentales (¿explicar cómo vamos a asignar a los profes a los cursos? (y por qué elegimos ese método)), ¿Qué tenemos hasta ahora?
+\end{itemize}
+
+%Imagen
+%\begin{figure}[!h]
+%\begin{flushright}
+%\includegraphics[width=0.60\textwidth]{./AAUgraphics/node.png}
+%\end{flushright}
+%\end{figure}
+  
+\end{block}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Bibliografía}{}
+\begin{block}{}
+\begin{itemize}
+
+\item Robert Sedgewick. \textbf{Left-Leaning Red-Black Trees}. Princeton University. 2008
+
+\item CS 660: Combinational Algorithms. \textbf{(a,b)- Trees}. San Diego University
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{}{}
+\begin{block}{}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=.8\textwidth]{./AAUgraphics/gracias.jpg}
+%\caption{ \scriptsize } 
+\end{center}
+\end{figure}
+
+\end{block}
+\end{frame}
+
+
+
+
+%\begin{frame}{}{}
+%\begin{block}{}
+%
+%\begin{figure}[!h]
+%
+%\begin{center}
+%\includegraphics[width=.8\textwidth]{./AAUgraphics/gracias.jpg}
+%\caption{ \scriptsize } 
+%\end{center}
+%\end{figure}
+%
+%\end{block}
+%\end{frame}
+
+\begin{frame}{Preguntas}{}
+\begin{block}{}
+
+ \begin{figure}[!h]
+ \begin{flushleft}
+\includegraphics[width=.25\textwidth]{./AAUgraphics/preguntas1.jpg}
+%\caption{ \scriptsize }
+\end{flushleft} 
+\end{figure}
+
+\begin{figure}[!h]
+\begin{flushright}
+\includegraphics[width=.25\textwidth]{./AAUgraphics/preguntas2.jpg}
+%\caption{ \scriptsize } 
+\end{flushright}
+\end{figure}
+
+\end{block}
+\end{frame}
+
+
+
+
+\end{document}
+%%%%% HASTA AQUí!!!! ------FIN------- %%%%%%%%%%%%%%%%%%%%%%
