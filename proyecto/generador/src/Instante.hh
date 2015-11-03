@@ -36,25 +36,35 @@ class Instante : public IInstante {
          *        especificados para los minutos y las horas.
          * @return  True si es uin tiempo que cumple las restricciones.
          */
-        boolean chequearRestricciones(void);
+        bool chequearRestricciones(void);
 
         /**
          * @breif Devuelve un instante corregido a partir de otro instante,
          *        asegurandose que cumpla las resticciones de los rangos de
-         *        horas y minutos.
+         *        dias, horas y minutos.
+         *        En caso que el día no corresponda a ninguno, se asignará como
+         *        INDEFINIDO.
          * @param  instante Instante que se desea corregir
-         * @return          [description]
+         * @return          Un Instante dentro de los rangos adecuados.
          */
-        Instante getInstante(Instante instante);
+        Instante * getInstante(Instante instante);
 
     public:
 
-        /**
-         * @breif Constructor de la clase.
-         */
-        Instante();
+        virtual string toString(void);
+        virtual bool igual(Instante * instante);
+        virtual bool posterior(Instante * instante);
+        virtual bool previo(Instante * instante);
 
-        virtual ~IPeriodo() {}
+        /**
+         * @breif Constructor de la clase. Inicializa los valores.
+         */
+        Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0);
+
+        /**
+         * @breif Destructor de la clase.
+         */
+        virtual ~IPeriodo();
 
         /**
          * @breif Método get para el día del instante.
@@ -91,13 +101,5 @@ class Instante : public IInstante {
          * @param minuto El nuevo minuto del instante.
          */
         void setMinuto(int minuto);
-
-        virtual string toString(void);
-
-        virtual boolean igual(Instante);
-
-        virtual boolean posterior(Instante);
-
-        virtual boolean previo(Instante);
 };
 #endif

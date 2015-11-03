@@ -24,19 +24,19 @@ abstract class IInstante {
     /**
      * @breif Indica si dos instantes coinciden en el tiempo.
      */
-    virtual boolean igual(IInstante);
+    virtual bool igual(IInstante * instante);
 
     /**
      * @breif Indica si el instante es posterior al instante con
      *        el cual se compara.
      */
-    virtual boolean posterior(IInstante);
+    virtual bool posterior(IInstante * instante);
 
     /**
      * @breif Indica si el instante es previo al instante con el
      *        cual se compara.
      */
-    virtual boolean previo(IInstante);
+    virtual bool previo(IInstante * instante);
 };
 
 #endif

@@ -6,6 +6,7 @@
 #include <sqlext.h>
 
 #include "BD.hh"
+using sql;
 
 sql::Connection * BD::conectar() {
     try {
