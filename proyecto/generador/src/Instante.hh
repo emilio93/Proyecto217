@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include Dia.hh
+#include "Dia.hh"
 
 /**
  * @breif La clase Instante representa un instante en una semana. Los días se
