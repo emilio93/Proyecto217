@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stddef.h>
 #include <cmath>
+#include <sstream>
 
 #include "Instante.hh"
 #include "Dia.hh"
@@ -11,18 +12,18 @@
  ** IMPLEMENTACION IINSTANTE
  ******************************************************************************/
 
-virtual string Instante::toString(void) {
-    string txt, hrs, mns; // texto horas minutos
+std::string Instante::toString(void) {
+    std::string txt, hrs, mns; // texto horas minutos
     //Supongase un martes a las nueve y ocho de la mañana, se devuelve
     //martes 9:08
     hrs = std::to_string(this->getHora());
     mns = std::to_string(this->getMinuto());
     mns = this->getMinuto() < 10? "0" + mns: mns;
-    txt = diatoString(this->getDia()) + " " + this->getHora() + ":" + mins;
+    txt = diaToString(this->getDia()) + " " + hrs + ":" + mns;
     return txt;
 }
 
-virtual bool Instante::igual(Instante * instante) {
+bool Instante::igual(Instante * instante) {
     bool resultado = false;
 
     //Todo debe ser igual, es la única manera que dos instantes sean iguales.
@@ -34,7 +35,7 @@ virtual bool Instante::igual(Instante * instante) {
     return resultado;
 }
 
-virtual bool Instante::posterior(Instante * instante) {
+bool Instante::posterior(Instante * instante) {
     bool resultado = false;
 
     Instante * primero = this->getInstante(this);
@@ -66,7 +67,7 @@ virtual bool Instante::posterior(Instante * instante) {
     return resultado;
 }
 
-virtual bool Instante::previo(Instante * instante) {
+bool Instante::previo(Instante * instante) {
     bool resultado = false;
 
     Instante * primero = this->getInstante(this);
@@ -102,17 +103,16 @@ virtual bool Instante::previo(Instante * instante) {
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Instante::Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0) {
+//Instante::Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0)
+Instante::Instante(Dia dia, int hora, int minuto) {
     this->setDia(dia);
     this->setHora(hora);
     this->setMinuto(minuto);
 }
 
-virtual Instante::~IPeriodo() { ; }
+Dia Instante::getDia(void) { return this->dia; }
 
-int Instante::getDia(void) { return this->dia; }
-
-void Instante::setDia(Dia dia) { this->dia = std::abs(dia); }
+void Instante::setDia(Dia dia) { this->dia = dia; }
 
 int Instante::getHora(void) {return this->hora; }
 
@@ -139,7 +139,7 @@ Instante * Instante::getInstante(Instante * instante) {
         return instante;
     } else {
         corregido = new Instante(instante->getDia(), instante->getHora(), instante->getMinuto());
-        if (!Misc::enRango(instante->getDia(), 0, 7)) {
+        if (!Misc::enRango(diaToInt(instante->getDia()), 0, 7)) {
             corregido->setDia(INDEFINIDO);
         }
 
@@ -147,14 +147,14 @@ Instante * Instante::getInstante(Instante * instante) {
             corregido->setMinuto(instante->getMinuto() - 60);
             corregido->setHora(instante->getHora() + 1);
         }
-        if (!Misc::enRango(instante->getHora())) {
+        if (!Misc::enRango(instante->getHora(), 0, 23)) {
             corregido->setHora(instante->getHora() - 24);
             if (instante->getDia() == DOMINGO) {
                 corregido->setDia(LUNES);
             } else if (instante->getDia() == INDEFINIDO){
                 corregido->setDia(INDEFINIDO);
             } else {
-                corregido->setDia(instante->getDia() + 1);
+                corregido->setDia(intToDia(diaToInt(instante->getDia()) + 1));
             }
         }
 

@@ -2,15 +2,17 @@
 #define CLASE_INSTANTE
 
 #include <string>
-
+#include "IInstante.hh"
 #include "Dia.hh"
+
 
 /**
  * @breif La clase Instante representa un instante en una semana. Los días se
  *        definen en el enum DIA, la horas están en el rango [0,23], los minutos
  *        en [0,59].
  */
-class Instante : public IInstante {
+class Instante : public IInstante
+{
     private:
         /**
          * @breif El día del instante según el ENUM DIA.
@@ -51,7 +53,7 @@ class Instante : public IInstante {
 
     public:
 
-        virtual string toString(void);
+        virtual std::string toString(void);
         virtual bool igual(Instante * instante);
         virtual bool posterior(Instante * instante);
         virtual bool previo(Instante * instante);
@@ -64,17 +66,17 @@ class Instante : public IInstante {
         /**
          * @breif Destructor de la clase.
          */
-        virtual ~IPeriodo();
+        virtual ~Instante();
 
         /**
          * @breif Método get para el día del instante.
          * @return El día del instante.
          */
-        int getDia(void);
+        Dia getDia(void);
 
         /**
          * @breif Método set para el día del instante.
-         * @param dia El nuevo día del instante.
+    hrs = std::to_string(this->getHora())         * @param dia El nuevo día del instante.
          */
         void setDia(Dia dia);
 

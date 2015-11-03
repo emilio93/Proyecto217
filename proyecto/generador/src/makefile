@@ -7,9 +7,9 @@ TARGET = principal
 
 #$(TARGET) : $(OBJS)
 #	$(CC) $(LFLAGS) $(OBJS) -o $(TARGET)
-#	
+#
 main:
-	$(CC) BD/BD.cpp
+	$(CC) Instante.cpp
 BD.o:
 	$(CC) $(CFLAGS) BD/BD.cpp
 Serializacion.o:
