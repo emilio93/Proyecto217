@@ -1,7 +1,8 @@
-#ifnded CLASE_BD
-#define CLASE_BD
+#ifndef CLASE_SERIALIZACION
+#define CLASE_SERIALIZACION
 
 #include <string>
+#include <list>
 
 /**
  * @breif La clase Serializacion se encarga de convertir los resultados de la
@@ -10,9 +11,9 @@
 class Serializacion {
     private:
     public:
-	std::List <Planes> getPlanes();
-	std::List <Bloques> getBloques();
-	std::List <Cursos> getCursos();
+    	static std::list<Plane> getPlanes(void);
+    	static std::list<Bloque> getBloques(Plan * plan);
+    	static std::list<Curso> getCursos(Bloque * bloque);
 }
 
 #endif
