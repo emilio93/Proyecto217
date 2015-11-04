@@ -49,24 +49,27 @@ class Instante : public IInstante
          * @param  instante Instante que se desea corregir
          * @return          Un Instante dentro de los rangos adecuados.
          */
-        Instante * getInstante(Instante * instante);
+        Instante * getInstante(IInstante * instante);
+
+        /**
+         * @breif Corrige el instante para que cumpla los rangos de días, horas
+         *        y minutos.
+         *        En caso que el día no corresponda a ninguno, se asignará como
+         *        INDEFINIDO.
+         */
+        void getInstante(void);
 
     public:
 
         virtual std::string toString(void);
-        virtual bool igual(Instante * instante);
-        virtual bool posterior(Instante * instante);
-        virtual bool previo(Instante * instante);
+        virtual bool igual(IInstante * instante);
+        virtual bool posterior(IInstante * instante);
+        virtual bool previo(IInstante * instante);
 
         /**
          * @breif Constructor de la clase. Inicializa los valores.
          */
         Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0);
-
-        /**
-         * @breif Destructor de la clase.
-         */
-        virtual ~Instante();
 
         /**
          * @breif Método get para el día del instante.
