@@ -10,6 +10,9 @@
 class Serializacion {
     private:
     public:
+	std::List <Planes> getPlanes();
+	std::List <Bloques> getBloques();
+	std::List <Cursos> getCursos();
 }
 
 #endif
