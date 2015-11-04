@@ -79,7 +79,7 @@ class Instante : public IInstante
 
         /**
          * @breif Método set para el día del instante.
-    hrs = std::to_string(this->getHora())         * @param dia El nuevo día del instante.
+         * @param dia El nuevo día del instante.
          */
         void setDia(Dia dia);
 

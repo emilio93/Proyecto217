@@ -59,8 +59,7 @@ class Periodo : public IPeriodo {
         virtual boolean menorDuracion(IPeriodo);
 
         virtual boolean traslapa(IPeriodo);
-        
+
 };
 
-
-#endif CLASE_PERIODO
+#endif

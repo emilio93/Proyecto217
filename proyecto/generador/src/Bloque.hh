@@ -1,6 +1,8 @@
-#include<string>
-#include<iostream>
-#include <set>
+#ifndef CLASE_BLOQUE
+#define CLASE_BLOQUE
+
+#include <iostream>
+#include <string>
 
 //*********************************************************************
 //							 Class: Bloque
@@ -15,14 +17,16 @@ class Bloque {
 private:
 
 	int id;
+	int semestre;
 public:
-	
+
 	//!Set de cursos
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */
 	//std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
-	List <Cursos> getCursos(void);// ocupamos una lista también
-	
+	std::list<Cursos> getCursos(void);// ocupamos una lista también
 
 };
+
+#endif

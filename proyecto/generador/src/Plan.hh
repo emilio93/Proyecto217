@@ -1,3 +1,6 @@
+#ifndef CLASE_PLAN
+#define CLASE_PLAN
+
 #include<string>
 #include<iostream>
 #include <set>
@@ -17,15 +20,16 @@ class Plan {
 private:
 
 	int id;
-	
+
 public:
 
 	//!Set de bloques
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */	//std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
-    static List <Planes> getPlanes(void); //esto era parte de un serialization 	
+    static List <Planes> getPlanes(void); //esto era parte de un serialization
     List <Bloque> getBloques(*PlanActual);// método para traer una lista de los bloques ocupamos que retorne una lista
-	
+
 };
 
+#endif

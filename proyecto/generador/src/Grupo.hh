@@ -1,6 +1,12 @@
-#include<string>
-#include<iostream>
+#ifndef CLASE_GRUPO
+#define CLASE_GRUPO
+
+#include <string>
+#include <iostream>
 #include <set>
+
+#include "Curso.hh"
+#include "Profesor.hh"
 
 //#using namespace std;
 //*********************************************************************
@@ -13,17 +19,19 @@
  */
 
 class Grupo{
-private: 
+private:
 	int id;
 	int horario;
 	int cantidadhoras;
-	
-public:
-	    int getCurso(*GrupoActual);// devuelve un puntero al curso de este grupo.
-            std::List <Profesores > getProfesor(*CursoActual);// devuelve una lista de profesores disponibles Emilio dijo que se podia implementar en 
-	   					 //SQL la parte de pedir profes disponibles pero sino ahi se hace en el método.
-	    void setProfesor(*Profesorasignado);	
-	    void ponerEnHorario(*GrupoActual);
-	    int buscarProfesor(&List<Profesores>);//Creo que este busca un profesor de la lista disponible que pueda ser usado para el grupo.
 
-}
+public:
+	    Curso * getCurso(Grupo * GrupoActual);// devuelve un puntero al curso de este grupo.
+        std::list <Profesor> getProfesor(Curso * CursoActual);// devuelve una lista de profesores disponibles Emilio dijo que se podia implementar en
+	   					 //SQL la parte de pedir profes disponibles pero sino ahi se hace en el método.
+	    void setProfesor(Profesor * Profesorasignado);
+	    void ponerEnHorario(Grupo * GrupoActual);
+	    //int buscarProfesor(&List<Profesores>);//Creo que este busca un profesor de la lista disponible que pueda ser usado para el grupo.
+
+};
+
+#endif

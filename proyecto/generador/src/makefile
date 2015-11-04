@@ -5,15 +5,17 @@ CFLAGS = -Wall -c $(DEBUG) -pedantic
 LFLAGS = -Wall $(DEBUG) -pedantic
 TARGET = principal
 
-#$(TARGET) : $(OBJS)
-#	$(CC) $(LFLAGS) $(OBJS) -o $(TARGET)
-#
 main:
-	$(CC) Instante.cpp
-BD.o:
-	$(CC) $(CFLAGS) BD/BD.cpp
-Serializacion.o:
-	$(CC) $(CFLAGS) BD/Serializacion.cpp
+	$(CC) Curso.cpp -o curso $(DEBUG) $(CFLAGS)
+	
+testInstante:
+	$(CC) Instante.cpp -o instante $(DEBUG) $(CFLAGS)
+testCurso:
+	$(CC) Curso.cpp -o curso $(DEBUG) $(CFLAGS)
+testBD:
+	$(CC) $(CFLAGS) BD/BD.cpp -o bd $(DEBUG) $(CFLAGS)
+testSerializacion:
+	$(CC) $(CFLAGS) BD/Serializacion.cpp -o serializacion $(DEBUG) $(CFLAGS)
 clean :
 	rm -f *.o $(TARGET)
 cleanWin :

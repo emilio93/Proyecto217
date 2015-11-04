@@ -27,14 +27,30 @@ enum Dia {
 std::string diaToString(Dia dia) {
   std::string str = "";
   switch (dia) {
-    case LUNES: str = "lunes";
-    case MARTES: str = "martes";
-    case MIERCOLES: str = "miercoles";
-    case JUEVES: str = "jueves";
-    case VIERNES: str = "viernes";
-    case SABADO: str = "sabado";
-    case DOMINGO: str = "domingo";
-    case INDEFINIDO: str = "indefinido";
+    case LUNES:
+        str = "lunes";
+        break;
+    case MARTES:
+        str = "martes";
+        break;
+    case MIERCOLES:
+        str = "miercoles";
+        break;
+    case JUEVES:
+        str = "jueves";
+        break;
+    case VIERNES:
+        str = "viernes";
+        break;
+    case SABADO:
+        str = "sabado";
+        break;
+    case DOMINGO:
+        str = "domingo";
+        break;
+    case INDEFINIDO:
+        str = "indefinido";
+        break;
   }
   return str;
 }
@@ -42,14 +58,30 @@ std::string diaToString(Dia dia) {
 int diaToInt(Dia dia) {
   int d = 0;
   switch (dia) {
-    case LUNES: d = 1;
-    case MARTES: d = 2;
-    case MIERCOLES: d = 3;
-    case JUEVES: d = 4;
-    case VIERNES: d = 5;
-    case SABADO: d = 6;
-    case DOMINGO: d = 7;
-    case INDEFINIDO: d = 0;
+    case LUNES:
+        d = 1;
+        break;
+    case MARTES:
+        d = 2;
+        break;
+    case MIERCOLES:
+        d = 3;
+        break;
+    case JUEVES:
+        d = 4;
+        break;
+    case VIERNES:
+        d = 5;
+        break;
+    case SABADO:
+        d = 6;
+        break;
+    case DOMINGO:
+        d = 7;
+        break;
+    case INDEFINIDO:
+        d = 0;
+        break;
   }
   return d;
 }
@@ -57,14 +89,30 @@ int diaToInt(Dia dia) {
 Dia intToDia(int dia) {
   Dia d = INDEFINIDO;
   switch (dia) {
-    case 1: d = LUNES;
-    case 2: d = MARTES;
-    case 3: d = MIERCOLES;
-    case 4: d = JUEVES;
-    case 5: d = VIERNES;
-    case 6: d = SABADO;
-    case 7: d = DOMINGO;
-    case 0: d = INDEFINIDO;
+    case 1:
+        d = LUNES;
+        break;
+    case 2:
+        d = MARTES;
+        break;
+    case 3:
+        d = MIERCOLES;
+        break;
+    case 4:
+        d = JUEVES;
+        break;
+    case 5:
+        d = VIERNES;
+        break;
+    case 6:
+        d = SABADO;
+        break;
+    case 7:
+        d = DOMINGO;
+        break;
+    case 0:
+        d = INDEFINIDO;
+        break;
   }
   return d;
 }

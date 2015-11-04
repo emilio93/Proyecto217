@@ -1,6 +1,15 @@
-#include<string>
-#include<iostream>
+#ifndef CLASE_PROFESOR
+#define CLASE_PROFESOR
+
+#include <string>
+#include <iostream>
 #include <set>
+#include <queue>
+
+#include "IPeriodo.hh"
+
+class Curso;
+
 
 //#using namespace std;
 
@@ -17,11 +26,13 @@ class Profesor {
 private:
 
 	int id, horasLaborales, horasAsignadas;
-	string nombre, apellido; //esto no se porque está aquí xD que buscaban con esto?
+	std::string nombre, apellido; //esto no se porque está aquí xD que buscaban con esto?
 public:
-	
-	
-	std::PriorityQueue<Curso> cursos;//no se si los vamos a usar pero ahi están
-	std::PriorityQueue<IPeriodo> disponibilidad;
-	int getHorario(*Profesoractual);// esto debe devolver el horario del profe
+
+
+	std::priority_queue<Curso> * cursos;//no se si los vamos a usar pero ahi están
+	//std::priority_queue<IPeriodo> * disponibilidad;
+	int getHorario(Profesor * Profesoractual);// esto debe devolver el horario del profe
 };
+
+#endif

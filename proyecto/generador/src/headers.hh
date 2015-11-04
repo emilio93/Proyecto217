@@ -1,3 +1,6 @@
+#ifndef CLASE_GRUPO
+#define CLASE_GRUPO
+
 #include<string>
 #include<iostream>
 #include<set>
@@ -15,13 +18,13 @@
 class Plan {
 public:
 	//!Set de bloques
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */	std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
 
-     List <Planes> getPlanes(void); //esto era parte de un serialization asi que no se si iría en esta clase	
+     List <Planes> getPlanes(void); //esto era parte de un serialization asi que no se si iría en esta clase
      List <Bloque> getBloques(void);// método para traer una lista de los bloques ocupamos que retorne una lista
-	
+
 
 };
 
@@ -39,12 +42,12 @@ class Bloque {
 public:
 	int semestre;
 	//!Set de cursos
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */
 	std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
 	List<Cursos> getCursos(void);// ocupamos una lista también
-	
+
 
 };
 
@@ -59,8 +62,8 @@ public:
 class Horario {
 public:
 	//!Set de cursos
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */
 	std::multiset<Curso> cursos;
 
@@ -80,10 +83,10 @@ class Curso {
 public:
 	int id, cupo, grupo, clasesPorPeriodo;
 	string nombre, sigla;
-	Profesor profesor; 
+	Profesor profesor;
 	//!lista periodos de tiempo para el curso
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */
 	std::list<Periodo> horario;
 	int getCantidadGrupos();// me imagino que de alguna manera el método debe sabe de que curso se pregunta
@@ -101,7 +104,7 @@ public:
 class Profesor {
 public:
 	int id, horasLaborales, horasAsignadas;
-	string nombre, apellido; 
+	string nombre, apellido;
 	std::PriorityQueue<Curso> cursos;
 	std::PriorityQueue<IPeriodo> disponibilidad;
 	int getHorario(void);// esto debe devolver el horario del profe
@@ -120,11 +123,8 @@ class Grupo{
 public:
 	____ getCurso(___);// no hablamos mucho de que tipo son y que les entra.
              getProfesor();
-	     setProfesor();	
+	     setProfesor();
 	     ponerEnHorario();
-	     buscarProfesor();	
+	     buscarProfesor();
 
 }
-
-
-

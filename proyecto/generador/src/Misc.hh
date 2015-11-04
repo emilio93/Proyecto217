@@ -1,6 +1,10 @@
 #ifndef CLASE_MISC
 #define CLASE_MISC
 
+
+#include <iostream>
+#include <string>
+#include <sstream>
 #include <stddef.h>//This gets NULL
 /**
  * @breif Clase de métodos miscelaneos. Se compone de métodos static varios.
@@ -30,6 +34,13 @@ class Misc {
             return enRango;
         }
 
+        template <typename T> static std::string to_string(const T& n) {
+            std::ostringstream stm;
+            stm << n;
+            return stm.str();
+        }
+
 };
+
 
 #endif
