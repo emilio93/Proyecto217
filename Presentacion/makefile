@@ -21,4 +21,5 @@ $(TARGET) : $(OBJS)
 
 #Al digitar make clean se borraran todos los archivos compilados
 clean:
-	rm -f *.log *.aux *.gz *.dvi *.bbl *.blg *.fls
+	rm -f *.log *.aux *.gz *.dvi *.bbl *.blg *.fls *.pdf
+
