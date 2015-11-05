@@ -3,18 +3,25 @@ OBJS = principal.cpp MiPila.cpp
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG) -pedantic
 LFLAGS = -Wall $(DEBUG) -pedantic
-TARGET = principal
+BEFORE = -Wall $(DEBUG) -I/usr/include/cppconn
+AFTER = -L/usr/lib -L/usr/include -lmysqlcppconn
 
-#$(TARGET) : $(OBJS)
-#	$(CC) $(LFLAGS) $(OBJS) -o $(TARGET)
-#	
-main:
-	$(CC) BD/BD.cpp
+main: BD.o Plan.o testSerializacion
+
+testInstante:
+	$(CC) Instante.cpp -o instante.exe $(LFLAGS)
+testCurso:
+	$(CC) Curso.cpp -o curso.exe $(LFLAGS)
+testPlan:
+	$(CC) Plan.cpp -o plan.exe $(LFLAGS)
+testSerializacion:
+	$(CC)  $(BEFORE) -o serializacion.exe BD/Serializacion.cpp Plan.cpp BD/BD.cpp $(AFTER)
+
+Plan.o:
+	$(CC) Plan.cpp $(CFLAGS) -o Plan.o
 BD.o:
-	$(CC) $(CFLAGS) BD/BD.cpp
-Serializacion.o:
-	$(CC) $(CFLAGS) BD/Serializacion.cpp
+	$(CC) -c $(BEFORE) BD/BD.cpp -o BD.o $(AFTER)
 clean :
-	rm -f *.o $(TARGET)
+	rm -f *.o
 cleanWin :
-	del *.o *.exe $(TARGET) 2>nul
+	del *.o *.exe 2>nul
