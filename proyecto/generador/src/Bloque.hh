@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#include "Curso.hh"
+
 //*********************************************************************
 //							 Class: Bloque
 //*********************************************************************
@@ -25,7 +27,7 @@ public:
  *  \return
 */
 	//std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
-	std::list<Cursos> getCursos(void);// ocupamos una lista también
+	std::list<Curso> * getCursos(void);// ocupamos una lista también
 
 };
 

@@ -19,13 +19,11 @@ sql::Connection * BD::conectar(void) {
     std::string dbName = "miBaseDeDatos";
 
     try {
-        sql::Driver *driver;
+        sql::Driver * driver;
 
-        /* Create a connection */
         driver = get_driver_instance();
         this->con = driver->connect(dbHost, dbUser, dbPass);
-        /* Connect to the MySQL test database */
-        this->con->setSchema("miBaseDeDatos");
+        this->con->setSchema(dbName);
     } catch (sql::SQLException &e) {
         std::cout << "# ERR: SQLException in " << __FILE__;
         std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
@@ -40,7 +38,7 @@ BD::~BD() {
     delete this->con;
 }
 
-
+/*
 int main(void) {
     std::cout << "Creando objeto BD..." << std::endl;
     BD * bd = new BD();
@@ -54,3 +52,4 @@ int main(void) {
 
     return 0;
 }
+*/

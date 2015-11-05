@@ -2,7 +2,17 @@
 #define CLASE_SERIALIZACION
 
 #include <string>
-#include <list>
+#include <vector>
+
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/resultset.h>
+#include <cppconn/statement.h>
+
+#include "BD.hh"
+#include "../Plan.hh"
+#include "../Bloque.hh"
+#include "../Curso.hh"
 
 /**
  * @breif La clase Serializacion se encarga de convertir los resultados de la
@@ -10,10 +20,12 @@
  */
 class Serializacion {
     private:
+        static sql::Connection * getCon(void);
     public:
-    	static std::list<Plane> getPlanes(void);
-    	static std::list<Bloque> getBloques(Plan * plan);
-    	static std::list<Curso> getCursos(Bloque * bloque);
-}
+    	static std::vector<Plan*> * getPlanes(void);
+    	static std::vector<Bloque*> * getBloques(Plan * plan);
+    	static std::vector<Curso*> * getCursos(Bloque * bloque);
+
+};
 
 #endif

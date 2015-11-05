@@ -1,10 +1,12 @@
 #ifndef CLASE_PLAN
 #define CLASE_PLAN
 
-#include<string>
-#include<iostream>
+#include <string>
+#include <iostream>
 #include <set>
+#include <vector>
 
+#include "Bloque.hh"
 //#using namespace std;
 
 //*********************************************************************
@@ -20,15 +22,26 @@ class Plan {
 private:
 
 	int id;
+	std::string nombre;
 
 public:
+	Plan(int id, std::string nombre);
+
+	int getId(void);
+
+	void setId(int id);
+
+	std::string getNombre();
+
+	void setNombre(std::string nombre);
 
 	//!Set de bloques
 /*! \brief
  *  \return
 */	//std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
-    static List <Planes> getPlanes(void); //esto era parte de un serialization
-    List <Bloque> getBloques(*PlanActual);// método para traer una lista de los bloques ocupamos que retorne una lista
+    static std::vector<Plan*> * getPlanes(void); //esto era parte de un serialization
+    std::vector<Bloque*> * getBloques(Plan * PlanActual);// método para traer una lista de los bloques ocupamos que retorne una lista
+
 
 };
 
