@@ -4,6 +4,8 @@
 *.out
 *.toc
 *.pdf
+*.o
+*.exe
 
 #Emilio
 .atom-build.json
