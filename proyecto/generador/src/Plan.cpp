@@ -25,6 +25,10 @@ void Plan::setNombre(std::string nombre) {
     this->nombre = nombre;
 }
 
+std::vector<Bloque*> * Plan::getBloques(void) {
+    return Serializacion::getBloques(this);
+}
+
 int testPlan(void) {
     Plan * plan = new Plan(1,"hola");
     std::cout << plan->getNombre() << std::endl;

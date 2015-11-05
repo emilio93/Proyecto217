@@ -70,6 +70,8 @@ private:
 	 */
 	int cantidadGrupos;
 
+	Bloque * bloque;
+
 	/**
 	 * @breif El nombre del curso es una manera en que el usuario puede
 	 *        identificar el curso.

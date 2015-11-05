@@ -40,7 +40,7 @@ public:
  *  \return
 */	//std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
     static std::vector<Plan*> * getPlanes(void); //esto era parte de un serialization
-    std::vector<Bloque*> * getBloques(Plan * PlanActual);// método para traer una lista de los bloques ocupamos que retorne una lista
+    std::vector<Bloque*> * getBloques(void);// método para traer una lista de los bloques ocupamos que retorne una lista
 
 
 };

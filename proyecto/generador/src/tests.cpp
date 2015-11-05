@@ -17,7 +17,7 @@
 
 #include "BD/BD.cpp"
 #include "BD/Serializacion.cpp"
-//#include "Bloque.cpp"
+#include "Bloque.cpp"
 #include "Curso.cpp"
 //#include "Grupo.cpp"
 //#include "Horario.cpp"
