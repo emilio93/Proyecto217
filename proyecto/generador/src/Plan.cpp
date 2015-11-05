@@ -25,11 +25,8 @@ void Plan::setNombre(std::string nombre) {
     this->nombre = nombre;
 }
 
-/**
-
-int main(void) {
+int testPlan(void) {
     Plan * plan = new Plan(1,"hola");
     std::cout << plan->getNombre() << std::endl;
     return 0;
 }
-*/

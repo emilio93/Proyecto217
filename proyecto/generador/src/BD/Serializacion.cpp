@@ -28,21 +28,21 @@ std::vector<Plan*> * Serializacion::getPlanes(void) {
 
 
         stmt = con->createStatement();
-        res = stmt->executeQuery("SELECT * from tablaPrueba");
-        cout << "Tabla Prueba" << endl;
+        res = stmt->executeQuery("SELECT * from Plan");
+        cout << "Tabla Plan" << endl;
         cout << "--------------" << endl;
-        cout << "id | contenido" << endl;
+        cout << "id | nombre" << endl;
         cout << "---+------------" << endl;
         while (res->next()) {
             /* Access column data by alias or column name */
             cout << res->getString("id");
             cout << "  | ";
             /* Access column fata by numeric offset, 1 is the first column */
-            cout << res->getString("contenido") << endl;
+            cout << res->getString("nombre") << endl;
 
             //AHORA SI
             int id = res->getInt("id");
-            std::string nombre = res->getString("contenido").c_str();
+            std::string nombre = res->getString("nombre").c_str();
             Plan * plan = new Plan(id, nombre);
             planes->push_back(plan);
         }
@@ -74,7 +74,7 @@ sql::Connection * Serializacion::getCon(void) {
     return con;
 }
 
-int main(void) {
+int testSerializacion(void) {
     std::vector<Plan*> * planes = Serializacion::getPlanes();
     std::cout << std::endl;
     for (int i = 0; i < planes->size(); i++) {

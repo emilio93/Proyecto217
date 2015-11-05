@@ -28,37 +28,35 @@ class Periodo : public IPeriodo {
          * @breif Método set para el Instante inicial del Periodo.
          * @param Instante El nuevo incio del Periodo.
          */
-        void setInicio(Instante);
+        void setInicio(Instante * instante);
 
         /**
          * @breif Método set para el Instante final del Periodo.
          * @param Instante El nuevo fin del Periodo.
          */
-        void setFin(Instante);
+        void setFin(Instante * instante);
 
-        virtual ~IPeriodo() {}
+        virtual IInstante * getInicio(void);
 
-        virtual IInstante getInicio(void);
+        virtual IInstante * getFinal(void);
 
-        virtual IInstante getFinal(void);
+        virtual bool igual(IPeriodo * periodo);
 
-        virtual bolean igual(IPeriodo);
+        virtual bool contieneInclusivo(IPeriodo * periodo);
 
-        virtual boolean contieneInclusivo(IPeriodo);
+        virtual bool contieneExclusivo(IPeriodo * periodo);
 
-        virtual boolean contieneExclusivo(IPeriodo);
+        virtual bool enInclusivo(IPeriodo * periodo);
 
-        virtual boolean enInclusivo(IPeriodo);
+        virtual bool enExclusivo(IPeriodo * periodo);
 
-        virtual boolean enExclusivo(IPeriodo);
+        virtual bool igualDuracion(IPeriodo * periodo);
 
-        virtual bolean igualDuracion(IPeriodo);
+        virtual bool mayorDuracion(IPeriodo * periodo);
 
-        virtual boolean mayorDuracion(IPeriodo);
+        virtual bool menorDuracion(IPeriodo * periodo);
 
-        virtual boolean menorDuracion(IPeriodo);
-
-        virtual boolean traslapa(IPeriodo);
+        virtual bool traslapa(IPeriodo * periodo);
 
 };
 

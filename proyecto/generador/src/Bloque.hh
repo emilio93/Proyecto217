@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Curso.hh"
+#include "Plan.hh"
 
 //*********************************************************************
 //							 Class: Bloque
@@ -19,6 +20,7 @@ class Bloque {
 private:
 
 	int id;
+	Plan * plan;
 	int semestre;
 public:
 

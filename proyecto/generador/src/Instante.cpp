@@ -204,7 +204,7 @@ void Instante::getInstante(void) {
  * @breif Main para probar la implementación de la clase.
  * @return  0.
  */
-int main(void) {
+int testInstante(void) {
 
     std::string resultado;
 

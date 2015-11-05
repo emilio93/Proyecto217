@@ -16,7 +16,7 @@ sql::Connection * BD::conectar(void) {
     std::string dbUser = "root";
     std::string dbPass = "pass";
     std::string dbHost = "tcp://127.0.0.1:3306";
-    std::string dbName = "miBaseDeDatos";
+    std::string dbName = "horarios";
 
     try {
         sql::Driver * driver;
@@ -38,8 +38,7 @@ BD::~BD() {
     delete this->con;
 }
 
-/*
-int main(void) {
+int testBD(void) {
     std::cout << "Creando objeto BD..." << std::endl;
     BD * bd = new BD();
     std::cout << "OK!" << std::endl;
@@ -52,4 +51,3 @@ int main(void) {
 
     return 0;
 }
-*/

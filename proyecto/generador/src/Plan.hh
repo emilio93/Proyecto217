@@ -6,7 +6,7 @@
 #include <set>
 #include <vector>
 
-#include "Bloque.hh"
+class Bloque;
 //#using namespace std;
 
 //*********************************************************************

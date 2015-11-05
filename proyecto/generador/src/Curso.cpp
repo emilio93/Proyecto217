@@ -64,7 +64,7 @@ std::list<Grupo*> * Curso::crearGrupos(void) {
  * @breif Main para probar la implementación de la clase.
  * @return  0.
  */
-int main(void) {
+int testCurso(void) {
 
     Curso * curso1 = new Curso(1, 5, 2, 1, "Circuitos Lineles I", "IE0209");
     std::cout << curso1->toString() << " creado." << std::endl;

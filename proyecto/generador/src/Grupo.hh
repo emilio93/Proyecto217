@@ -4,9 +4,11 @@
 #include <string>
 #include <iostream>
 #include <set>
+#include <vector>
 
 #include "Curso.hh"
 #include "Profesor.hh"
+#include "IPeriodo.hh"
 
 //#using namespace std;
 //*********************************************************************
@@ -21,7 +23,10 @@
 class Grupo{
 private:
 	int id;
-	int horario;
+	Curso * curso;
+	Profesor * profesor;
+	std::vector<IPeriodo*> * horario;
+	//int horario;
 	int cantidadhoras;
 
 public:
