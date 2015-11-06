@@ -26,24 +26,28 @@
 \headcommand {\beamer@framepages {8}{8}}
 \headcommand {\slideentry {3}{0}{9}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\sectionentry {4}{Diagrama de Flujo}{10}{Diagrama de Flujo}{0}}
+\headcommand {\sectionentry {4}{Diagrama de Flujo }{10}{Diagrama de Flujo }{0}}
 \headcommand {\beamer@sectionpages {6}{9}}
 \headcommand {\beamer@subsectionpages {6}{9}}
 \headcommand {\slideentry {4}{0}{10}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\sectionentry {5}{En conclusi\IeC {\'o}n y logros hasta el momento }{11}{En conclusi\IeC {\'o}n y logros hasta el momento }{0}}
-\headcommand {\beamer@sectionpages {10}{10}}
-\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\slideentry {5}{0}{11}{11/11}{}{0}}
+\headcommand {\slideentry {4}{0}{11}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {5}{0}{12}{12/12}{}{0}}
+\headcommand {\slideentry {4}{0}{12}{12/12}{}{0}}
 \headcommand {\beamer@framepages {12}{12}}
+\headcommand {\sectionentry {5}{En conclusi\IeC {\'o}n y logros hasta el momento }{13}{En conclusi\IeC {\'o}n y logros hasta el momento }{0}}
+\headcommand {\beamer@sectionpages {10}{12}}
+\headcommand {\beamer@subsectionpages {10}{12}}
 \headcommand {\slideentry {5}{0}{13}{13/13}{}{0}}
 \headcommand {\beamer@framepages {13}{13}}
 \headcommand {\slideentry {5}{0}{14}{14/14}{}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@partpages {1}{14}}
-\headcommand {\beamer@subsectionpages {11}{14}}
-\headcommand {\beamer@sectionpages {11}{14}}
-\headcommand {\beamer@documentpages {14}}
-\headcommand {\def \inserttotalframenumber {13}}
+\headcommand {\slideentry {5}{0}{15}{15/15}{}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {5}{0}{16}{16/16}{}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@partpages {1}{16}}
+\headcommand {\beamer@subsectionpages {13}{16}}
+\headcommand {\beamer@sectionpages {13}{16}}
+\headcommand {\beamer@documentpages {16}}
+\headcommand {\def \inserttotalframenumber {15}}
