@@ -103,32 +103,94 @@ Emilio Rojas - B15680\\
 %%%%%%%
 \section{Introducción}
 
-\begin{frame}{Objetivos}{}
+\begin{frame}{Introducción}{}
 \begin{block}{}
-  \begin{itemize}
-  \end{itemize}
+	 El problema
 %para colocar una figura...descomente esto!
-%\begin{figure}[!h]
-%\centering
-%\includegraphics[width=0.9\textwidth]{./AAUgraphics/arbol.png}
-%\caption{ \scriptsize }
-%\end{figure}
+\begin{figure}[!h]
+ \begin{flushleft}
+\includegraphics[width=0.2\textwidth]{./AAUgraphics/cburbuja.png}
+\end{flushleft}
+\end{figure}
+
+\begin{figure}[!h]
+ \begin{flushright}
+ \includegraphics[width=0.3\textwidth]{./AAUgraphics/problem1.png}
+ \end{flushright}
+\end{figure}
 
 \end{block}
 \end{frame}
 
+
+
+\begin{frame}{Introducción}{}
+\begin{block}{}
+	 El problema
+%para colocar una figura...descomente esto!
+\begin{figure}[!h]
+ \begin{flushleft}
+\includegraphics[width=0.3\textwidth]{./AAUgraphics/problem2.jpg}
+\end{flushleft}
+\end{figure}
+
+\begin{figure}[!h]
+ \begin{flushright}
+ \includegraphics[width=0.2\textwidth]{./AAUgraphics/cfile.jpg}
+ \end{flushright}
+\end{figure}
+
+\end{block}
+\end{frame}
+
+\section{Objetivos}
+\begin{frame}{Objetivo General}
+\begin{block}{}
+  \begin{itemize}
+  \item Implementar una librería en C++ con la capacidad de generar un horario de cursos.
+  \end{itemize} 
+  
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.50\textwidth]{./AAUgraphics/cpintura.png}
+%\caption{ \scriptsize }
+\end{figure}
+  
+  
+\end{block}
+\end{frame}
+
+\begin{frame}{Objetivo General}
+\begin{block}{}
+
+\begin{itemize}
+	\item Generar la estructura para una base de datos que contenga la información referente a profesores y cursos.
+	\item Asignar a partir de la base de datos, profesores a los cursos tomando en cuenta limitaciones de horario de los mismos y cantidad de grupos por 	curso.
+	\item Obtener un horario en el cual los cursos de cada bloque tenga al menos una posibilidad de ser matriculados todos sin que allá un traslape de 	horarios entre ellos.
+\end{itemize}
+  
+\end{block}
+\end{frame}
 
 
 
 \section{Implementación}
-% motivation for creating this theme
-\begin{frame}{Como lo vamos a hacer}{}
+\begin{frame}{Herramientas}
 \begin{block}{}
-
 \begin{itemize}
-\item Más bullets... Planteamiento de la solución. Descrpción del diagrama de flujo del algoritmo, clases y métodos. explicar el encapsulamiento de clases que planeamos utilizar.
-\end{itemize}
+	\item \textbf{C++:} Herramienta principal para el desarrollo de la librería
+	
+	\item \textbf{MySQL:} Servidor de base de datos utilizada
+	
+	\item \textbf{Otras Herramientas:} Apache, PHP, PHPAdmin.
 
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.40\textwidth]{./AAUgraphics/tools.jpg}
+%\caption{ \scriptsize }
+\end{figure}
+	
+ \end{itemize}
 \end{block}
 \end{frame}
 
@@ -136,16 +198,35 @@ Emilio Rojas - B15680\\
 
 
 
-\section{Características}
+\begin{frame}{Diagrama de Clases}
+\begin{center}
+    \includegraphics[width=\textwidth]{diagramaClases1}
+\end{center}
+\end{frame}
+
+\begin{frame}{Diagrama de Clases}
+\begin{center}
+    \includegraphics[width=\textwidth]{diagramaClases2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Diagrama de Clases}
+\begin{center}
+    \includegraphics[width=\textwidth]{diagramaClases3}
+\end{center}
+\end{frame}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Diagrama de Flujo}
 % motivation for creating this theme
-\begin{frame}{Características}{}
+\begin{frame}{Algoritmo y Diagrama de Flujo}{}
 \begin{block}{}
 
-\begin{itemize}
-
-\item Hablar de mySQL y porque lo utilizamos. También se puede mencionar la librería de c++ para accesar los datos y demás cosas relacionadfas con las bases de datos (estructura y keys importantes)
-
-\end{itemize}
 
 %Imagen
 %\begin{figure}[!h]
@@ -156,24 +237,29 @@ Emilio Rojas - B15680\\
 
 \end{block}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 \section{En conclusión y logros hasta el momento }
-\begin{frame}{Texto}{}
+\begin{frame}{Logros}
 \begin{block}{}
-
 \begin{itemize}
-\item Problemas fundamentales (¿explicar cómo vamos a asignar a los profes a los cursos? (y por qué elegimos ese método)), ¿Qué tenemos hasta ahora?
+         \item Declaración de todas las clases.
+         \item Creación de la base de datos.
+         \item Conexión con la base de datos y btención de resultados a
+            consultas.
+        \item Implementación de algunas clases y pruebas con estas.
+
 \end{itemize}
 
-%Imagen
-%\begin{figure}[!h]
-%\begin{flushright}
-%\includegraphics[width=0.60\textwidth]{./AAUgraphics/node.png}
-%\end{flushright}
-%\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=.4\textwidth]{./AAUgraphics/logro.jpg}
+%\caption{ \scriptsize }
+\end{center}
+\end{figure}
 
 \end{block}
 \end{frame}
@@ -183,16 +269,21 @@ Emilio Rojas - B15680\\
 
 
 
-\begin{frame}{Bibliografía}{}
+\begin{frame}{Demostración}{}
 \begin{block}{}
-\begin{itemize}
-
-\item Robert Sedgewick. \textbf{Left-Leaning Red-Black Trees}. Princeton University. 2008
-
-\item CS 660: Combinational Algorithms. \textbf{(a,b)- Trees}. San Diego University
-\end{itemize}
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=.9\textwidth]{./AAUgraphics/code.jpg}
+%\caption{ \scriptsize }
+\end{center}
+\end{figure}
 \end{block}
 \end{frame}
+
+
+
+
+
 
 
 \begin{frame}{}{}
