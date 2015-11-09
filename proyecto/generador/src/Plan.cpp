@@ -30,7 +30,8 @@ std::vector<Bloque*> * Plan::getBloques(void) {
 }
 
 int testPlan(void) {
-    Plan * plan = new Plan(1,"hola");
+    Plan * plan = new Plan(1, "MiInstanciaDePlan");
+    plan->setId(2);
     std::cout << plan->getNombre() << std::endl;
     return 0;
 }
