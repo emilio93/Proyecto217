@@ -5,6 +5,16 @@
 *.toc
 *.o
 *.exe
+*.nav
+*.snm
+*.gz
+
+!Presentacion/AAUgraphics/*
+
+*.eps
+*.pdf
+*.png
+*.jpg
 
 proyecto/generador/bin
 proyecto/generador/docs
