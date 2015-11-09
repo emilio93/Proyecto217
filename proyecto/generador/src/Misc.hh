@@ -1,13 +1,14 @@
 #ifndef CLASE_MISC
 #define CLASE_MISC
 
-
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <stddef.h>//This gets NULL
+#include <stddef.h>
+
+//! Métodos miscelaneos.
 /**
- * @breif Clase de métodos miscelaneos. Se compone de métodos static varios.
+ * Clase de métodos miscelaneos. Se compone de métodos static varios.
  */
 class Misc {
     public:
