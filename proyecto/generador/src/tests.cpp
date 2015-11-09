@@ -62,7 +62,7 @@ int main(void) {
                 //testBloque();
                 break;
             case 2:
-                //testCurso();
+                testCurso();
                 break;
             case 3:
                 //testGrupo();
