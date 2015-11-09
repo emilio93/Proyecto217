@@ -8,16 +8,26 @@
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 
+//! Conexión con la base de datos.
 /**
- * @breif La clase BD crea una conexion con la base de datos y da acceso a esta.
+ * La clase BD crea una conexion con la base de datos y da acceso a esta.
  */
 class BD {
     private:
+        /**
+         * @breif La conexión con la base de datos.
+         */
         sql::Connection *con;
     public:
-        sql::Connection * conectar(void);
+        /**
+         * @breif Crea y devuelve la conexión con la base de datos.
+         * @return  La conexión con la base de datos
+         */
+        sql::Connection *conectar(void);
 
+        /**
+         * @breif Destruye la conexión con la base de datos.
+         */
         ~BD();
 };
-
 #endif

@@ -14,18 +14,37 @@
 #include "../Bloque.hh"
 #include "../Curso.hh"
 
+//! Consulta y obtiene resultados de la base de datos, los convierte a objetos
+//! utilizados en el sistema.
 /**
- * @breif La clase Serializacion se encarga de convertir los resultados de la
- *        base de datos en los objetos pertinentes.
+ * La clase Serializacion se encarga de convertir los resultados de la
+ * base de datos en los objetos pertinentes.
  */
 class Serializacion {
     private:
-        static sql::Connection * getCon(void);
+        /**
+         * @breif Obtiene una conexión con el servidor de la base de datos.
+         * @return  La conexión con la base de datos.
+         */
+        static sql::Connection *getCon(void);
+
     public:
-    	static std::vector<Plan*> * getPlanes(void);
-    	static std::vector<Bloque*> * getBloques(Plan * plan);
-    	static std::vector<Curso*> * getCursos(Bloque * bloque);
+        /**
+         * @breif Obtiene una lista de los planes disponibles en la base de
+         * datos.
+         */
+    	static std::vector<Plan*> *getPlanes(void);
 
+        /**
+         * @breif Obtiene los bloques de la base de datos que pertenezcan a un
+         *        dado plan.
+         */
+    	static std::vector<Bloque*> *getBloques(Plan *plan);
+
+        /**
+         * @breif Obtiene los cursos de la base de datos que pertenezcan a un
+         *        dado bloque.
+         */
+    	static std::vector<Curso*> *getCursos(Bloque *bloque);
 };
-
 #endif

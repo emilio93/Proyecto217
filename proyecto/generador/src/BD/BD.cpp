@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <stddef.h>//This gets NULL
+#include <stddef.h>
 
 #include <iostream>
 #include <string>
@@ -39,15 +39,18 @@ BD::~BD() {
 }
 
 int testBD(void) {
-    std::cout << "Creando objeto BD..." << std::endl;
+    using namespace std;
+    cout << "Creando objeto BD..." << endl;
     BD * bd = new BD();
-    std::cout << "OK!" << std::endl;
-    std::cout << "Conectando a base de datos..." << std::endl;
+    cout << "OK!" << std::endl;
+    cout << "Conectando a base de datos..." << endl;
+
     sql::Connection * con = bd->conectar();
-    std::cout << "Bien si no hubo errores!" << std::endl;
-    std::cout << "Cerrando conexion..." << std::endl;
+
+    cout << "Bien si no hubo errores!" << endl;
+    cout << "Cerrando conexion..." << endl;
     delete con;
-    std::cout << "Bien si no hubo errores!" << std::endl;
+    cout << "Bien si no hubo errores!" << endl;
 
     return 0;
 }
