@@ -205,128 +205,129 @@ void Instante::getInstante(void) {
  * @return  0.
  */
 int testInstante(void) {
-
-    std::string resultado;
+    using namespace std;
+    
+    string resultado;
 
     IInstante * inst1 = new Instante(LUNES, 7, 00);
-    std::cout << "Instante 1: ";
-    std::cout << inst1->toString() << std::endl;
+    cout << "Instante 1: ";
+    cout << inst1->toString() << endl;
 
     IInstante * inst2 = new Instante(LUNES, 7, 00);
-    std::cout << "Instante 2: ";
-    std::cout << inst2->toString() << std::endl;
+    cout << "Instante 2: ";
+    cout << inst2->toString() << endl;
 
     IInstante * inst3 = new Instante(MARTES, 7, 00);
-    std::cout << "Instante 3: ";
-    std::cout << inst3->toString() << std::endl;
+    cout << "Instante 3: ";
+    cout << inst3->toString() << endl;
 
     IInstante * inst4 = new Instante(MIERCOLES, 7, 00);
-    std::cout << "Instante 4: ";
-    std::cout << inst4->toString() << std::endl;
+    cout << "Instante 4: ";
+    cout << inst4->toString() << endl;
 
     IInstante * inst5 = new Instante(MIERCOLES, 9, 00);
-    std::cout << "Instante 5: ";
-    std::cout << inst5->toString() << std::endl;
+    cout << "Instante 5: ";
+    cout << inst5->toString() << endl;
 
     IInstante * inst6 = new Instante(MIERCOLES, 9, 30);
-    std::cout << "Instante 6: ";
-    std::cout << inst6->toString() << std::endl;
+    cout << "Instante 6: ";
+    cout << inst6->toString() << endl;
 
-    std::cout << std::endl;
+    cout << endl;
 
-    std::cout << "Instante1 es igual a Instante2? ";
+    cout << "Instante1 es igual a Instante2? ";
     resultado = inst1->igual(inst2)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante1 es igual a Instante3? ";
+    cout << "Instante1 es igual a Instante3? ";
     resultado = inst1->igual(inst3)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante5 es igual a Instante6? ";
+    cout << "Instante5 es igual a Instante6? ";
     resultado = inst5->igual(inst6)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << std::endl;
+    cout << endl;
 
-    std::cout << "Instante1 es previo a Instante2? ";
+    cout << "Instante1 es previo a Instante2? ";
     resultado = inst1->previo(inst2)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante2 es previo a Instante1? ";
+    cout << "Instante2 es previo a Instante1? ";
     resultado = inst2->previo(inst1)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante2 es previo a Instante3? ";
+    cout << "Instante2 es previo a Instante3? ";
     resultado = inst2->previo(inst3)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante3 es previo a Instante2? ";
+    cout << "Instante3 es previo a Instante2? ";
     resultado = inst3->previo(inst2)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante4 es previo a Instante5? ";
+    cout << "Instante4 es previo a Instante5? ";
     resultado = inst4->previo(inst5)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante5 es previo a Instante6? ";
+    cout << "Instante5 es previo a Instante6? ";
     resultado = inst5->previo(inst6)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante6 es previo a Instante5? ";
+    cout << "Instante6 es previo a Instante5? ";
     resultado = inst6->previo(inst5)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << std::endl;
+    cout << endl;
 
-    std::cout << "Instante1 es posterior a Instante2? ";
+    cout << "Instante1 es posterior a Instante2? ";
     resultado = inst1->posterior(inst2)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante2 es posterior a Instante1? ";
+    cout << "Instante2 es posterior a Instante1? ";
     resultado = inst2->posterior(inst1)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante2 es posterior a Instante3? ";
+    cout << "Instante2 es posterior a Instante3? ";
     resultado = inst2->posterior(inst3)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante3 es posterior a Instante2? ";
+    cout << "Instante3 es posterior a Instante2? ";
     resultado = inst3->posterior(inst2)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante4 es posterior a Instante5? ";
+    cout << "Instante4 es posterior a Instante5? ";
     resultado = inst4->posterior(inst5)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante5 es posterior a Instante6? ";
+    cout << "Instante5 es posterior a Instante6? ";
     resultado = inst5->posterior(inst6)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << "Instante6 es posterior a Instante5? ";
+    cout << "Instante6 es posterior a Instante5? ";
     resultado = inst6->posterior(inst5)? "Si": "No";
-    std::cout << resultado << std::endl;
+    cout << resultado << endl;
 
-    std::cout << std::endl << std::endl;
+    cout << endl << endl;
 
     IInstante * inst7 = new Instante(INDEFINIDO, 25, 68);
-    std::cout << "Instante 7 seteado con (INDEFINIDO, 25, 68)" << std::endl;
-    std::cout << "Instante 7: ";
-    std::cout << inst7->toString() << std::endl;
+    cout << "Instante 7 seteado con (INDEFINIDO, 25, 68)" << endl;
+    cout << "Instante 7: ";
+    cout << inst7->toString() << endl;
 
     IInstante * inst8 = new Instante(LUNES, 25, 68);
-    std::cout << "Instante 8 seteado con (LUNES, 25, 68)" << std::endl;
-    std::cout << "Instante 8: ";
-    std::cout << inst8->toString() << std::endl;
+    cout << "Instante 8 seteado con (LUNES, 25, 68)" << endl;
+    cout << "Instante 8: ";
+    cout << inst8->toString() << endl;
 
     IInstante * inst9 = new Instante(DOMINGO, 25, 68);
-    std::cout << "Instante 9 seteado con (DOMINGO, 25, 68)" << std::endl;
-    std::cout << "Instante 9: ";
-    std::cout << inst9->toString() << std::endl;
+    cout << "Instante 9 seteado con (DOMINGO, 25, 68)" << endl;
+    cout << "Instante 9: ";
+    cout << inst9->toString() << endl;
 
     IInstante * inst10 = new Instante(SABADO, 75, 150);
-    std::cout << "Instante 10 seteado con (SABADO, 75, 150)" << std::endl;
-    std::cout << "Instante 10: ";
-    std::cout << inst10->toString() << std::endl;
+    cout << "Instante 10 seteado con (SABADO, 75, 150)" << endl;
+    cout << "Instante 10: ";
+    cout << inst10->toString() << endl;
 
     return 0;
 }
