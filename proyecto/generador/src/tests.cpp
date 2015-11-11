@@ -19,34 +19,35 @@
 #include "BD/Serializacion.cpp"
 #include "Bloque.cpp"
 #include "Curso.cpp"
-//#include "Grupo.cpp"
+//#include "Grupo.cpp" //5
 //#include "Horario.cpp"
 #include "Instante.cpp"
 //#include "Periodo.cpp"
 #include "Plan.cpp"
-//#include "Profesor.cpp"
+//#include "Profesor.cpp" //10
 
 int test(void) {
-    std::string opcion;
-    std::cout << "ELIGA QUE TEST QUIERE CORRER(0 para salir):" << std::endl;
-    std::cout << "\t0 - Salir" << std::endl;
-    std::cout << "\t1 - Clase Bloque" << std::endl;
-    std::cout << "\t2 - Clase Curso" << std::endl;
-    std::cout << "\t3 - Clase Grupo" << std::endl;
-    std::cout << "\t4 - Clase Horario" << std::endl;
-    std::cout << "\t5 - Clase Instante" << std::endl;
-    std::cout << "\t6 - Clase Misc" << std::endl;
-    std::cout << "\t7 - Clase Periodo" << std::endl;
-    std::cout << "\t8 - Clase Plan" << std::endl;
-    std::cout << "\t9 - Clase Profesor" << std::endl;
-    std::cout << "\t10 - Clase BD" << std::endl;
-    std::cout << "\t11 - Clase Serializacion" << std::endl;
+    using namespace std;
 
+    string opcion;
+    cout << "ELIGA QUE TEST QUIERE CORRER(0 para salir):" << endl;
+    cout << "\t0 - Salir" << endl;
+    cout << "\t1 - Clase Bloque" << endl;
+    cout << "\t2 - Clase Curso" << endl;
+    cout << "\t3 - Clase Grupo" << endl;
+    cout << "\t4 - Clase Horario" << endl;
+    cout << "\t5 - Clase Instante" << endl;
+    cout << "\t6 - Clase Misc" << endl;
+    cout << "\t7 - Clase Periodo" << endl;
+    cout << "\t8 - Clase Plan" << endl;
+    cout << "\t9 - Clase Profesor" << endl;
+    cout << "\t10 - Clase BD" << endl;
+    cout << "\t11 - Clase Serializacion" << endl;
 
-    std::cout << "Test # ";
-    std::cin >> opcion;
+    cout << "Test # ";
+    cin >> opcion;
 
-    std::stringstream convert(opcion);
+    stringstream convert(opcion);
     int respuesta;
     convert>>respuesta;
 
@@ -54,9 +55,11 @@ int test(void) {
 }
 
 int main(void) {
+    uding namespace std;
+
     int elegida = test();
     while (elegida != 0) {
-        std::cout << "****INICIO SALIDA*****" << std::endl << std::endl;
+        cout << "****INICIO SALIDA*****" << endl << endl;
         switch (elegida) {
             case 1:
                 //testBloque();
@@ -77,7 +80,7 @@ int main(void) {
                 //testMisc();
                 break;
             case 7:
-                //testPeriodo();
+                testPeriodo();
                 break;
             case 8:
                 testPlan();
@@ -92,10 +95,9 @@ int main(void) {
                 testSerializacion();
                 break;
             default:
-                std::cout << "No selecciono un numero adecuado" << std::endl;
+                cout << "No selecciono un numero adecuado" << endl;
         }
-        std::cout << std::endl << "****FIN SALIDA*****" << std::endl;
+        cout << endl << "****FIN SALIDA*****" << endl;
         elegida = test();
     }
-
 }

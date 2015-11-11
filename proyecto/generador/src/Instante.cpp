@@ -3,11 +3,11 @@
 #include <cmath>
 #include <sstream>
 
-#include "Instante.hh"
 #include "IInstante.hh"
-#include "Dia.hh"
+#include "Instante.hh"
 
 #include "Misc.hh"
+#include "Dia.hh"
 
 /*******************************************************************************
  ** IMPLEMENTACION IINSTANTE
@@ -206,7 +206,7 @@ void Instante::getInstante(void) {
  */
 int testInstante(void) {
     using namespace std;
-    
+
     string resultado;
 
     IInstante * inst1 = new Instante(LUNES, 7, 00);
