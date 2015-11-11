@@ -55,7 +55,7 @@ int test(void) {
 }
 
 int main(void) {
-    uding namespace std;
+    using namespace std;
 
     int elegida = test();
     while (elegida != 0) {
