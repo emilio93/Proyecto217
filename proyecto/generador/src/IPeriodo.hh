@@ -81,6 +81,13 @@ class IPeriodo {
          */
         virtual bool enExclusivo(IPeriodo *periodo) = 0;
 
+        //! Obtiene la duración del IPeriodo.
+        /*!
+         * Obtiene la duración IPeriodo.
+         * @return  La duración del IPeriodo.
+         */
+        virtual int getDuracion(void) = 0;
+
         //! Indica si dos periodos duran lo mismo.
         /*!
          * Indica si dos periodos son iguales en duración, esto es, que
