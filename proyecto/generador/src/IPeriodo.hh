@@ -3,9 +3,8 @@
 
 #include "IInstante.hh"
 
-/**
- * @breif Representación de un periodo continuo.
- *
+//! Representación de un periodo continuo.
+/*!
  * Este perido puede indicar su Instante de inicio así como su final. Además
  * tiene distintas maneras de compararse con otros periodos. Si se requiere
  * otro tipo de comparación este debe realizarse mediante los métodos de
@@ -13,82 +12,113 @@
  */
 class IPeriodo {
     public:
-        /**
-         * @breif Destructor por defecto.
+        //! Destructor.
+        /*!
+         * Destructor por defecto.
          */
-        virtual ~IPeriodo() {}
+        virtual ~IPeriodo(void) {;}
 
-        /**
-         * @breif Devuelve el Instante inicial del periodo. Se debe asegurar que
-         *        el instante inicial previo al final.
-         * @return  El instante inicial del periodo.
+        //! Devuelve el Instante inicial.
+        /*!
+         * Devuelve el Instante inicial del periodo. Se debe asegurar que
+         * el instante inicial previo al final.
+         * @return El instante inicial del periodo.
          */
-        virtual IInstante * getInicio(void) = 0;
+        virtual IInstante *getInicio(void) = 0;
 
-        /**
-         * @breif Devuelve el Instante final del periodo. Se debe asegurar que
-         *        el instante final es posterior al inicial.
-         * @return  El instante final del periodo.
+        //! Devuelve el instante final.
+        /*!
+         * Devuelve el Instante final del periodo. Se debe asegurar que
+         * el instante final es posterior al inicial.
+         * @return El instante final del periodo.
          */
-        virtual IInstante * getFinal(void) = 0;
+        virtual IInstante *getFin(void) = 0;
 
-        /**
-         * @breif Indica si dos periodos son iguales, esto es, que
-         *        sus instantes iniciales y finales sean iguales.
+        //! Indica la igualdad de dos periodos.
+        /*!
+         * Indica si dos periodos son iguales, esto es, que sus instantes
+         * iniciales y finales sean iguales.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si los periodos son iguales, false en caso contrario.
          */
-        virtual bool igual(IPeriodo * periodo) = 0;
+        virtual bool igual(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si un periodo contiene o es el mismo periodo
-         *        que el periodo con el cual se está comparando.
+        //! Indica si el periodo contiene a otro.
+        /*!
+         * Indica si el periodo contiene o es el mismo periodo que el periodo
+         * con el cual se está comparando. Puede suceder que sus inicios y/o sus
+         * finales sean iguales.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si contiene el otro periodo.
          */
-        virtual bool contieneInclusivo(IPeriodo * periodo) = 0;
+        virtual bool contieneInclusivo(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si un periodo contiene el periodo con
-         *        el cual se está comparando.
+        //! Indica si el periodo contiene a otro.
+        /*!
+         * Indica si el periodo contiene estrictamente el periodo con el cual
+         * se está comparando. No puede suceder que sus inicios ni sus finales
+         * sean iguales.
+         * @param periodo Periodo con el cual se compara.
+         * @return True si contiene el otro periodo.
          */
-        virtual bool contieneExclusivo(IPeriodo * periodo) = 0;
+        virtual bool contieneExclusivo(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si un periodo es el mismo, o está contenido
-         *        en el periodo con el cual se está comparando.
+        //! Indica si el periodo está contenido dentro de otro.
+        /*!
+         * Indica si un periodo es el mismo, o está contenido en el periodo con
+         * el cual se está comparando.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si está en otro periodo, false en caso contrario.
          */
-        virtual bool enInclusivo(IPeriodo * periodo) = 0;
+        virtual bool enInclusivo(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si un periodo está contenido
-         *        en el periodo con el cual se está comparando.
+        //! Indica si el periodo está contenido dentro de otro.
+        /*!
+         * Indica si un periodo está contenido en el periodo con el cual se está
+         * comparando.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si está en otro periodo, false en caso contrario.
          */
-        virtual bool enExclusivo(IPeriodo * periodo) = 0;
+        virtual bool enExclusivo(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si dos periodos son iguales en duración, esto es, que
+        //! Indica si dos periodos duran lo mismo.
+        /*!
+         * Indica si dos periodos son iguales en duración, esto es, que
          *        la diferencia de sus instantes inicial y final, sea iguales.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si duran lo mismo, false en caso contrario.
          */
-        virtual bool igualDuracion(IPeriodo * periodo) = 0;
+        virtual bool igualDuracion(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si un periodo es mayor en duración con
-         *        respecto al otro periodo.
+        //! Indica si un periodo dura más que otro.
+        /*!
+         * Indica si un periodo es mayor en duración con
+         * respecto al otro periodo.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si el perido dura mas, false en caso contrario.
          */
-        virtual bool mayorDuracion(IPeriodo * periodo) = 0;
+        virtual bool mayorDuracion(IPeriodo *periodo) = 0;
 
-        /**
-         * @breif Indica si un periodo es menor en duración con
-         *        respecto al otro periodo.
+        //! Indica si un periodo dura menos que otro.
+        /*!
+         * Indica si un periodo es menor en duración con
+         * respecto al otro periodo.
+         * @param periodo Periodo con el cual se está comparando.
+         * @return True si el perido dura menos, false en caso contrario.
          */
-        virtual bool menorDuracion(IPeriodo * periodo) = 0;
+        virtual bool menorDuracion(IPeriodo *periodo) = 0;
 
-        /**
-         *  @breif Indica si dos periodos tienen un sub-periodo en común. Si el
-         *         intante final del primero, es el inicial del segundo, no hay
-         *         traslape, esto es, la duración del sub-periodo debe ser mayor a
-         *         0.
-         * @param  IPeriodo Periodo contra el cual se verifica si hay traslape.
-         * @return          Treu en caso que haya traslape, false en caso contrario.
+        //! Indica si dos periodos tienen un sub-periodo en común.
+        /*!
+         * Indica si dos periodos tienen un sub-periodo en común. Si el
+         * intante final del primero, es el inicial del segundo, no hay
+         * traslape, esto es, la duración del sub-periodo debe ser mayor
+         * a 0.
+         * @param  periodo Periodo contra el cual se verifica si hay traslape.
+         * @return True en caso que haya traslape, false en caso
+         * contrario.
          */
-        virtual bool traslapa(IPeriodo * periodo) = 0;
+        virtual bool traslapa(IPeriodo *periodo) = 0;
 };
 
 #endif
