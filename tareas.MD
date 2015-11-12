@@ -54,17 +54,30 @@ void testMiObjeto(void) {
     return false;
     ```
 
-* Documentar BIEN las clases(Véase Curso). ESTO ES MUY MUY IMPORTANTE.
-    Esto requiere que se piense fuera del programa que hace cada objeto, como si
-    viviera en el mundo real y no en la computadora.
+* Documentar las clases. ESTO ES MUY MUY IMPORTANTE.
+Esto requiere que se piense fuera del programa que hace cada objeto, como si
+viviera en el mundo real y no en la computadora.
+  * ~~BD~~
+  * Bloque
+  * ~~Curso~~
+  * ~~Dia~~
+  * Grupo
+  * Horario
+  * ~~IInstante~~
+  * ~~Instante~~
+  * ~~IPeriodo~~
+  * ~~Misc~~
+  * ~~Periodo~~
+  * Plan
+  * Profesor
 
 * Documentar métodos. Con solo ver el doxy deberíase saber que clases y métodos
-    hay y que hacen.
+hay y que hacen.
 
 * Terminar TENTATIVAMENTE Curso, revisar los TODO's
 
-* Implementar Periodo. Se puede usar Instante(e IInstante) como ayuda. Entender
-    las interfaces para poder hacer esto.
+* ~~Implementar Periodo. Se puede usar Instante(e IInstante) como ayuda.
+Entender las interfaces para poder hacer esto.~~
 
 * Arreglar los siguientes headers. Bloque, Grupo, Horario, Plan, Profesor.
 
