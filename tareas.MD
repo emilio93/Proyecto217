@@ -12,10 +12,12 @@ tonto y tedioso, pero a la larga es útil.
 using namespace std no debe usarse en clases, se puede usar en métodos que no
 sean de ninguna clase, y el ámbito donde se encuentra debería ser reducido.
 Por ejemplo en las funciones test. ejemplo
+```
 void testMiObjeto(void) {
     using namespace std;
     // Código superpichudo que llama mucho a std::cout
 } // acá afuera ya no se puede usar std.
+```
 
 ##Tareas Generales
 * Todos tenemos que estar muy al tanto del código o sino, al menos saber que hace
