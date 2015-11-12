@@ -79,6 +79,11 @@ hay y que hacen.
 * ~~Implementar Periodo. Se puede usar Instante(e IInstante) como ayuda.
 Entender las interfaces para poder hacer esto.~~
 
-* Arreglar los siguientes headers. Bloque, Grupo, Horario, Plan, Profesor.
+* Arreglar los siguientes headers.
+  * Bloque
+  * Grupo
+  * Horario
+  * Plan
+  * Profesor
 
 * Sería genial si se les ocurre algo más.
