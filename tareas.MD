@@ -83,7 +83,7 @@ Entender las interfaces para poder hacer esto.~~
   * Bloque
   * Grupo
   * Horario
-  * Plan
+  * ~~Plan~~
   * Profesor
 
 * Sería genial si se les ocurre algo más.
