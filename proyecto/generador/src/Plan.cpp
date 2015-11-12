@@ -25,13 +25,27 @@ void Plan::setNombre(std::string nombre) {
     this->nombre = nombre;
 }
 
-std::vector<Bloque*> * Plan::getBloques(void) {
+std::vector<Plan*> *Plan::getPlanes(void) {
+    return Serializacion::getPlanes();
+}
+
+std::vector<Bloque*> *Plan::getBloques(void) {
     return Serializacion::getBloques(this);
 }
 
-int testPlan(void) {
-    Plan * plan = new Plan(1, "MiInstanciaDePlan");
-    plan->setId(2);
-    std::cout << plan->getNombre() << std::endl;
-    return 0;
+void testPlan(void) {
+    using namespace std;
+    std::vector<Plan*> *planes = Plan::getPlanes();
+    
+    for (size_t i = 0; i < planes->size(); i++) {
+
+        cout << planes->at(i)->getId() << " - ";
+        cout << planes->at(i)->getNombre() << endl;
+
+        std::vector<Bloque*> *bloques = planes->at(i)->getBloques();
+
+        for (size_t j = 0; j < bloques->size(); j++) {
+            cout << "\tSemestre: " << bloques->at(j)->getSemestre() << endl;
+        }
+    }
 }
