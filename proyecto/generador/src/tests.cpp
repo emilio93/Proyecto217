@@ -79,7 +79,7 @@ int main(void) {
                 testInstante();
                 break;
             case 6:
-                //testMisc();
+                testMisc();
                 break;
             case 7:
                 testPeriodo();
