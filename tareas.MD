@@ -68,7 +68,7 @@ viviera en el mundo real y no en la computadora.
   * ~~IPeriodo~~
   * ~~Misc~~
   * ~~Periodo~~
-  * Plan
+  * ~~Plan~~
   * Profesor
 
 * Documentar métodos. Con solo ver el doxy deberíase saber que clases y métodos
