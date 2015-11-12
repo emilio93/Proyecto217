@@ -115,11 +115,11 @@ class IPeriodo {
          */
         virtual bool menorDuracion(IPeriodo *periodo) = 0;
 
-        //! Indica si dos periodos tienen un sub-periodo en común.
+        //! Indica si dos periodos tienen un periodo en común.
         /*!
-         * Indica si dos periodos tienen un sub-periodo en común. Si el
+         * Indica si dos periodos tienen un periodo en común. Si el
          * intante final del primero, es el inicial del segundo, no hay
-         * traslape, esto es, la duración del sub-periodo debe ser mayor
+         * traslape, esto es, la duración del periodo en común debe ser mayor
          * a 0.
          * @param  periodo Periodo contra el cual se verifica si hay traslape.
          * @return True en caso que haya traslape, false en caso
