@@ -14,19 +14,22 @@
  */
 class BD {
     private:
-        /**
-         * @breif La conexión con la base de datos.
+        //! La conexión con la base de datos.
+        /*!
+         * La conexión con la base de datos.
          */
         sql::Connection *con;
     public:
-        /**
-         * @breif Crea y devuelve la conexión con la base de datos.
+        //! Obtiene una conexión con la base de datos.
+        /*!
+         * Crea y devuelve la conexión con la base de datos.
          * @return  La conexión con la base de datos
          */
         sql::Connection *conectar(void);
 
-        /**
-         * @breif Destruye la conexión con la base de datos.
+        //! Destruye la conexión con la base de datos.
+        /*!
+         * Destruye la conexión con la base de datos.
          */
         ~BD();
 };
