@@ -239,6 +239,8 @@ class Curso {
 		 * un horario a los grupos ni de asignar un profesor al grupo, de
 		 * esto se encarga el grupo por si mismo-
 		 * @return Una lista de grupos que corresponden al curso.
+		 *
+		 * TODO implementar
 		 */
 		std::vector<Grupo*> *crearGrupos(void);
 
