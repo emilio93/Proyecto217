@@ -24,19 +24,12 @@ class Periodo : public IPeriodo {
          */
         IInstante *fin;
 
-        //! Obtiene la duración en horas del Periodo.
-        /*!
-         * Obtiene la duración en horas del Periodo. En caso de que el periodo dure
-         * varios días, se obtiene igualmente las horas que transcurren del instante
-         * inicial al final.
-         * @return  La duración en horas del Periodo.
-         */
-        int getDuracion(void);
-
     public:
         //! El constructor de la clase.
         /*!
          * Asigna los valores de instante inicial e intante final respectivamente.
+         * Si el instante final es previo al inicial, se intercambian.
+         * Si un dia es INDEFINIDO y el otro no, asigna ambos a INDEFINIDO.
          * @param inicio Instante inicial.
          * @param fin Instante final.
          */
@@ -63,6 +56,7 @@ class Periodo : public IPeriodo {
         virtual bool contieneExclusivo(IPeriodo *periodo);
         virtual bool enInclusivo(IPeriodo *periodo);
         virtual bool enExclusivo(IPeriodo *periodo);
+        virtual int getDuracion(void);
         virtual bool igualDuracion(IPeriodo *periodo);
         virtual bool mayorDuracion(IPeriodo *periodo);
         virtual bool menorDuracion(IPeriodo *periodo);
