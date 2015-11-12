@@ -22,10 +22,12 @@ void testMiObjeto(void) {
 ##Tareas Generales
 * Todos tenemos que estar muy al tanto del código o sino, al menos saber que hace
     cada unidad(clases, métodos)
+
 * Asegurarse de saber como está funcionando el makefile, como jala las librerías.
 * Despreocuparse del proposito del programa, y preocuparse por la ocupación
     individual de cada unidad.
-Hacer commits constantemente con cada cambio que hagan, esto ayuda mucho a saber
+
+* Hacer commits constantemente con cada cambio que hagan, esto ayuda mucho a saber
     que han hecho. ejemplo, si terminé de documentar una clase, hacer un commit
     diciendo que documente X clase. Continuar en otra cosa.
 
