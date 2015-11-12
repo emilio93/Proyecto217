@@ -15,6 +15,7 @@ DOXY = doxyfiles/
 main: createODIR tests
 
 doxy:
+	rm -r docs/
 	doxygen
 	cp $(DOXY)doxy-boot.js docs/html/doxy-boot.js
 createODIR:
