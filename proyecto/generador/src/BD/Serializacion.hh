@@ -13,6 +13,7 @@
 #include "../Plan.hh"
 #include "../Bloque.hh"
 #include "../Curso.hh"
+#include "../Profesor.hh"
 
 //! Consulta y obtiene resultados de la base de datos, los convierte a objetos utilizados en el sistema.
 /*!
@@ -54,5 +55,28 @@ class Serializacion {
          * @return Un vector con los cursos del bloque.
          */
     	static std::vector<Curso*> *getCursos(Bloque *bloque);
+
+        //! Obtiene los profesores que dan un curso.
+        /*!
+         * Obtiene todos los profesores que imparten un curso.
+         * @param curso Curso del cual se buscan los profesores.
+         * @return Un vector con los profesores que dan el curso.
+         *
+         * TODO
+         */
+        static std::vector<Profesor*> *getProfesores(Curso *curso);
+
+        //! Obtiene los posibles horarios para un curso.
+        /*!
+         * Obtiene los posibles horarios en forma de vectores de periodos en los
+         * que el curso se acomoda de manera adecuada.
+         * @param curso Se utiliza para buscar según parámetros de
+         * clasesEnSemana y de clasesPorPeriodo.
+         * @return Un vector con los posibles horarios(vector de IPeriodos) de
+         * un Curso.
+         *
+         * TODO
+         */
+        static std::vector<std::vector<IPeriodo*>*> *getPeridos(Curso *curso);
 };
 #endif
