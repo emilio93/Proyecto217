@@ -49,10 +49,6 @@ class Misc {
         }
 };
 
-void testMisc(void) {
-    testEnRango();
-}
-
 void testEnRango(void) {
     using namespace std;
 
@@ -93,4 +89,7 @@ void testEnRango(void) {
 
 }
 
+void testMisc(void) {
+    testEnRango();
+}
 #endif
