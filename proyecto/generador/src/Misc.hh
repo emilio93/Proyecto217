@@ -49,5 +49,48 @@ class Misc {
         }
 };
 
+void testMisc(void) {
+    testEnRango();
+}
+
+void testEnRango(void) {
+    using namespace std;
+
+    cout << "*** INICIO PRUEBA EN RANGO ***" << endl;
+    int a = 5;
+    cout << "int a = 5;" << endl;
+    int b = 10;
+    cout << "int b = 10;" << endl;
+    int c = 15;
+    cout << "int c = 15;" << endl;
+    int d = 15;
+    cout << "int d = 15;" << endl;
+
+    if (Misc::enRango(a,b,c)) {
+        cout << "a está en el rango de b,c inclusivo." << endl;
+    } else {
+        cout << "a no está en el rango de b,c inclusivo." << endl;
+    }
+
+    if (Misc::enRango(b,a,c)) {
+        cout << "b está en el rango de a,b inclusivo." << endl;
+    } else {
+        cout << "b no está en el rango de a,b inclusivo." << endl;
+    }
+
+    if (Misc::enRango(d,a,c)) {
+        cout << "d está en el rango de a,c inclusivo." << endl;
+    } else {
+        cout << "d no está en el rango de a,c inclusivo." << endl;
+    }
+
+    if (Misc::enRango(d,a,c,false)) {
+        cout << "d está en el rango de a,c exclusivo." << endl;
+    } else {
+        cout << "d no está en el rango de a,c exclusivo." << endl;
+    }
+    cout << "*** FIN PRUEBA EN RANGO ***" << endl;
+
+}
 
 #endif
