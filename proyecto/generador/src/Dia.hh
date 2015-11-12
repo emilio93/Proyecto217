@@ -3,9 +3,10 @@
 
 #include <string>
 
-/**
- * @breif Días de la semana e indefinido que representa cualquier día.
- *        De esta manera, indefinido no se puede comparar con los otros días.
+//! Dias de la semana.
+/*!
+ * Días de la semana e indefinido que representa cualquier día.
+ * De esta manera, indefinido no se puede comparar con los otros días.
  */
 enum Dia {
     LUNES       = 1,
@@ -18,9 +19,10 @@ enum Dia {
     INDEFINIDO  = 0
 };
 
-/**
- * @breif Este método devuelve un string en minúsculas con el día que se pasa
- *        por parámetro.
+//! Convierte un dia a un String.
+/*!
+ * Este método devuelve un string en minúsculas con el día que se pasa
+ * por parámetro.
  * @param  dia Dia del que se requiere el string.
  * @return     String del día que se requiere.
  */
@@ -55,6 +57,12 @@ std::string diaToString(Dia dia) {
   return str;
 }
 
+
+//! Convierte un Dia a un int.
+/*!
+ * @param  dia Dia a convertir
+ * @return     Entero que representa al curso.
+ */
 int diaToInt(Dia dia) {
   int d = 0;
   switch (dia) {
@@ -86,6 +94,11 @@ int diaToInt(Dia dia) {
   return d;
 }
 
+//! Convierte un int a un Dia.
+/*!
+ * @param  dia Entero que representa al Dia.
+ * @return     Dia obtenido.
+ */
 Dia intToDia(int dia) {
   Dia d = INDEFINIDO;
   switch (dia) {
