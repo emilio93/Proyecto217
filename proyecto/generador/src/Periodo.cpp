@@ -130,6 +130,9 @@ void Periodo::setFin(IInstante *fin) {
  ** MÉTODOS PRIVADOS
  ******************************************************************************/
 
+
+
+
 void hacerTest(bool test, std::string str) {
     using namespace std;
     if (test) {
