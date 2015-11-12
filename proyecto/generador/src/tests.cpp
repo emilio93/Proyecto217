@@ -22,10 +22,11 @@
 //#include "Grupo.cpp" //5
 //#include "Horario.cpp"
 #include "Instante.cpp"
-//#include "Periodo.cpp"
+#include "Periodo.cpp"
 #include "Plan.cpp"
 //#include "Profesor.cpp" //10
 
+//! Menú del programa para probar las clases.
 int test(void) {
     using namespace std;
 
@@ -49,17 +50,18 @@ int test(void) {
 
     stringstream convert(opcion);
     int respuesta;
-    convert>>respuesta;
+    convert >> respuesta;
 
     return respuesta;
 }
 
+//! Programa para probar las clases.
 int main(void) {
     using namespace std;
 
     int elegida = test();
     while (elegida != 0) {
-        cout << "****INICIO SALIDA*****" << endl << endl;
+        cout << "****INICIO PRUEBA*****" << endl << endl;
         switch (elegida) {
             case 1:
                 //testBloque();
@@ -97,7 +99,7 @@ int main(void) {
             default:
                 cout << "No selecciono un numero adecuado" << endl;
         }
-        cout << endl << "****FIN SALIDA*****" << endl;
+        cout << endl << "****FIN PRUEBA*****" << endl;
         elegida = test();
     }
 }
