@@ -14,36 +14,44 @@
 #include "../Bloque.hh"
 #include "../Curso.hh"
 
-//! Consulta y obtiene resultados de la base de datos, los convierte a objetos
-//! utilizados en el sistema.
-/**
+//! Consulta y obtiene resultados de la base de datos, los convierte a objetos utilizados en el sistema.
+/*!
  * La clase Serializacion se encarga de convertir los resultados de la
  * base de datos en los objetos pertinentes.
  */
 class Serializacion {
     private:
-        /**
-         * @breif Obtiene una conexión con el servidor de la base de datos.
+        //! Obtiene una conexión con la base de datos.
+        /*!
+         * Obtiene una conexión con el servidor de la base de datos.
          * @return  La conexión con la base de datos.
          */
         static sql::Connection *getCon(void);
 
     public:
-        /**
-         * @breif Obtiene una lista de los planes disponibles en la base de
+        //! Obtiene los planes existentes en la base de datos.
+        /*!
+         * Obtiene una lista de los planes disponibles en la base de
          * datos.
+         * @return Un vector con los planes.
          */
     	static std::vector<Plan*> *getPlanes(void);
 
-        /**
-         * @breif Obtiene los bloques de la base de datos que pertenezcan a un
-         *        dado plan.
+        //! Obtiene los bloques de un plan.
+        /*!
+         * Obtiene los bloques de la base de datos que pertenezcan a un
+         * dado plan.
+         * @param plan Plan del cual se obtienen los bloques.
+         * @return Un vector con los bloques del plan.
          */
     	static std::vector<Bloque*> *getBloques(Plan *plan);
 
-        /**
-         * @breif Obtiene los cursos de la base de datos que pertenezcan a un
-         *        dado bloque.
+        //! Obtiene los cursos de un bloque.
+        /*!
+         * Obtiene los cursos de la base de datos que pertenezcan a un
+         * dado bloque.
+         * @param bloque Bloque sel cual se obtiene los cursos.
+         * @return Un vector con los cursos del bloque.
          */
     	static std::vector<Curso*> *getCursos(Bloque *bloque);
 };
