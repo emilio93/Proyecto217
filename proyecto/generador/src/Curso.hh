@@ -10,7 +10,7 @@
 #include "IPeriodo.hh"
 
 //! Representación de un curso.
-/**
+/*!
  * La clase curso representa un curso como se vería en un plan de
  * estudios, esto es, sin horario, sin profesor, sin número de grupo.
  * Lo que si tiene es la cantidad de horas del curso en una semana y la
@@ -34,44 +34,51 @@
  */
 class Curso {
 	private:
-		/**
-		 * @breif El id es un identificador único para cada Curso, su valor es
-		 *        información irrelevante sobre el Curso.
+		//! Identificador del Curso
+		/*!
+		 * El id es un identificador único para cada Curso, su valor es
+		 * información irrelevante sobre el Curso.
 		 */
 		int id;
 
-		/**
-		 * @breif La cantidad de horas indica cuantas horas de clases se
+		//! Cantidad de horas del curso.
+		/*!
+		 * La cantidad de horas indica cuantas horas de clases se
 		 * imparten en el curso a lo largo de una semana.
 		 */
 		int cantidadHoras;
 
-		/**
-		 * @breif Las clases en una semana indica la cantidad de clases que se
-		 *        imparten del curso a lo largo de una semana.
+		//! Clases impartidas en una semana.
+		/*!
+		 * Las clases en una semana indica la cantidad de clases que se
+		 * imparten del curso a lo largo de una semana.
 		 */
 		int clasesEnSemana;
 
-		/**
-		 * @breif La cantidad de grupos indica cuantos grupos de este curso
+		//! Cantidad de grupos del curso.
+		/*!
+		 * La cantidad de grupos indica cuantos grupos de este curso
 		 * deben existir.
 		 */
 		int cantidadGrupos;
 
-		/**
-		 * @breif Una lista de bloques a los cuales pertenece el grupo.
+		//! Bloques a los cuales pertence el curso.
+		/*!
+		 * Una lista de bloques a los cuales pertenece el curso.
 		 */
 		std::vector<Bloque*> *bloques;
 
-		/**
-		 * @breif El nombre del curso es una manera en que el usuario puede
-		 *        identificar el curso.
+		//! Nombre del curso.
+		/*!
+		 * El nombre del curso es una manera en que el usuario puede
+		 * identificar el curso.
 		 */
 		std::string nombre;
 
-		/**
-		 * @breif La sigla del curso, al igual que el nombre, le da identidad al
-		 *        curso.
+		//! Sigla del curso.
+		/*!
+		 * La sigla del curso, al igual que el nombre, le da identidad al
+		 * curso.
 		 */
 		std::string sigla;
 
@@ -100,8 +107,9 @@ class Curso {
 		 */
 
 	public:
-		/**
-		 * @breif Constructor de la clase con sus valores por defecto.
+		//! Asigna un Curso.
+		/*!
+		 * Constructor de la clase con sus valores por defecto.
 		 * @param id Id El id del curso.
 	     * @param cantidadHoras La cantidad de horas del curso por semana.
 	 	 * @param clasesEnSemana La cantidad clases del curso por semana.
@@ -114,113 +122,133 @@ class Curso {
 			int cantidadGrupos = 0, Bloque *bloque = NULL,
 			std::string nombre = "", std::string sigla = "");
 
-		/**
-		 * @breif Método get para el id del curso.
+		//! Obtiene el id del curso.
+		/*!
+		 * Método get para el id del curso.
 		 * @return  El id del curso.
 		 */
 		int getId(void);
 
-		/**
-		 * @breif Método set para el id del curso.
+		//! Asigna el id del curso.
+		/*!
+		 * Método set para el id del curso.
 		 * @param id El id del curso.
 		 */
 		void setId(int id);
 
-		/**
-		 * @breif Método get para la cantidad de horas del curso por semana.
+		//! Obtiene la cantidad de horas del curso.
+		/*!
+		 * Método get para la cantidad de horas del curso por semana.
 		 * @return La cantidad de horas del curso por semana.
 		 */
 		int getCantidadHoras(void);
 
-		/**
-		 * @breif Método set para la cantidad de horas del curso por semana.
+		//! Asigna la cantidad de horas del curso.
+		/*!
+		 * Método set para la cantidad de horas del curso por semana.
 		 * @param cantidadHoras La cantidad de horas del curso por semana.
 		 */
 		void setCantidadHoras(int cantidadHoras);
 
-		/**
-		 * @breif Método get para las cantidad de clases del curso por semana.
+		//! Obtiene la cantidad de clases en una semana.
+		/*!
+		 * Método get para las cantidad de clases del curso por semana.
 		 * @return  Las clases en una semana del curso.
 		 */
 		int getClasesEnSemana(void);
 
-		/**
-		 * @breif Método set para la cantidad clases del curso por semana.
+		//! Asigna la cantidad de clases en una semana.
+		/*!
+		 * Método set para la cantidad clases del curso por semana.
 		 * @param clasesEnSemana La cantidad clases del curso por semana.
 		 */
 		void setClasesEnSemana(int clasesEnSemana);
 
-		/**
-		 * @breif Método get para la cantidad de grupos del curso.
+		//! Obtiene la cantidad de grupos del curso.
+		/*!
+		 * Método get para la cantidad de grupos del curso.
 		 * @return  La cantidad de grupos del curso
+		 *
+		 * TODO Podría haber también un vector de grupos.
 		 */
 		int getCantidadGrupos(void);
 
-		/**
-		 * @breif Método set para la cantidad de grupos del curso.
+		//! Asigna la cantidad de grupos del curso.
+		/*!
+		 * Método set para la cantidad de grupos del curso.
 		 * @param CantidadGrupos La cantidad de gruposd el curso.
 		 */
 		void setCantidadGrupos(int cantidadGrupos);
 
-		/**
-		 * @breif Método get para la lista de bloques a los que pertenece el
-		 *        curso.
+		//! Obtiene los bloques a los que pertenece el curso.
+		/*!
+		 * Método get para la lista de bloques a los que pertenece el
+		 * curso.
 		 * @return  Nombre del curso.
 		 */
 		std::vector<Bloque*> *getBloques(void);
 
-		/**
-		 * @breif Método set para la lista de cbloquesursos a los que pertenece
+		//! Asigna los bloques a los que pertenece el curso.
+		/*!
+		 * Método set para la lista de cbloquesursos a los que pertenece
 		 * el curso
 		 * @param bloques Lista de bloques del curso
 		 */
 		void setBloques(std::vector<Bloque*> *bloques);
 
-		/**
-		 * @breif Método get para el nombre del curso.
-		 * @return  Nombre del curso.
+		//!Obtiene el nombre del curso.
+		/*!
+		 * Método get para el nombre del curso.
+		 * @return Nombre del curso.
 		 */
 		std::string getNombre(void);
 
-		/**
-		 * @breif Método set para el nombre del curso.
+		//!Asigna el nombre del curso.
+		/*!
+		 * Método set para el nombre del curso.
 		 * @param nombre Nombre del curso.
 		 */
 		void setNombre(std::string nombre);
 
-		/**
-		 * @breif Método get para la sigla del curso.
+		//! Obtiene la sigla del curso.
+		/*!
+		 * Método get para la sigla del curso.
 		 * @return  Nombre del curso.
 		 */
 		std::string getSigla(void);
 
-		/**
-		 * @breif Método set para la sigla del curso.
+		//! Asigna la sigla del curso.
+		/*!
+		 * Método set para la sigla del curso.
 		 * @param sigla Sigla del curso.
 		 */
 		void setSigla(std::string sigla);
 
-		/**
-		 * @breif Este método devuelve un string que representa el curso.
+		//! Obtiene nombre y sigla del curso.
+		/*!
+		 * Este método devuelve un string que representa el curso. El formato
+		 * presenta el nombre y la sigla del curso.
 		 * @return  String que representa el curso.
 		 */
 		std::string toString(void);
 
-		/**
-		 * @breif Crea a partir de la información del curso los grupos que
-		 *        corresponden al curso. Este método no se encarga ni de elegir
-		 *        un horario a los grupos ni de asignar un profesor al grupo, de
-		 *        esto se encarga el grupo por si mismo-
+		//! Crea los grupos de este curso.
+		/*!
+		 * Crea a partir de la información del curso los grupos que
+		 * corresponden al curso. Este método no se encarga ni de elegir
+		 * un horario a los grupos ni de asignar un profesor al grupo, de
+		 * esto se encarga el grupo por si mismo-
 		 * @return Una lista de grupos que corresponden al curso.
 		 */
 		std::vector<Grupo*> *crearGrupos(void);
 
-		/**
-		 * @breif Compara dos cursos e indica si son o no iguales. La igualdad
-		 *        está determinada por la sigla y el nombre del curso
-		 *        únicamente.
+		//! Compara si dos cursos son iguales
+		/*!
+		 * Compara dos cursos e indica si son o no iguales. La igualdad
+		 * está determinada por la sigla y el nombre del curso
+		 * únicamente.
 		 * @param  curso El curso contra el cual se compara.
-		 * @return       True si se cumple la igualdad del curso.
+		 * @return True si se cumple la igualdad del curso.
 		 *
 		 * TODO esto serviria para no crear un mismo curso mas de una vez.
 		 */
