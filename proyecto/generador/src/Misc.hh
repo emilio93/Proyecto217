@@ -7,15 +7,16 @@
 #include <stddef.h>
 
 //! Métodos miscelaneos.
-/**
+/*!
  * Clase de métodos miscelaneos. Se compone de métodos static varios.
  */
 class Misc {
     public:
 
         template<typename T>
-        /**
-         * @breif Indica si cierto número está dentro de un rango especificado.
+        //! Indica si un número está dentro de un rango.
+        /*!
+         * Indica si cierto número está dentro de un rango especificado.
          * @param  test      Número del que se determina si se encuentra en el
          *                   rango.
          * @param  min       Límite inferior del rango.
@@ -35,12 +36,17 @@ class Misc {
             return enRango;
         }
 
+        //! Convierte un objeto a string.
+        /*!
+         * Convierte un objeto a un string.
+         * @param  n Objeto que se convierte.
+         * @return   Texto del objeto.
+         */
         template <typename T> static std::string to_string(const T& n) {
             std::ostringstream stm;
             stm << n;
             return stm.str();
         }
-
 };
 
 
