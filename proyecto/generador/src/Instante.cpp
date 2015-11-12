@@ -15,8 +15,7 @@
 
 std::string Instante::toString(void) {
     std::string txt, hrs, mns; // texto horas minutos
-    //Supongase un martes a las nueve y ocho de la mañana, se devuelve
-    //martes 9:08
+    //Supongase un martes a las nueve y ocho de la mañana, se devuelve martes 9:08
     hrs = Misc::to_string(this->getHora());
     mns = Misc::to_string(this->getMinuto());
     mns = this->getMinuto() < 10? "0" + mns: mns;
@@ -27,9 +26,9 @@ std::string Instante::toString(void) {
     return txt;
 }
 
-bool Instante::igual(IInstante * instante) {
+bool Instante::igual(IInstante *instante) {
     bool resultado = false;
-    Instante * inst = dynamic_cast<Instante*>(instante);
+    Instante * inst = Instante::toInstante(instante);
 
     //Todo debe ser igual, es la única manera que dos instantes sean iguales.
     if (this->getDia() == inst->getDia() &&
@@ -40,7 +39,7 @@ bool Instante::igual(IInstante * instante) {
     return resultado;
 }
 
-bool Instante::posterior(IInstante * instante) {
+bool Instante::posterior(IInstante *instante) {
     bool resultado = false;
 
     Instante * primero = this->getInstante(this);
@@ -72,7 +71,7 @@ bool Instante::posterior(IInstante * instante) {
     return resultado;
 }
 
-bool Instante::previo(IInstante * instante) {
+bool Instante::previo(IInstante *instante) {
     bool resultado = false;
 
     Instante * primero = this->getInstante(this);
@@ -116,32 +115,49 @@ Instante::Instante(Dia dia, int hora, int minuto) {
     this->getInstante();
 }
 
-Dia Instante::getDia(void) { return this->dia; }
+Instante *Instante::toInstante(IInstante *instante) {
+    Instante *inst = dynamic_cast<Instante*>(instante);
+    return inst;
+}
 
-void Instante::setDia(Dia dia) { this->dia = dia; }
+Dia Instante::getDia(void) {
+    return this->dia;
+}
 
-int Instante::getHora(void) {return this->hora; }
+void Instante::setDia(Dia dia) {
+    this->dia = dia;
+}
 
-void Instante::setHora(int hora) { this->hora = std::abs(hora); }
+int Instante::getHora(void) {
+    return this->hora;
+}
 
-int Instante::getMinuto(void) { return this->minuto; }
+void Instante::setHora(int hora) {
+    this->hora = std::abs(hora);
+}
 
-void Instante::setMinuto(int minuto) { this->minuto = std::abs(minuto); }
+int Instante::getMinuto(void) {
+    return this->minuto;
+}
+
+void Instante::setMinuto(int minuto) {
+    this->minuto = std::abs(minuto);
+}
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS
  ******************************************************************************/
 
 bool Instante::chequearRestricciones(void) {
-    return (Misc::enRango<int>(diaToInt(this->dia), 0, 7 ) &&
-            Misc::enRango<int>(this->minuto, 0, 59) &&
-            Misc::enRango<int>(this->hora, 0, 23)) ?
-                true : false;
+    bool a = Misc::enRango<int>(diaToInt(this->dia), 0, 7 );
+    bool b = Misc::enRango<int>(this->hora, 0, 23);
+    bool c = Misc::enRango<int>(this->minuto, 0, 59);
+    return a && b && c;
 }
 
-Instante * Instante::getInstante(IInstante * instante) {
+Instante * Instante::getInstante(IInstante *instante) {
     Instante * corregido;
-    Instante * inst = dynamic_cast<Instante*>(instante);
+    Instante * inst = Instante::toInstante(instante);
 
     if (inst->chequearRestricciones()) {
         return inst;
@@ -201,35 +217,34 @@ void Instante::getInstante(void) {
 }
 
 /**
- * @breif Main para probar la implementación de la clase.
- * @return  0.
+ * Main para probar la implementación de la clase.
  */
-int testInstante(void) {
+void testInstante(void) {
     using namespace std;
 
     string resultado;
 
-    IInstante * inst1 = new Instante(LUNES, 7, 00);
+    IInstante *inst1 = new Instante(LUNES, 7, 00);
     cout << "Instante 1: ";
     cout << inst1->toString() << endl;
 
-    IInstante * inst2 = new Instante(LUNES, 7, 00);
+    IInstante *inst2 = new Instante(LUNES, 7, 00);
     cout << "Instante 2: ";
     cout << inst2->toString() << endl;
 
-    IInstante * inst3 = new Instante(MARTES, 7, 00);
+    IInstante *inst3 = new Instante(MARTES, 7, 00);
     cout << "Instante 3: ";
     cout << inst3->toString() << endl;
 
-    IInstante * inst4 = new Instante(MIERCOLES, 7, 00);
+    IInstante *inst4 = new Instante(MIERCOLES, 7, 00);
     cout << "Instante 4: ";
     cout << inst4->toString() << endl;
 
-    IInstante * inst5 = new Instante(MIERCOLES, 9, 00);
+    IInstante *inst5 = new Instante(MIERCOLES, 9, 00);
     cout << "Instante 5: ";
     cout << inst5->toString() << endl;
 
-    IInstante * inst6 = new Instante(MIERCOLES, 9, 30);
+    IInstante *inst6 = new Instante(MIERCOLES, 9, 30);
     cout << "Instante 6: ";
     cout << inst6->toString() << endl;
 
@@ -328,6 +343,4 @@ int testInstante(void) {
     cout << "Instante 10 seteado con (SABADO, 75, 150)" << endl;
     cout << "Instante 10: ";
     cout << inst10->toString() << endl;
-
-    return 0;
 }
