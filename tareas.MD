@@ -68,7 +68,7 @@ viviera en el mundo real y no en la computadora.
   * ~~IPeriodo~~
   * ~~Misc~~
   * ~~Periodo~~
-  * Plan
+  * ~~Plan~~
   * Profesor
 
 * Documentar métodos. Con solo ver el doxy deberíase saber que clases y métodos
@@ -83,7 +83,7 @@ Entender las interfaces para poder hacer esto.~~
   * Bloque
   * Grupo
   * Horario
-  * Plan
+  * ~~Plan~~
   * Profesor
 
 * Sería genial si se les ocurre algo más.
