@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2015 at 11:47 PM
+-- Generation Time: Nov 13, 2015 at 01:25 PM
 -- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -19,13 +19,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `horarios`
 --
+CREATE DATABASE IF NOT EXISTS `horarios` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `horarios`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Bloque`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Bloque`;
 CREATE TABLE IF NOT EXISTS `Bloque` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idPlan` int(11) NOT NULL,
@@ -34,6 +39,12 @@ CREATE TABLE IF NOT EXISTS `Bloque` (
   KEY `idPlan` (`idPlan`),
   KEY `idPlan_2` (`idPlan`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- RELATIONS FOR TABLE `Bloque`:
+--   `idPlan`
+--       `Plan` -> `id`
+--
 
 --
 -- Dumping data for table `Bloque`
@@ -64,7 +75,10 @@ INSERT INTO `Bloque` (`id`, `idPlan`, `semestre`) VALUES
 --
 -- Table structure for table `Curso`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Curso`;
 CREATE TABLE IF NOT EXISTS `Curso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cantidadHoras` int(11) NOT NULL,
@@ -97,7 +111,10 @@ INSERT INTO `Curso` (`id`, `cantidadHoras`, `clasesEnSemana`, `cantidadGrupos`, 
 --
 -- Table structure for table `CursosBloque`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `CursosBloque`;
 CREATE TABLE IF NOT EXISTS `CursosBloque` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idBloque` int(11) NOT NULL,
@@ -106,6 +123,14 @@ CREATE TABLE IF NOT EXISTS `CursosBloque` (
   KEY `idBloque` (`idBloque`,`idCurso`),
   KEY `idCurso` (`idCurso`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+--
+-- RELATIONS FOR TABLE `CursosBloque`:
+--   `idBloque`
+--       `Bloque` -> `id`
+--   `idCurso`
+--       `Curso` -> `id`
+--
 
 --
 -- Dumping data for table `CursosBloque`
@@ -135,7 +160,10 @@ INSERT INTO `CursosBloque` (`id`, `idBloque`, `idCurso`) VALUES
 --
 -- Table structure for table `Grupo`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Grupo`;
 CREATE TABLE IF NOT EXISTS `Grupo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idCurso` int(11) NOT NULL,
@@ -145,12 +173,23 @@ CREATE TABLE IF NOT EXISTS `Grupo` (
   KEY `idProfesor` (`idProfesor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELATIONS FOR TABLE `Grupo`:
+--   `idCurso`
+--       `Curso` -> `id`
+--   `idProfesor`
+--       `Profesor` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `GruposHorario`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `GruposHorario`;
 CREATE TABLE IF NOT EXISTS `GruposHorario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idHorario` int(11) NOT NULL,
@@ -160,12 +199,23 @@ CREATE TABLE IF NOT EXISTS `GruposHorario` (
   KEY `idGrupo` (`idGrupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELATIONS FOR TABLE `GruposHorario`:
+--   `idHorario`
+--       `Horario` -> `id`
+--   `idGrupo`
+--       `Grupo` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Horario`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Horario`;
 CREATE TABLE IF NOT EXISTS `Horario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
@@ -177,7 +227,10 @@ CREATE TABLE IF NOT EXISTS `Horario` (
 --
 -- Table structure for table `Instante`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Instante`;
 CREATE TABLE IF NOT EXISTS `Instante` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dia` int(11) NOT NULL,
@@ -191,7 +244,10 @@ CREATE TABLE IF NOT EXISTS `Instante` (
 --
 -- Table structure for table `Periodo`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Periodo`;
 CREATE TABLE IF NOT EXISTS `Periodo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idInstanteInicio` int(11) NOT NULL,
@@ -201,12 +257,23 @@ CREATE TABLE IF NOT EXISTS `Periodo` (
   KEY `idInstanteFin` (`idInstanteFin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELATIONS FOR TABLE `Periodo`:
+--   `idInstanteInicio`
+--       `Instante` -> `id`
+--   `idInstanteFin`
+--       `Instante` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `PeriodoGrupo`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `PeriodoGrupo`;
 CREATE TABLE IF NOT EXISTS `PeriodoGrupo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idGrupo` int(11) NOT NULL,
@@ -216,12 +283,23 @@ CREATE TABLE IF NOT EXISTS `PeriodoGrupo` (
   KEY `idPeriodo` (`idPeriodo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELATIONS FOR TABLE `PeriodoGrupo`:
+--   `idGrupo`
+--       `Grupo` -> `id`
+--   `idPeriodo`
+--       `Periodo` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `PeriodoProfesor`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `PeriodoProfesor`;
 CREATE TABLE IF NOT EXISTS `PeriodoProfesor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idPeriodo` int(11) NOT NULL,
@@ -231,12 +309,23 @@ CREATE TABLE IF NOT EXISTS `PeriodoProfesor` (
   KEY `idProfesor` (`idProfesor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELATIONS FOR TABLE `PeriodoProfesor`:
+--   `idProfesor`
+--       `Profesor` -> `id`
+--   `idPeriodo`
+--       `Periodo` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Plan`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Plan`;
 CREATE TABLE IF NOT EXISTS `Plan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
@@ -257,7 +346,10 @@ INSERT INTO `Plan` (`id`, `nombre`) VALUES
 --
 -- Table structure for table `Profesor`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `Profesor`;
 CREATE TABLE IF NOT EXISTS `Profesor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `horasLaborales` int(11) NOT NULL,
@@ -271,7 +363,10 @@ CREATE TABLE IF NOT EXISTS `Profesor` (
 --
 -- Table structure for table `ProfesoresCurso`
 --
+-- Creation: Nov 06, 2015 at 04:33 AM
+--
 
+DROP TABLE IF EXISTS `ProfesoresCurso`;
 CREATE TABLE IF NOT EXISTS `ProfesoresCurso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idCurso` int(11) NOT NULL,
@@ -280,6 +375,14 @@ CREATE TABLE IF NOT EXISTS `ProfesoresCurso` (
   KEY `idCurso` (`idCurso`,`idProfesor`),
   KEY `idProfesor` (`idProfesor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- RELATIONS FOR TABLE `ProfesoresCurso`:
+--   `idCurso`
+--       `Curso` -> `id`
+--   `idProfesor`
+--       `Profesor` -> `id`
+--
 
 --
 -- Constraints for dumped tables
