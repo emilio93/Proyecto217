@@ -3,18 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2015 at 01:25 PM
+-- Generation Time: Nov 13, 2015 at 01:40 PM
 -- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `horarios`
@@ -46,6 +41,11 @@ CREATE TABLE IF NOT EXISTS `Bloque` (
 --       `Plan` -> `id`
 --
 
+--
+-- Truncate table before insert `Bloque`
+--
+
+TRUNCATE TABLE `Bloque`;
 --
 -- Dumping data for table `Bloque`
 --
@@ -90,6 +90,11 @@ CREATE TABLE IF NOT EXISTS `Curso` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
+-- Truncate table before insert `Curso`
+--
+
+TRUNCATE TABLE `Curso`;
+--
 -- Dumping data for table `Curso`
 --
 
@@ -132,6 +137,11 @@ CREATE TABLE IF NOT EXISTS `CursosBloque` (
 --       `Curso` -> `id`
 --
 
+--
+-- Truncate table before insert `CursosBloque`
+--
+
+TRUNCATE TABLE `CursosBloque`;
 --
 -- Dumping data for table `CursosBloque`
 --
@@ -181,6 +191,11 @@ CREATE TABLE IF NOT EXISTS `Grupo` (
 --       `Profesor` -> `id`
 --
 
+--
+-- Truncate table before insert `Grupo`
+--
+
+TRUNCATE TABLE `Grupo`;
 -- --------------------------------------------------------
 
 --
@@ -207,6 +222,11 @@ CREATE TABLE IF NOT EXISTS `GruposHorario` (
 --       `Grupo` -> `id`
 --
 
+--
+-- Truncate table before insert `GruposHorario`
+--
+
+TRUNCATE TABLE `GruposHorario`;
 -- --------------------------------------------------------
 
 --
@@ -222,6 +242,11 @@ CREATE TABLE IF NOT EXISTS `Horario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Truncate table before insert `Horario`
+--
+
+TRUNCATE TABLE `Horario`;
 -- --------------------------------------------------------
 
 --
@@ -239,6 +264,11 @@ CREATE TABLE IF NOT EXISTS `Instante` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Truncate table before insert `Instante`
+--
+
+TRUNCATE TABLE `Instante`;
 -- --------------------------------------------------------
 
 --
@@ -265,6 +295,11 @@ CREATE TABLE IF NOT EXISTS `Periodo` (
 --       `Instante` -> `id`
 --
 
+--
+-- Truncate table before insert `Periodo`
+--
+
+TRUNCATE TABLE `Periodo`;
 -- --------------------------------------------------------
 
 --
@@ -291,6 +326,11 @@ CREATE TABLE IF NOT EXISTS `PeriodoGrupo` (
 --       `Periodo` -> `id`
 --
 
+--
+-- Truncate table before insert `PeriodoGrupo`
+--
+
+TRUNCATE TABLE `PeriodoGrupo`;
 -- --------------------------------------------------------
 
 --
@@ -317,6 +357,11 @@ CREATE TABLE IF NOT EXISTS `PeriodoProfesor` (
 --       `Periodo` -> `id`
 --
 
+--
+-- Truncate table before insert `PeriodoProfesor`
+--
+
+TRUNCATE TABLE `PeriodoProfesor`;
 -- --------------------------------------------------------
 
 --
@@ -332,6 +377,11 @@ CREATE TABLE IF NOT EXISTS `Plan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
+--
+-- Truncate table before insert `Plan`
+--
+
+TRUNCATE TABLE `Plan`;
 --
 -- Dumping data for table `Plan`
 --
@@ -358,6 +408,11 @@ CREATE TABLE IF NOT EXISTS `Profesor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Truncate table before insert `Profesor`
+--
+
+TRUNCATE TABLE `Profesor`;
 -- --------------------------------------------------------
 
 --
@@ -384,6 +439,11 @@ CREATE TABLE IF NOT EXISTS `ProfesoresCurso` (
 --       `Profesor` -> `id`
 --
 
+--
+-- Truncate table before insert `ProfesoresCurso`
+--
+
+TRUNCATE TABLE `ProfesoresCurso`;
 --
 -- Constraints for dumped tables
 --
@@ -442,7 +502,4 @@ ALTER TABLE `PeriodoProfesor`
 ALTER TABLE `ProfesoresCurso`
   ADD CONSTRAINT `ProfesoresCurso_ibfk_1` FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `ProfesoresCurso_ibfk_2` FOREIGN KEY (`idProfesor`) REFERENCES `Profesor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET FOREIGN_KEY_CHECKS=1;
