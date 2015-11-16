@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stddef.h>
-
 #include <iostream>
 #include <string>
 
@@ -38,8 +37,9 @@ BD::~BD() {
     delete this->con;
 }
 
-int testBD(void) {
+void testBD(void) {
     using namespace std;
+
     cout << "Creando objeto BD..." << endl;
     BD * bd = new BD();
     cout << "OK!" << std::endl;
@@ -51,6 +51,4 @@ int testBD(void) {
     cout << "Cerrando conexion..." << endl;
     delete con;
     cout << "Bien si no hubo errores!" << endl;
-
-    return 0;
 }

@@ -19,14 +19,14 @@ class Plan {
 public:
 	//!Set de bloques
 <<<<<<< HEAD:headers.hh
-/*! \brief 
- *  \return 
+/*! \brief
+ *  \return
 */	//std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
 
     std:: List <Bloque> getBloques(void);// método para traer una lista de los bloques ocupamos que retorne una lista
-    static std:: List <Planes> getPlanes(void); //esto era parte de un serialization asi que no se si iría en esta clase	
-    
-	
+    static std:: List <Planes> getPlanes(void); //esto era parte de un serialization asi que no se si iría en esta clase
+
+
 
 };
 
@@ -42,7 +42,7 @@ public:
 class Serialization {
 public:
 	std::List <Bloque> getbloques(this);
-	
+
 =======
 /*! \brief
  *  \return

@@ -12,29 +12,29 @@
 //							 Class: Bloque
 //*********************************************************************
 
-//! Class Bloque
+//! Un Bloque es un conjunto de Cursos recomendados por el Plan de estudios.
 /*!
- * La clase Horario esta compuesta por bloques
+ * El Bloque contiene los cursos que se recomienda que se lleva en un semestre.
+ *
  */
 class Bloque {
 
 private:
+		int id;
+		Plan *plan;
+		int semestre;
+	public:
+		Bloque(int id, Plan * plan, int semestre);
 
-	int id;
-	Plan * plan;
-	int semestre;
-public:
-	Bloque(int id, Plan * plan, int semestre);
+		int getId(void);
+		int getSemestre(void);
 
-	int getId(void);
-	int getSemestre(void);
-
-	//!Set de cursos
-/*! \brief
- *  \return
-*/
-	//std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
-	std::vector<Curso*> * getCursos(void);// ocupamos una lista también
+		//!Set de cursos
+	/*! \brief
+	 *  \return
+	*/
+		//std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
+		std::vector<Curso*> * getCursos(void);// ocupamos una lista también
 
 };
 

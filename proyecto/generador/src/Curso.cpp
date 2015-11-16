@@ -109,9 +109,8 @@ bool Curso::igual(Curso *curso) {
 
 /**
  * @breif Main para probar la implementación de la clase.
- * @return  0.
  */
-int testCurso(void) {
+void testCurso(void) {
     using namespace std;
     Curso *curso1 = new Curso(1, 5, 2, 1, NULL, "Circuitos Lineles I", "IE0209");
     cout << curso1->toString() << " creado." << endl;
@@ -158,6 +157,4 @@ int testCurso(void) {
     } else {
         cout << "Curso2 no es igual a Curso3." << endl;
     }
-
-    return 0;
 }

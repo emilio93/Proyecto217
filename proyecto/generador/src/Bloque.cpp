@@ -1,6 +1,9 @@
 #include "Bloque.hh"
 class Plan;
 
+/*******************************************************************************
+ ** MÉTODOS PÚBLICOS
+ ******************************************************************************/
 Bloque::Bloque(int id, Plan * plan, int semestre) {
     this->id = id;
     this->plan = plan;
@@ -14,4 +17,18 @@ int Bloque::getId(void) {
 }
 std::vector<Curso*> * Bloque::getCursos(void) {
     return Serializacion::getCursos(this);
+}
+
+
+/*******************************************************************************
+ ** MÉTODOS PRIVADOS
+ ******************************************************************************/
+
+//NINGUNO POR EL MOMENTO
+
+/**
+ * @breif Main para probar la implementación de la clase.
+ */
+void testBloque(void) {
+    using namespace std;
 }

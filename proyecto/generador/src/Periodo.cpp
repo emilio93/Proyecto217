@@ -98,6 +98,30 @@ bool Periodo::traslapa(IPeriodo *periodo) {
     return a || b || c || d;
 }
 
+std::vector<IPeriodo*> *Periodo::restar(IPeriodo *total, IPeriodo *resta) {
+    std::vector<IPeriodo*> *resultado = NULL;
+    IPeriodo *periodo;
+    if (resta->enInclusivo(total)) {
+        resultado = new std::vector<IPeriodo*>();
+        if (total->igualDuracion(resta)) {
+            ;
+        } else if (resta->getInicio()->igual(total->getInicio())) {
+            periodo = new Periodo(resta->getFin(), total->getFin());
+            resultado->push_back(periodo);
+        } else if (resta->getFin()->igual(total->getFin())) {
+            periodo = new Periodo(total->getInicio(), resta->getInicio());
+            resultado->push_back(periodo);
+        } else {
+            periodo = new Periodo(total->getInicio(), resta->getInicio());
+            resultado->push_back(periodo);
+            periodo = new Periodo(resta->getFin(), total->getFin());
+            resultado->push_back(periodo);
+        }
+    }
+    return resultado;
+}
+
+
 /*******************************************************************************
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
@@ -129,9 +153,6 @@ void Periodo::setFin(IInstante *fin) {
 /*******************************************************************************
  ** MÉTODOS PRIVADOS
  ******************************************************************************/
-
-
-
 
 void hacerTest(bool test, std::string str) {
     using namespace std;

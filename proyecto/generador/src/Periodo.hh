@@ -1,6 +1,8 @@
 #ifndef CLASE_PERIODO
 #define CLASE_PERIODO
 
+#include <vector>
+
 #include "IPeriodo.hh"
 #include "IInstante.hh"
 
@@ -61,6 +63,7 @@ class Periodo : public IPeriodo {
         virtual bool mayorDuracion(IPeriodo *periodo);
         virtual bool menorDuracion(IPeriodo *periodo);
         virtual bool traslapa(IPeriodo *periodo);
+        virtual std::vector<IPeriodo*> *restar(IPeriodo *total, IPeriodo *resta);
 };
 
 #endif

@@ -244,6 +244,8 @@ class Curso {
 		 */
 		std::vector<Grupo*> *crearGrupos(void);
 
+
+
 		//! Compara si dos cursos son iguales
 		/*!
 		 * Compara dos cursos e indica si son o no iguales. La igualdad

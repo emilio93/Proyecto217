@@ -1,6 +1,8 @@
 #ifndef INTERFACE_PERIODO
 #define INTERFACE_PERIODO
 
+#include <vector>
+
 #include "IInstante.hh"
 
 //! Representación de un periodo continuo.
@@ -126,6 +128,20 @@ class IPeriodo {
          * contrario.
          */
         virtual bool traslapa(IPeriodo *periodo) = 0;
+
+
+
+        //! Le resta un horario a otro y devuelve los periodos restantes.
+        /*!
+         *  Resta un horario a otro y devuelve un vector con los periodos
+         *  restantes. Para que la resta pueda efectuarse, el periodo restado
+         *  debe estar dentro(enInclusivo) del periodo total.
+         *  @param total El periodo al cual se resta.
+         *  @param resta El periodo que se resta.
+         *  @return Un vector con los periodos generados a partir de la resta.
+         */
+        virtual std::vector<IPeriodo*> *restar(IPeriodo *total, IPeriodo *resta) = 0;
+
 };
 
 #endif

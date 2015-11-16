@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
@@ -15,13 +16,21 @@
 #include "../Curso.hh"
 #include "../Profesor.hh"
 
-//! Consulta y obtiene resultados de la base de datos, los convierte a objetos utilizados en el sistema.
+//! Consulta y obtiene datos de la base de datos, los convierte a objetos .
 /*!
  * La clase Serializacion se encarga de convertir los resultados de la
  * base de datos en los objetos pertinentes.
  */
 class Serializacion {
     private:
+
+        //! Un set de los cursos que ya han sido creados.
+        /*!
+         *  Un set de los cursos que ya han sido creados, sirve para no repetir
+         *  la creación de un curso ya existente.
+         */
+        static std::vector<Curso> cursosExistentes;
+
         //! Obtiene una conexión con la base de datos.
         /*!
          * Obtiene una conexión con el servidor de la base de datos.
@@ -34,7 +43,7 @@ class Serializacion {
         /*!
          * Obtiene una lista de los planes disponibles en la base de
          * datos.
-         * @return Un vector con los planes.
+         * @return Un set con los planes.
          */
     	static std::vector<Plan*> *getPlanes(void);
 
@@ -52,7 +61,7 @@ class Serializacion {
          * Obtiene los cursos de la base de datos que pertenezcan a un
          * dado bloque.
          * @param bloque Bloque sel cual se obtiene los cursos.
-         * @return Un vector con los cursos del bloque.
+         * @return Un set con los cursos del bloque.
          */
     	static std::vector<Curso*> *getCursos(Bloque *bloque);
 
@@ -60,7 +69,7 @@ class Serializacion {
         /*!
          * Obtiene todos los profesores que imparten un curso.
          * @param curso Curso del cual se buscan los profesores.
-         * @return Un vector con los profesores que dan el curso.
+         * @return Un set con los profesores que dan el curso.
          *
          * TODO
          */
@@ -77,6 +86,6 @@ class Serializacion {
          *
          * TODO
          */
-        static std::vector<std::vector<IPeriodo*>*> *getPeridos(Curso *curso);
+        static std::vector<std::set<IPeriodo*>*> *getPeridos(Curso *curso);
 };
 #endif
