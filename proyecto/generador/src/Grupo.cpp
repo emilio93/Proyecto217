@@ -10,7 +10,13 @@
 /*******************************************************************************
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
-
+Grupo:Grupo(int id,Curso *curso, Profesor *profesor, *horario,int cantidadhoras){
+	this->id = id;
+	this->curso = curso;
+	this->profesor= profesor;
+	this->horario = horario;
+	this->cantidadhoras = cantidadhoras;
+}
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS
