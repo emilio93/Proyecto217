@@ -14,8 +14,9 @@ Antes de poder compilar se necesitará instalar ciertos programas y librerías.
 * Guia de estilo de google para CPP: https://google-styleguide.googlecode.com/svn/trunk/cppguide.html
 
 ##TODO
-* Terminar headers
-* Estudiar SQL y MySQL Connector/C++
-* Revisar notas de la reunion del 31-10-2015
-* Organizar clases con sus metodos según las listas
-* Hacer los headers para estas clases
+* ~~Terminar headers~~
+* ~~Estudiar SQL y MySQL Connector/C++~~
+* ~~Revisar notas de la reunion del 31-10-2015~~
+* ~~Organizar clases con sus metodos según las listas~~
+* ~~Hacer los headers para estas clases~~
+* Tareas.MD
