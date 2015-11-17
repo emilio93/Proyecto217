@@ -27,11 +27,13 @@ private:
 	int cantidadhoras;
 	void elegirProfesor(void);
 public:
-	Curso *getCurso(Grupo * GrupoActual);// devuelve un puntero al curso de este grupo.
-	std::list <Profesor> getProfesor(Curso * CursoActual);// devuelve una lista de profesores disponibles Emilio dijo que se podia implementar en
+	Grupo(int id, *curso, *profesor, *horario,cantidadhoras);
+	
+	Curso *getCurso(Grupo *GrupoActual);// devuelve un puntero al curso de este grupo.
+	std::list <Profesor> getProfesor(Curso *CursoActual);// devuelve una lista de profesores disponibles Emilio dijo que se podia implementar en
 	//SQL la parte de pedir profes disponibles pero sino ahi se hace en el método.
-	void setProfesor(Profesor * Profesorasignado);
-	void ponerEnHorario(Grupo * GrupoActual);
+	void setProfesor(Profesor *Profesorasignado);
+	void ponerEnHorario(Grupo *GrupoActual);
 	//int buscarProfesor(&List<Profesores>);//Creo que este busca un profesor de la lista disponible que pueda ser usado para el grupo.
 };
 #endif
