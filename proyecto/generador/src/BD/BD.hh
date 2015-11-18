@@ -27,6 +27,18 @@ class BD {
          */
         sql::Connection *conectar(void);
 
+        /*!
+         * Imprime un error pertinente en caso de excepción.
+         * @param e La excepción.
+         */
+        static void manejarExcepcion(sql::SQLException &e);
+
+        //! Llena la base de datos con instantes útiles.
+        /*!
+         * Llena la base de datos con instantes cada hora si estos no existen.
+         */
+        bool llenarInstante(void);
+
         //! Destruye la conexión con la base de datos.
         /*!
          * Destruye la conexión con la base de datos.
