@@ -18,6 +18,7 @@
 //! Menú del programa para probar las clases.
 int test(void) {
     using std::cout;
+    using std::cin;
     using std::endl;
 
     cout << "ELIGA QUE TEST QUIERE CORRER(0 para salir):" << endl;

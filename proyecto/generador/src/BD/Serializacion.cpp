@@ -150,10 +150,9 @@ std::vector<Profesor*> *Serializacion::getProfesores(Curso *curso) {
     return NULL;
 }
 
-std::vector<std::vector<IPeriodo*>*> *Serializacion::getPeridos(Curso *curso) {
+std::vector<std::vector<IPeriodo*>*> *Serializacion::getPeriodos(Curso *curso) {
     return NULL;
 }
-
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS

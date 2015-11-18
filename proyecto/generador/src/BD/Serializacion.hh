@@ -109,6 +109,7 @@ class Serializacion {
          *
          * TODO
          */
-        static std::vector< std::set<IPeriodo*>* > *getPeridos(Curso *curso);
+        static std::vector<std::vector<IPeriodo*>*> *getPeriodos(Curso *curso);
+
 };
 #endif

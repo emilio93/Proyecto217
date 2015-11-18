@@ -120,7 +120,7 @@ Instante::Instante(Dia dia, int hora, int minuto) {
     this->getInstante();
 }
 
-Instante *InstantesumarHoras(int horas) {
+Instante *Instante::sumarHoras(int horas) {
     horas = std::abs(horas);
     Instante *inst = new Instante(
         this->getDia(),
@@ -238,6 +238,7 @@ void Instante::getInstante(void) {
 void testInstante(void) {
     using std::cout;
     using std::endl;
+    using std::string;
 
     string resultado;
 
