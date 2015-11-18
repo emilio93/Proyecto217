@@ -28,7 +28,6 @@ private:
 	void elegirProfesor(void);
 public:
 	Grupo(int id,Curso *curso, Profesor *profesor, *horario,int cantidadhoras);
-	
 	Curso *getCurso(Grupo *GrupoActual);// devuelve un puntero al curso de este grupo.
 	std::list <Profesor> getProfesor(Curso *CursoActual);// devuelve una lista de profesores disponibles Emilio dijo que se podia implementar en
 	//SQL la parte de pedir profes disponibles pero sino ahi se hace en el método.

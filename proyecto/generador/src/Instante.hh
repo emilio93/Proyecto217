@@ -7,9 +7,9 @@
 
 //! Un instante dentro de una semana.
 /*!
- * La clase Instante representa un instante en una semana. Tiene alcanze de dias,
- * horas y minutos. Los días se definen en el enum DIA, la horas están en el rango
- * [0,23], los minutos en [0,59].
+ * La clase Instante representa un instante en una semana. Tiene alcanze de
+ * dias, horas y minutos. Los días se definen en el enum DIA, la horas están en
+ * el rango [0,23], los minutos en [0,59].
  */
 class Instante : public IInstante
 {
@@ -58,8 +58,9 @@ class Instante : public IInstante
 
         //! Devuelve un instante en formato correcto.
         /*!
-         * Corrige el instante para que cumpla los rangos de días, horas y minutos.
-         * En caso que el día no corresponda a ninguno, se asignará como INDEFINIDO.
+         * Corrige el instante para que cumpla los rangos de días, horas y
+         * minutos. En caso que el día no corresponda a ninguno, se asignará
+         * como INDEFINIDO.
          */
         void getInstante(void);
 
@@ -71,8 +72,8 @@ class Instante : public IInstante
 
         //! Asigna un instante.
         /*!
-         * Constructor de la clase. Inicializa los valores para el día, la hora y el
-         * minuto.
+         * Constructor de la clase. Inicializa los valores para el día, la hora
+         * y el minuto.
          */
         Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0);
 
@@ -83,6 +84,17 @@ class Instante : public IInstante
          * @return El Instante convertido.
          */
         static Instante *toInstante(IInstante *instante);
+
+        //! Devuelve un instante después de las horas dadas.
+        /*!
+         * Suma las horas dadas al instante y devuelve el instante obtenido.
+         * No se permiten horas negativas, estas serán pasadas a positivas. En
+         * caso de sobrepasar el día, este se pasará efectivamente, si es
+         * INDEFINIDO, nunca cambiará el día.
+         * @param  horas La cantidad de horas a sumar.
+         * @return       Un instante con dadas horas después.
+         */
+        Instante *sumarHoras(int horas);
 
         //! Obtiene el día del instante.
         /*!

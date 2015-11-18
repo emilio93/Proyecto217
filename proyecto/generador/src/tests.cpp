@@ -1,6 +1,8 @@
+/* copyright 2015 palomosFantásticos */
+
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 
 #include "BD/BD.cpp"
 #include "BD/Serializacion.cpp"
@@ -15,7 +17,8 @@
 
 //! Menú del programa para probar las clases.
 int test(void) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
 
     cout << "ELIGA QUE TEST QUIERE CORRER(0 para salir):" << endl;
     cout << "\t0 - Salir" << endl;
@@ -39,7 +42,8 @@ int test(void) {
 
 //! Programa para probar las clases.
 int main(void) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
 
     int elegida = test();
     while (elegida != 0) {

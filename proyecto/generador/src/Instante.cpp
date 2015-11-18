@@ -1,11 +1,14 @@
-#include <iostream>
+/* copyright 2015 palomosFantásticos */
+
 #include <stddef.h>
+
 #include <cmath>
+#include <iostream>
 #include <sstream>
+#include <string>
 
 #include "IInstante.hh"
 #include "Instante.hh"
-
 #include "Misc.hh"
 #include "Dia.hh"
 
@@ -14,8 +17,9 @@
  ******************************************************************************/
 
 std::string Instante::toString(void) {
-    std::string txt, hrs, mns; // texto horas minutos
-    //Supongase un martes a las nueve y ocho de la mañana, se devuelve martes 9:08
+    std::string txt, hrs, mns;  // texto horas minutos
+    // Supongase un martes a las nueve y ocho de la mañana,
+    // se devuelve martes 9:08
     hrs = Misc::to_string(this->getHora());
     mns = Misc::to_string(this->getMinuto());
     mns = this->getMinuto() < 10? "0" + mns: mns;
@@ -30,7 +34,7 @@ bool Instante::igual(IInstante *instante) {
     bool resultado = false;
     Instante * inst = Instante::toInstante(instante);
 
-    //Todo debe ser igual, es la única manera que dos instantes sean iguales.
+    // Todo debe ser igual, es la única manera que dos instantes sean iguales.
     if (this->getDia() == inst->getDia() &&
         this->getHora() == inst->getHora() &&
         this->getMinuto() == inst->getMinuto()) {
@@ -74,8 +78,8 @@ bool Instante::posterior(IInstante *instante) {
 bool Instante::previo(IInstante *instante) {
     bool resultado = false;
 
-    Instante * primero = this->getInstante(this);
-    Instante * segundo = this->getInstante(instante);
+    Instante *primero = this->getInstante(this);
+    Instante *segundo = this->getInstante(instante);
 
     /*
         Para que un instante sea previo debe darse alguno se estos casos:
@@ -107,13 +111,24 @@ bool Instante::previo(IInstante *instante) {
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-//Instante::Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0)
+// VALORES PREDETERMINADOS SON:
+// Instante::Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0)
 Instante::Instante(Dia dia, int hora, int minuto) {
     this->setDia(dia);
     this->setHora(hora);
     this->setMinuto(minuto);
     this->getInstante();
 }
+
+Instante *InstantesumarHoras(int horas) {
+    horas = std::abs(horas);
+    Instante *inst = new Instante(
+        this->getDia(),
+        this->getHora() + horas,
+        this->getMinuto());
+    return inst;
+}
+
 
 Instante *Instante::toInstante(IInstante *instante) {
     Instante *inst = dynamic_cast<Instante*>(instante);
@@ -149,20 +164,23 @@ void Instante::setMinuto(int minuto) {
  ******************************************************************************/
 
 bool Instante::chequearRestricciones(void) {
-    bool a = Misc::enRango<int>(diaToInt(this->dia), 0, 7 );
+    bool a = Misc::enRango<int>(diaToInt(this->dia), 0, 7);
     bool b = Misc::enRango<int>(this->hora, 0, 23);
     bool c = Misc::enRango<int>(this->minuto, 0, 59);
     return a && b && c;
 }
 
-Instante * Instante::getInstante(IInstante *instante) {
-    Instante * corregido;
-    Instante * inst = Instante::toInstante(instante);
+Instante *Instante::getInstante(IInstante *instante) {
+    Instante *corregido;
+    Instante *inst = Instante::toInstante(instante);
 
     if (inst->chequearRestricciones()) {
         return inst;
     } else {
-        corregido = new Instante(inst->getDia(), inst->getHora(), inst->getMinuto());
+        corregido = new Instante(
+            inst->getDia(),
+            inst->getHora(),
+            inst->getMinuto());
         if (!Misc::enRango(diaToInt(inst->getDia()), 0, 7)) {
             corregido->setDia(INDEFINIDO);
         }
@@ -176,7 +194,7 @@ Instante * Instante::getInstante(IInstante *instante) {
             corregido->setHora(inst->getHora() - 24);
             if (inst->getDia() == DOMINGO) {
                 corregido->setDia(LUNES);
-            } else if (inst->getDia() == INDEFINIDO){
+            } else if (inst->getDia() == INDEFINIDO) {
                 corregido->setDia(INDEFINIDO);
             } else {
                 corregido->setDia(intToDia(diaToInt(inst->getDia()) + 1));
@@ -188,11 +206,9 @@ Instante * Instante::getInstante(IInstante *instante) {
 }
 
 void Instante::getInstante(void) {
-
     if (this->chequearRestricciones()) {
         return;
     } else {
-
         if (!Misc::enRango(diaToInt(this->getDia()), 0, 7)) {
             this->setDia(INDEFINIDO);
         }
@@ -206,7 +222,7 @@ void Instante::getInstante(void) {
             this->setHora(this->getHora() - 24);
             if (this->getDia() == DOMINGO) {
                 this->setDia(LUNES);
-            } else if (this->getDia() == INDEFINIDO){
+            } else if (this->getDia() == INDEFINIDO) {
                 this->setDia(INDEFINIDO);
             } else {
                 this->setDia(intToDia(diaToInt(this->getDia()) + 1));
@@ -220,7 +236,8 @@ void Instante::getInstante(void) {
  * Main para probar la implementación de la clase.
  */
 void testInstante(void) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
 
     string resultado;
 

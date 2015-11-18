@@ -1,10 +1,11 @@
 #ifndef CLASE_MISC
 #define CLASE_MISC
 
+#include <stddef.h>
+
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <stddef.h>
 
 //! Métodos miscelaneos.
 /*!
@@ -50,7 +51,8 @@ class Misc {
 };
 
 void testEnRango(void) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
 
     cout << "*** INICIO PRUEBA EN RANGO ***" << endl;
     int a = 5;

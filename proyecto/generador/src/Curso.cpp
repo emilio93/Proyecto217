@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #include <stddef.h>
 #include <string>
 #include <vector>
@@ -87,11 +89,9 @@ std::string Curso::toString(void) {
 
 std::vector<Grupo*> *Curso::crearGrupos(void) {
     std::vector<Grupo*> *grupos = new std::vector<Grupo*>();
-    //código
-    //TODO
-    //TODO
-    //TODO
-    //código
+    // código
+    // TODO(emilio): implementar
+    // código
     return grupos;
 }
 
@@ -101,22 +101,27 @@ bool Curso::igual(Curso *curso) {
 }
 
 
- /*******************************************************************************
-  ** MÉTODOS PRIVADOS
-  ******************************************************************************/
+/*******************************************************************************
+ ** MÉTODOS PRIVADOS
+  *****************************************************************************/
 
-//NINGUNO POR EL MOMENTO
+// NINGUNO POR EL MOMENTO
 
 /**
  * @breif Main para probar la implementación de la clase.
  */
 void testCurso(void) {
-    using namespace std;
-    Curso *curso1 = new Curso(1, 5, 2, 1, NULL, "Circuitos Lineles I", "IE0209");
+    using std::cout;
+    using std::endl;
+
+    Curso *curso1 = new Curso(1, 5, 2, 1, NULL,
+        "Circuitos Lineles I", "IE0209");
     cout << curso1->toString() << " creado." << endl;
-    Curso *curso2 = new Curso(1, 5, 2, 1, NULL, "Circuitos Lineles I", "IE0209");
+    Curso *curso2 = new Curso(1, 5, 2, 1, NULL,
+        "Circuitos Lineles I", "IE0209");
     cout << curso2->toString() << " creado." << endl;
-    Curso *curso3 = new Curso(2, 5, 2, 1, NULL, "Circuitos Lineles II", "IE0309");
+    Curso *curso3 = new Curso(2, 5, 2, 1, NULL,
+        "Circuitos Lineles II", "IE0309");
     cout << curso3->toString() << " creado." << endl;
 
     cout << "Curso1:" << endl;

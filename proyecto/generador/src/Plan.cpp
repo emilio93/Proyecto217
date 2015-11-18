@@ -1,6 +1,10 @@
-#include <iostream>
+/* copyright 2015 palomosFantásticos */
+
 #include <stddef.h>
+
+#include <iostream>
 #include <string>
+#include <vector>
 
 #include "Plan.hh"
 
@@ -34,11 +38,13 @@ std::vector<Bloque*> *Plan::getBloques(void) {
 }
 
 void testPlan(void) {
-    using namespace std;
-    std::vector<Plan*> *planes = Plan::getPlanes();
-    
-    for (size_t i = 0; i < planes->size(); i++) {
+    using std::cout;
+    using std::endl;
+    using std::vector;
 
+    std::vector<Plan*> *planes = Plan::getPlanes();
+
+    for (size_t i = 0; i < planes->size(); i++) {
         cout << planes->at(i)->getId() << " - ";
         cout << planes->at(i)->getNombre() << endl;
 

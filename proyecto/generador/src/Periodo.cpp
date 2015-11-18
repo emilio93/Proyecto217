@@ -1,13 +1,17 @@
-#include <iostream>
+/* copyright 2015 palomosFantásticos */
+
 #include <stddef.h>
+
 #include <cmath>
+#include <iostream>
 #include <sstream>
+#include <string>
+#include <vector>
 
 #include "Instante.hh"
 #include "IInstante.hh"
 #include "Misc.hh"
 #include "Dia.hh"
-
 #include "Periodo.hh"
 #include "IPeriodo.hh"
 
@@ -41,7 +45,7 @@ bool Periodo::contieneInclusivo(IPeriodo *periodo) {
 
 bool Periodo::contieneExclusivo(IPeriodo *periodo) {
     bool a = this->getInicio()->previo(periodo->getInicio());
-    bool b = this->getFin()->posterior(periodo->getFin()) ;
+    bool b = this->getFin()->posterior(periodo->getFin());
     return a && b;
 }
 
@@ -104,7 +108,7 @@ std::vector<IPeriodo*> *Periodo::restar(IPeriodo *total, IPeriodo *resta) {
     if (resta->enInclusivo(total)) {
         resultado = new std::vector<IPeriodo*>();
         if (total->igualDuracion(resta)) {
-            ;
+            // NADA
         } else if (resta->getInicio()->igual(total->getInicio())) {
             periodo = new Periodo(resta->getFin(), total->getFin());
             resultado->push_back(periodo);
@@ -155,7 +159,8 @@ void Periodo::setFin(IInstante *fin) {
  ******************************************************************************/
 
 void hacerTest(bool test, std::string str) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
     if (test) {
         cout << "SI: ";
     } else {
@@ -168,27 +173,44 @@ void hacerTest(bool test, std::string str) {
  * @breif Main para probar la implementación de la clase.
  */
 void testPeriodo(void) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
 
-    Periodo *periodo1 = new Periodo(new Instante(LUNES, 7, 0), new Instante(LUNES, 9, 0));
+
+    Periodo *periodo1 = new Periodo(
+        new Instante(LUNES, 7, 0),
+        new Instante(LUNES, 9, 0));
+
     cout << "Creado periodo1 con:" << endl;
     cout << "\tInicio: " << periodo1->getInicio()->toString() << endl;
     cout << "\tFin: " << periodo1->getFin()->toString() << endl;
     cout << "\tDuración: " << periodo1->getDuracion() << endl;
 
-    Periodo *periodo2 = new Periodo(new Instante(LUNES, 7, 0), new Instante(LUNES, 9, 0));
+
+    Periodo *periodo2 = new Periodo(
+        new Instante(LUNES, 7, 0),
+        new Instante(LUNES, 9, 0));
+
     cout << "Creado periodo2 con:" << endl;
     cout << "\tInicio: " << periodo2->getInicio()->toString() << endl;
     cout << "\tFin: " << periodo2->getFin()->toString() << endl;
     cout << "\tDuración: " << periodo2->getDuracion() << endl;
 
-    Periodo *periodo3 = new Periodo(new Instante(LUNES, 7, 0), new Instante(LUNES, 10, 0));
+
+    Periodo *periodo3 = new Periodo(
+        new Instante(LUNES, 7, 0),
+        new Instante(LUNES, 10, 0));
+
     cout << "Creado periodo3 con:" << endl;
     cout << "\tInicio: " << periodo3->getInicio()->toString() << endl;
     cout << "\tFin: " << periodo3->getFin()->toString() << endl;
     cout << "\tDuración: " << periodo3->getDuracion() << endl;
 
-    Periodo *periodo4 = new Periodo(new Instante(LUNES, 9, 0), new Instante(MARTES, 11, 0));
+
+    Periodo *periodo4 = new Periodo(
+        new Instante(LUNES, 9, 0),
+        new Instante(MARTES, 11, 0));
+
     cout << "Creado periodo4 con:" << endl;
     cout << "\tInicio: " << periodo4->getInicio()->toString() << endl;
     cout << "\tFin: " << periodo4->getFin()->toString() << endl;
@@ -196,8 +218,9 @@ void testPeriodo(void) {
 
     hacerTest(periodo1->igual(periodo2), "periodo1 y periodo2 son iguales");
     hacerTest(periodo1->traslapa(periodo2), "periodo1 y periodo2 traslapan");
-    hacerTest(periodo1->contieneInclusivo(periodo2), "periodo1 y periodo2 contiene inclusivo");
-    hacerTest(periodo1->contieneExclusivo(periodo2), "periodo1 y periodo2 contiene exclusivo");
+    hacerTest(periodo1->contieneInclusivo(periodo2),
+        "periodo1 y periodo2 contiene inclusivo");
+    hacerTest(periodo1->contieneExclusivo(periodo2),
+        "periodo1 y periodo2 contiene exclusivo");
     hacerTest(periodo1->igual(periodo3), "periodo1 y periodo3 son iguales");
-
 }

@@ -1,4 +1,7 @@
+/* copyright 2015 palomosFantásticos */
+
 #include <stddef.h>
+
 #include <string>
 #include <vector>
 
@@ -15,11 +18,12 @@
  ** MÉTODOS PRIVADOS
  ******************************************************************************/
 
-//NINGUNO POR EL MOMENTO
+// NINGUNO POR EL MOMENTO
 
 /**
  * @breif Main para probar la implementación de la clase.
  */
 void testHorario(void) {
-    using namespace std;
+    using std::cout;
+    using std::endl;
 }

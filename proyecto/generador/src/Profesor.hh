@@ -11,76 +11,73 @@
 class Curso;
 class Grupo;
 
-
-//#using namespace std;
-
 //*********************************************************************
 //							 Class: Profesor
 //*********************************************************************
 
-//! Class Profesor
+//! Un profesor. Conoce sus grupos así como sus horario.
 /*!
- * La clase profesor, contiene informacion sobre cada profesor de la escuela
+ * Un profesor maneja su tiempo, de esta manera puede aceptar o declinar cursos
+ * que le son asignados según su horario y sus horas laborales. De la misma
+ * manera está al tanto de que grupos le han sido asignados.
  */
 class Profesor {
+	private:
 
-private:
+		//! El identificador único del profesor.
+		/*!
+		 * Contiene el id asignado al profesor en la base de datos
+		 */
+		int id;
 
-//! private int id
-/*!
- * Contiene el id asignado al profesor pos la base de datos
- */
-	int id; 
-	
-//! private int horasLaborales
-/*!
- * Número constante de horas laborales para el profesor
- */	
-	int horasLaborales;
+		//! Cantidad máxima de horas que puede trabajar el profesor.
+		/*!
+		 * Número constante de horas laborales para el profesor.
+		 */
+		int horasLaborales;
 
+		//! Horas Asignadas de cursos a profesor.
+		/*!
+		 * Es la cantidad de horas que le han sido asignadas al profesor.
+		 * Esta cantidad no debe sobrepasar la cantidad de horas laborales del
+		 * profesor.
+		 */
+		int horasAsignadas;
 
-//! private int horasAsignadas
-/*!
- * Horas Asignadas de cursos a profesor
- */	
-	int horasAsignadas;
+		//! Nombre del profesor.
+		/*!
+		 * Nombre del profesor.
+		 */
+		std::string nombre;
 
+		//! Apellido del profesor.
+		/*!
+		 * Apellido del profesor.
+		 */
+		std::string apellido;
 
-//! private string nombre
-/*!
- * Nombre del profesor
- */	
-	std::string nombre;
-	
-//! private string nombre
-/*!
- * Apellido del profesor
- */	 
-	std::string apellido; 
-	
-	
-public:
+		//! Los cursos que el profesor puede impartir.
+		/*!
+		 *  Son cursos que el profesor tiene la capacidad de impartir.
+		 */
+		std::vector<Curso*> *cursosDados;
 
+	public:
+		int getHorario(Profesor *Profesoractual);// Esto debe devolver el horario del profe
 
-	std::priority_queue<Curso> * cursos;//No sé si los vamos a usar pero ahi están
-	
-	//std::priority_queue<IPeriodo> * disponibilidad;
-	
-	int getHorario(Profesor * Profesoractual);// Esto debe devolver el horario del profe
-	
-//! Método público bool verificar_curso
-/*!
- * Devuelve un 1 si el profesor puede dar el curso
- */	
-	bool verificar_curso(Curso * curso_prueba);
+		//! Verifica si el profesor da cierto curso.
+		/*!
+		 * Devuelve un 1 si el profesor puede dar el curso
+		 * @param cursoPrueba El curso que el profesor chequea si puede dar.
+		 */
+		bool verificarCurso(Curso *cursoPrueba);
 
 
-//! Método público asignar_grupo
-/*!
- * Modifica el horario del profesor y horasAsignadas
- */	
-	void asignar_grupo(Grupo * Grupo); /*podria devolver un horario untilizando la función getHorario()*/
-	
+		//! El profesor se asigna un grupo
+		/*!
+		 * Modifica el horario del profesor y horasAsignadas
+		 * @param grupo El grupo que se asigna el profesor.
+		 */
+		void asignarGrupo(Grupo *grupo); /*podria devolver un horario untilizando la función getHorario()*/
 };
-
 #endif
