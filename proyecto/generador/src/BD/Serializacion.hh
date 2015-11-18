@@ -29,7 +29,14 @@ class Serializacion {
          *  Un set de los cursos que ya han sido creados, sirve para no repetir
          *  la creación de un curso ya existente.
          */
-        static std::vector<Curso> cursosExistentes;
+        static std::vector<Curso*> cursosExistentes;
+
+        //! Un set de los profesotes que ya han sido creados.
+        /*!
+         *  Un set de los cursos que ya han sido creados, sirve para no repetir
+         *  la creación de un profesor ya existente.
+         */
+        static std::vector<Profesor*> profesoresExistentes;
 
         //! Obtiene una conexión con la base de datos.
         /*!
@@ -37,6 +44,22 @@ class Serializacion {
          * @return  La conexión con la base de datos.
          */
         static sql::Connection *getCon(void);
+
+        //! Busca un curso dentro de los ya creados.
+        /*!
+         * Busca dentro de los cursos existentes un curso dado.
+         * @param  curso El curso a buscar.
+         * @return       El curso encontrado o NULL si no existe.
+         */
+        static Curso *buscarCurso(Curso *curso);
+
+        //! Busca un profesor dentro de los ya creados.
+        /*!
+         * Busca dentro de los profesores existentes un profesor dado.
+         * @param  profesor El profesor a buscar.
+         * @return          El profesor encontrado o NULL si no existe.
+         */
+        static Curso *buscarProfesor(Profesor *profesor);
 
     public:
         //! Obtiene los planes existentes en la base de datos.
@@ -86,6 +109,6 @@ class Serializacion {
          *
          * TODO
          */
-        static std::vector<std::set<IPeriodo*>*> *getPeridos(Curso *curso);
+        static std::vector< std::set<IPeriodo*>* > *getPeridos(Curso *curso);
 };
 #endif

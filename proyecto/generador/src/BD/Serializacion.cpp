@@ -1,9 +1,7 @@
-#include <iostream>
-#include <string>
+/* copyright 2015 palomosFantásticos */
+
 #include <stddef.h>
 #include <stdlib.h>
-#include <cstring>
-#include <vector>
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
@@ -11,11 +9,25 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <vector>
+
 #include "Serializacion.hh"
 #include "BD.hh"
 #include "../Plan.hh"
 #include "../Bloque.hh"
 #include "../Curso.hh"
+#include "../Profesor.hh"
+
+
+/*******************************************************************************
+ ** ATRIBUTOS ESTÁTICOS PRIVADOS
+ ******************************************************************************/
+
+std::vector<Profesor*> Serializacion::profesoresExistentes = std::vector<Profesor*>();
+std::vector<Curso*> Serializacion::cursosExistentes = std::vector<Curso*>();
 
 /*******************************************************************************
  ** MÉTODOS PÚBLICOS
@@ -24,30 +36,25 @@
 std::vector<Plan*> *Serializacion::getPlanes(void) {
     std::vector<Plan*> *planes = new std::vector<Plan*>();
     try {
-        sql::Connection *con = Serializacion::getCon();
-        sql::Statement *stmt;
-        sql::ResultSet *res;
+         sql::Connection *con = Serializacion::getCon();
+         sql::Statement *stmt;
+         sql::ResultSet *res;
 
-        stmt = con->createStatement();
-        res = stmt->executeQuery("SELECT * from Plan");
-        while (res->next()) {
-            int id = res->getInt("id");
-            std::string nombre = res->getString("nombre").c_str();
-            Plan *plan = new Plan(id, nombre);
-            planes->push_back(plan);
-        }
-        delete res;
-        delete stmt;
-        delete con;
-
-    } catch (sql::SQLException &e) {
-        std::cout << "# ERR: SQLException in " << __FILE__;
-        std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
-        std::cout << "# ERR: " << e.what();
-        std::cout << " (MySQL error code: " << e.getErrorCode();
-        std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
-    }
-    return planes;
+         stmt = con->createStatement();
+         res = stmt->executeQuery("SELECT * from Plan");
+         while (res->next()) {
+             int id = res->getInt("id");
+             std::string nombre = res->getString("nombre").c_str();
+             Plan *plan = new Plan(id, nombre);
+             planes->push_back(plan);
+         }
+         delete res;
+         delete stmt;
+         delete con;
+     } catch (sql::SQLException &e) {
+         BD::manejarExcepcion(e);
+     }
+     return planes;
 }
 
 std::vector<Bloque*> *Serializacion::getBloques(Plan *plan) {
@@ -65,7 +72,6 @@ std::vector<Bloque*> *Serializacion::getBloques(Plan *plan) {
         res = prep_stmt->executeQuery();
 
         while (res->next()) {
-            //AHORA SI
             int idBloque = res->getInt("id");
             int semestre = res->getInt("semestre");
             Bloque *bloque = new Bloque(idBloque, plan, semestre);
@@ -74,13 +80,8 @@ std::vector<Bloque*> *Serializacion::getBloques(Plan *plan) {
         delete res;
         delete prep_stmt;
         delete con;
-
     } catch (sql::SQLException &e) {
-        std::cout << "# ERR: SQLException in " << __FILE__;
-        std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
-        std::cout << "# ERR: " << e.what();
-        std::cout << " (MySQL error code: " << e.getErrorCode();
-        std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+        BD::manejarExcepcion(e);
     }
     return bloques;
 }
@@ -100,7 +101,6 @@ std::vector<Curso*> *Serializacion::getCursos(Bloque *bloque) {
         res = prep_stmt->executeQuery();
 
         while (res->next()) {
-            //AHORA SI
             int idCurso = res->getInt("id");
             int cantidadHoras = res->getInt("cantidadHoras");
             int clasesEnSemana = res->getInt("clasesEnSemana");
@@ -109,21 +109,51 @@ std::vector<Curso*> *Serializacion::getCursos(Bloque *bloque) {
             std::string sigla =  res->getString("sigla").c_str();
             Curso *curso = new Curso(idCurso, cantidadHoras, clasesEnSemana,
                 cantidadGrupos, bloque, nombre, sigla);
+            if (Serializacion::buscarCurso(curso) != NULL) {
+                curso = Serializacion::buscarCurso(curso);
+            } else {
+                Serializacion::cursosExistentes.push_back(curso);
+            }
             cursos->push_back(curso);
         }
         delete res;
         delete prep_stmt;
         delete con;
-
     } catch (sql::SQLException &e) {
-        std::cout << "# ERR: SQLException in " << __FILE__;
-        std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
-        std::cout << "# ERR: " << e.what();
-        std::cout << " (MySQL error code: " << e.getErrorCode();
-        std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+        BD::manejarExcepcion(e);
     }
     return cursos;
 }
+
+std::vector<Profesor*> *Serializacion::getProfesores(Curso *curso) {
+    int id = curso->getId();
+
+    std::vector<Profesor*> *profesores = new std::vector<Profesor*>();
+    try {
+        sql::Connection *con = Serializacion::getCon();
+        sql::PreparedStatement *prep_stmt;
+        sql::ResultSet *res;
+
+        prep_stmt = con->prepareStatement("SELECT Profesor.id, Profesor.horasLaborales, Profesor.nombre, Profesor.apellido FROM Profesor INNER JOIN Profesor");
+
+        prep_stmt->setInt(1, id);
+        res = prep_stmt->executeQuery();
+
+        while (res->next()) {
+        }
+        delete res;
+        delete prep_stmt;
+        delete con;
+    } catch (sql::SQLException &e) {
+        BD::manejarExcepcion(e);
+    }
+    return NULL;
+}
+
+std::vector<std::vector<IPeriodo*>*> *Serializacion::getPeridos(Curso *curso) {
+    return NULL;
+}
+
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS
@@ -135,13 +165,25 @@ sql::Connection *Serializacion::getCon(void) {
     return con;
 }
 
+Curso* Serializacion::buscarCurso(Curso *curso) {
+    Curso *existente = NULL;
+    for (size_t i = 0; i < Serializacion::cursosExistentes.size(); i++) {
+        if (Serializacion::cursosExistentes.at(i)->igual(curso)) {
+            existente = Serializacion::cursosExistentes.at(i);
+            break;
+        }
+    }
+    return existente;
+}
+
 /*******************************************************************************
  ** MÉTODO DE PRUEBA
  ******************************************************************************/
 
 int testSerializacion(void) {
-
-    using namespace std;
+    using std::cout;
+    using std::endl;
+    using std::vector;
 
     vector<Plan*> *planes = Serializacion::getPlanes();
 
@@ -159,9 +201,8 @@ int testSerializacion(void) {
             for (unsigned int k = 0; k < cursos->size(); k++) {
                 cout << "\t\tCurso " << cursos->at(k)->getNombre();
                 cout << " - " << cursos->at(k)->getSigla() << endl;
-
-            } //Cursos
-        } //Bloques
-    } //Planes
+            }  // Cursos
+        }  // Bloques
+    }  // Planes
     return 0;
 }
