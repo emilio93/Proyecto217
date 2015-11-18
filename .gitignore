@@ -19,6 +19,7 @@
 
 proyecto/generador/bin
 proyecto/generador/docs
+*~
 
 #Emilio
 .atom-build.json
