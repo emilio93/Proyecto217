@@ -39,8 +39,20 @@ class BD {
         //! Llena la base de datos con instantes útiles.
         /*!
          * Llena la base de datos con instantes cada hora si estos no existen.
+         * @return True si se han agregado instantes.
          */
         bool llenarInstante(void);
+
+        //! LLena los posibles periodos en que se imparten clases de 2 y 3
+        //! horas.
+        /*!
+         * LLena la base de datos con los periodos en que se puede impartir
+         * clases de 2 y 3 horas.
+         * @return  True si se han agregado periodos
+         *
+         * TODO implementar
+         */
+        bool llenarPeriodoCursos(void);
 
         //! Destruye la conexión con la base de datos.
         /*!

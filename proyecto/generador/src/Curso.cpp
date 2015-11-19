@@ -99,8 +99,8 @@ std::string Curso::toString(void) {
     return this->getNombre() + " - " + this->getSigla();
 }
 
-std::vector<Grupo*> *Curso::crearGrupos(void) {
-    std::vector<Grupo*> *grupos = new std::vector<Grupo*>();
+std::vector<Grupo> *Curso::crearGrupos(void) {
+    std::vector<Grupo> *grupos = new std::vector<Grupo>();
     // código
     // TODO(emilio): implementar
     // código

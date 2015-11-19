@@ -84,12 +84,25 @@ class Curso {
 		 */
         std::string sigla;
 
+        //! Valor id por defecto.
         static int ID;
+
+        //! Valor cantidad de horas por defecto.
         static int CANTIDAD_HORAS;
+
+        //! Valor clases en semana por defecto.
         static int CLASES_EN_SEMANA;
+
+        //! Valor cantidad de grupos por defecto.
         static int CANTIDAD_GRUPOS;
+
+        //! Bloque por defecto.
         static Bloque &BLOQUE;
+
+        //! Nombre por defecto.
         static std::string NOMBRE;
+
+        //! Sigla por defecto.
         static std::string SIGLA;
 
     public:
@@ -229,7 +242,18 @@ class Curso {
 		 *
 		 * TODO implementar
 		 */
-        std::vector<Grupo*> *crearGrupos(void);
+        std::vector<Grupo> *crearGrupos(void);
+
+        //! Obtiene una lista de profesores que pueden dar este curso.
+        /*!
+         * Obtiene una lista de los profesores que pueden impartir este curso.
+         * Los profesores no necesariamente tienen la disponibilidad de dar el
+         * curso.
+         * @return Una lista de los profesores que pueden dar el curso.
+         *
+         * TODO implementar
+         */
+        std::vector<Profesor> *getProfesores(void);
 
         //! Compara si dos cursos son iguales
 		/*!

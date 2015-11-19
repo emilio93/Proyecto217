@@ -17,7 +17,7 @@ class Grupo;
 // Class: Profesor
 //*********************************************************************
 
-//! Un profesor. Conoce sus grupos así como sus horario.
+//! Un profesor. Conoce sus grupos así como sus horarios.
 /*!
  * Un profesor maneja su tiempo, de esta manera puede aceptar o declinar cursos
  * que le son asignados según su horario y sus horas laborales. De la misma

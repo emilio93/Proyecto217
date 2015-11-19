@@ -44,7 +44,7 @@ class Misc {
          * @param  n Objeto que se convierte.
          * @return   Texto del objeto.
          */
-        template <typename T> static std::string to_string(T &n) {
+        template <typename T> static std::string to_string(const T& n) {
             std::ostringstream stm;
             stm << n;
             return stm.str();
