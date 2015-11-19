@@ -1,6 +1,7 @@
 /* copyright 2015 palomosFantásticos */
 
 #include <stddef.h>
+
 #include <string>
 #include <vector>
 
@@ -8,6 +9,7 @@
 #include "Curso.hh"
 #include "Grupo.hh"
 #include "Misc.hh"
+#include "Profesor.hh"
 
 
 /*******************************************************************************
@@ -15,7 +17,7 @@
  ******************************************************************************/
 
 Grupo::Grupo(int id, Curso *curso, Profesor *profesor,
-    std::vector<IPeriodo*> *horario, int cantidadhoras) {
+    std::vector<IPeriodo> *horario, int cantidadhoras) {
     this->id = id;
     this->curso = curso;
     this->profesor = profesor;
