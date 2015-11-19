@@ -126,19 +126,44 @@ void testCurso(void) {
     using std::cout;
     using std::endl;
     using std::string;
-/*
-    string cc1 = "Circuitos Lineles I";
-    string &c1 = cc1;
-    string ss1 = "IE0209";
-    string &s1 = ss1;
 
-    Curso *curso1 = new Curso(1, 5, 2, 1, NULL, cc1, ss1);
+
+    string c1 = "Circuitos Lineles I";
+    string s1 = "IE0209";
+
+    string c2 = "Circuitos Lineles II";
+    string s2 = "IE0309";
+
+    int id1 = 1;
+    int id2 = 2;
+    int id3 = 3;
+
+    int canH1 = 4;
+    int canH2 = 5;
+    int canH3 = 6;
+
+    int ceS1 = 2;
+    int ceS2 = 2;
+    int ceS3 = 1;
+
+    int cG1 = 4;
+    int cG2 = 3;
+    int cG3 = 2;
+
+    Plan plann = Plan();
+    Plan &plan = plann;
+
+    int idB = 1;
+    int semB = 1;
+    Bloque bloque = Bloque(idB, plan, semB);
+
+    Curso *curso1 = new Curso(id1, canH1, ceS1, cG1, bloque, c1, s1);
     cout << curso1->toString() << " creado." << endl;
-    Curso *curso2 = new Curso(1, 5, 2, 1, NULL,
-        "Circuitos Lineles I", "IE0209");
+
+    Curso *curso2 = new Curso(id2, canH2, ceS2, cG2, bloque, c1, s1);
     cout << curso2->toString() << " creado." << endl;
-    Curso *curso3 = new Curso(2, 5, 2, 1, NULL,
-        "Circuitos Lineles II", "IE0309");
+
+    Curso *curso3 = new Curso(id3, canH3, ceS3, cG3, bloque, c2, s2);
     cout << curso3->toString() << " creado." << endl;
 
     cout << "Curso1:" << endl;
@@ -179,5 +204,4 @@ void testCurso(void) {
     } else {
         cout << "Curso2 no es igual a Curso3." << endl;
     }
-    */
 }
