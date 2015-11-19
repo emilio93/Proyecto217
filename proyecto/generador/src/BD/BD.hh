@@ -1,12 +1,14 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_BD
 #define CLASE_BD
-
-#include <string>
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
+
+#include <string>
 
 //! Conexión con la base de datos.
 /**
@@ -19,6 +21,7 @@ class BD {
          * La conexión con la base de datos.
          */
         sql::Connection *con;
+
     public:
         //! Obtiene una conexión con la base de datos.
         /*!

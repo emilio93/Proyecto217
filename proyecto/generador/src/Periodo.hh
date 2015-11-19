@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_PERIODO
 #define CLASE_PERIODO
 
@@ -63,7 +65,8 @@ class Periodo : public IPeriodo {
         virtual bool mayorDuracion(IPeriodo *periodo);
         virtual bool menorDuracion(IPeriodo *periodo);
         virtual bool traslapa(IPeriodo *periodo);
-        virtual std::vector<IPeriodo*> *restar(IPeriodo *total, IPeriodo *resta);
+        virtual std::vector<IPeriodo*> *restar(IPeriodo *total,
+            IPeriodo *resta);
 };
 
 #endif

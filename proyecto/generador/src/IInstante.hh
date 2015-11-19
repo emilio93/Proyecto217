@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef INTERFACE_INSTANTE
 #define INTERFACE_INSTANTE
 

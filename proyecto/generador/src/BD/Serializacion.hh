@@ -1,14 +1,15 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_SERIALIZACION
 #define CLASE_SERIALIZACION
-
-#include <string>
-#include <vector>
-#include <set>
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
+
+#include <string>
+#include <vector>
 
 #include "BD.hh"
 #include "../Plan.hh"
@@ -23,7 +24,6 @@
  */
 class Serializacion {
     private:
-
         //! Un set de los cursos que ya han sido creados.
         /*!
          *  Un set de los cursos que ya han sido creados, sirve para no repetir
@@ -68,7 +68,7 @@ class Serializacion {
          * datos.
          * @return Un set con los planes.
          */
-    	static std::vector<Plan> *getPlanes(void);
+        static std::vector<Plan> *getPlanes(void);
 
         //! Obtiene los bloques de un plan.
         /*!
@@ -77,7 +77,7 @@ class Serializacion {
          * @param plan Plan del cual se obtienen los bloques.
          * @return Un vector con los bloques del plan.
          */
-    	static std::vector<Bloque> *getBloques(Plan &plan);
+        static std::vector<Bloque> *getBloques(Plan &plan);
 
         //! Obtiene los cursos de un bloque.
         /*!
@@ -86,7 +86,7 @@ class Serializacion {
          * @param bloque Bloque sel cual se obtiene los cursos.
          * @return Un set con los cursos del bloque.
          */
-    	static std::vector<Curso> *getCursos(Bloque &bloque);
+        static std::vector<Curso> *getCursos(Bloque &bloque);
 
         //! Obtiene los profesores que dan un curso.
         /*!
@@ -110,6 +110,5 @@ class Serializacion {
          * TODO
          */
         static std::vector< std::vector<IPeriodo> > *getPeriodos(Curso &curso);
-
 };
 #endif

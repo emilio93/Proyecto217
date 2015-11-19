@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_HORARIO
 #define CLASE_HORARIO
 
@@ -6,10 +8,8 @@
 #include <vector>
 
 class Horario {
-	public:
-
-	private:
-		
+    public:
+    private:
 };
 
 #endif
