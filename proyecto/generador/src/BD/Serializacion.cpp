@@ -26,15 +26,15 @@
  ** ATRIBUTOS ESTÁTICOS PRIVADOS
  ******************************************************************************/
 
-std::vector<Profesor*> Serializacion::profesoresExistentes = std::vector<Profesor*>();
-std::vector<Curso*> Serializacion::cursosExistentes = std::vector<Curso*>();
+std::vector<Profesor> Serializacion::profesoresExistentes = std::vector<Profesor>();
+std::vector<Curso> Serializacion::cursosExistentes = std::vector<Curso>();
 
 /*******************************************************************************
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-std::vector<Plan*> *Serializacion::getPlanes(void) {
-    std::vector<Plan*> *planes = new std::vector<Plan*>();
+std::vector<Plan> *Serializacion::getPlanes(void) {
+    std::vector<Plan> *planes = new std::vector<Plan>();
     try {
          sql::Connection *con = Serializacion::getCon();
          sql::Statement *stmt;
@@ -45,7 +45,7 @@ std::vector<Plan*> *Serializacion::getPlanes(void) {
          while (res->next()) {
              int id = res->getInt("id");
              std::string nombre = res->getString("nombre").c_str();
-             Plan *plan = new Plan(id, nombre);
+             Plan plan = Plan(id, nombre);
              planes->push_back(plan);
          }
          delete res;
@@ -57,10 +57,10 @@ std::vector<Plan*> *Serializacion::getPlanes(void) {
      return planes;
 }
 
-std::vector<Bloque*> *Serializacion::getBloques(Plan *plan) {
-    int id = plan->getId();
+std::vector<Bloque> *Serializacion::getBloques(Plan &plan) {
+    int id = plan.getId();
 
-    std::vector<Bloque*> *bloques = new std::vector<Bloque*>();
+    std::vector<Bloque> *bloques = new std::vector<Bloque>();
     try {
         sql::Connection *con = Serializacion::getCon();
         sql::PreparedStatement *prep_stmt;
@@ -72,10 +72,10 @@ std::vector<Bloque*> *Serializacion::getBloques(Plan *plan) {
         res = prep_stmt->executeQuery();
 
         while (res->next()) {
-            int idBloque = res->getInt("id");
+            int idBloqueTmp = res->getInt("id");
+            int idBloque = idBloqueTmp;
             int semestre = res->getInt("semestre");
-            Bloque *bloque = new Bloque(idBloque, plan, semestre);
-            bloques->push_back(bloque);
+            bloques->push_back(Bloque(idBloque, plan, semestre));
         }
         delete res;
         delete prep_stmt;
@@ -86,10 +86,10 @@ std::vector<Bloque*> *Serializacion::getBloques(Plan *plan) {
     return bloques;
 }
 
-std::vector<Curso*> *Serializacion::getCursos(Bloque *bloque) {
-    int id = bloque->getId();
+std::vector<Curso> *Serializacion::getCursos(Bloque &bloque) {
+    int id = bloque.getId();
 
-    std::vector<Curso*> *cursos = new std::vector<Curso*>();
+    std::vector<Curso> *cursos = new std::vector<Curso>();
     try {
         sql::Connection *con = Serializacion::getCon();
         sql::PreparedStatement *prep_stmt;
@@ -112,9 +112,9 @@ std::vector<Curso*> *Serializacion::getCursos(Bloque *bloque) {
             if (Serializacion::buscarCurso(curso) != NULL) {
                 curso = Serializacion::buscarCurso(curso);
             } else {
-                Serializacion::cursosExistentes.push_back(curso);
+                Serializacion::cursosExistentes.push_back(*curso);
             }
-            cursos->push_back(curso);
+            cursos->push_back(*curso);
         }
         delete res;
         delete prep_stmt;
@@ -125,10 +125,10 @@ std::vector<Curso*> *Serializacion::getCursos(Bloque *bloque) {
     return cursos;
 }
 
-std::vector<Profesor*> *Serializacion::getProfesores(Curso *curso) {
-    int id = curso->getId();
+std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
+    int id = curso.getId();
 
-    std::vector<Profesor*> *profesores = new std::vector<Profesor*>();
+    std::vector<Profesor> *profesores = new std::vector<Profesor>();
     try {
         sql::Connection *con = Serializacion::getCon();
         sql::PreparedStatement *prep_stmt;
@@ -147,10 +147,10 @@ std::vector<Profesor*> *Serializacion::getProfesores(Curso *curso) {
     } catch (sql::SQLException &e) {
         BD::manejarExcepcion(e);
     }
-    return NULL;
+    return profesores;
 }
 
-std::vector<std::vector<IPeriodo*>*> *Serializacion::getPeriodos(Curso *curso) {
+std::vector< std::vector<IPeriodo> > *Serializacion::getPeriodos(Curso &curso) {
     return NULL;
 }
 
@@ -164,11 +164,11 @@ sql::Connection *Serializacion::getCon(void) {
     return con;
 }
 
-Curso* Serializacion::buscarCurso(Curso *curso) {
+Curso *Serializacion::buscarCurso(Curso *curso) {
     Curso *existente = NULL;
     for (size_t i = 0; i < Serializacion::cursosExistentes.size(); i++) {
-        if (Serializacion::cursosExistentes.at(i)->igual(curso)) {
-            existente = Serializacion::cursosExistentes.at(i);
+        if (Serializacion::cursosExistentes.at(i).igual(curso)) {
+            existente = &Serializacion::cursosExistentes.at(i);
             break;
         }
     }
@@ -182,24 +182,23 @@ Curso* Serializacion::buscarCurso(Curso *curso) {
 int testSerializacion(void) {
     using std::cout;
     using std::endl;
-    using std::vector;
 
-    vector<Plan*> *planes = Serializacion::getPlanes();
+    std::vector<Plan> *planes = Serializacion::getPlanes();
 
     for (unsigned int i = 0; i < planes->size(); i++) {
-        cout << "Plan: " << planes->at(i)->getNombre() << endl;
+        cout << "Plan: " << planes->at(i).getNombre() << endl;
 
-        vector<Bloque*> *bloques = planes->at(i)->getBloques();
+        std::vector<Bloque> *bloques = planes->at(i).getBloques();
 
         for (unsigned int j = 0; j < bloques->size(); j++) {
-            cout << "\tBloque " << bloques->at(j)->getId() <<": ";
-            cout << "Semestre " << bloques->at(j)->getSemestre() << endl;
+            cout << "\tBloque " << bloques->at(j).getId() <<": ";
+            cout << "Semestre " << bloques->at(j).getSemestre() << endl;
 
-            vector<Curso*> *cursos = bloques->at(j)->getCursos();
+            std::vector<Curso> *cursos = bloques->at(j).getCursos();
 
             for (unsigned int k = 0; k < cursos->size(); k++) {
-                cout << "\t\tCurso " << cursos->at(k)->getNombre();
-                cout << " - " << cursos->at(k)->getSigla() << endl;
+                cout << "\t\tCurso " << cursos->at(k).getNombre();
+                cout << " - " << cursos->at(k).getSigla() << endl;
             }  // Cursos
         }  // Bloques
     }  // Planes

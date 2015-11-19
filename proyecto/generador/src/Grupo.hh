@@ -23,11 +23,11 @@ private:
 	int id;
 	Curso *curso;
 	Profesor *profesor;
-	std::vector<IPeriodo*> * horario;
+	std::vector<IPeriodo> *horario;
 	int cantidadhoras;
 	void elegirProfesor(void);
 public:
-	Grupo(int id,Curso *curso, Profesor *profesor,std::vector<IPeriodo*> *horario,int cantidadhoras);
+	Grupo(int id,Curso *curso, Profesor *profesor,std::vector<IPeriodo> *horario,int cantidadhoras);
 	Curso *getCurso(Grupo *GrupoActual);// devuelve un puntero al curso de este grupo.
 	std::list <Profesor> getProfesor(Curso *CursoActual);// devuelve una lista de profesores disponibles Emilio dijo que se podia implementar en
 	//SQL la parte de pedir profes disponibles pero sino ahi se hace en el método.

@@ -10,19 +10,31 @@
 #include "Misc.hh"
 
 /*******************************************************************************
+ ** ATRIBUTOS ESTÁTICOS PRIVADOS
+ ******************************************************************************/
+
+int Curso::ID = 0;
+int Curso::CANTIDAD_HORAS = 0;
+int Curso::CLASES_EN_SEMANA = 0;
+int Curso::CANTIDAD_GRUPOS = 0;
+Bloque *null = NULL;
+Bloque &Curso::BLOQUE = *null;
+std::string Curso::NOMBRE = "";
+std::string Curso::SIGLA = "";
+
+/*******************************************************************************
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Curso::Curso(int id, int cantidadHoras, int clasesEnSemana, int cantidadGrupos,
-    Bloque *bloque, std::string nombre, std::string sigla) {
+Curso::Curso(int &id, int &cantidadHoras, int &clasesEnSemana,
+    int &cantidadGrupos, Bloque &bloque, std::string &nombre,
+    std::string &sigla) {
     this->setId(id);
     this->setCantidadHoras(cantidadHoras);
     this->setClasesEnSemana(clasesEnSemana);
     this->setCantidadGrupos(cantidadGrupos);
-    if (bloque != NULL) {
-        this->setBloques(new std::vector<Bloque*>());
-        this->getBloques()->push_back(bloque);
-    }
+    this->setBloques(new std::vector<Bloque>());
+    this->getBloques()->push_back(bloque);
     this->setNombre(nombre);
     this->setSigla(sigla);
 }
@@ -59,11 +71,11 @@ void Curso::setCantidadGrupos(int cantidadGrupos) {
     this->cantidadGrupos = cantidadGrupos;
 }
 
-std::vector<Bloque*> *Curso::getBloques(void) {
+std::vector<Bloque> *Curso::getBloques(void) {
     return this->bloques;
 }
 
-void Curso::setBloques(std::vector<Bloque*> *bloques) {
+void Curso::setBloques(std::vector<Bloque> *bloques) {
     this->bloques = bloques;
 }
 
@@ -113,9 +125,14 @@ bool Curso::igual(Curso *curso) {
 void testCurso(void) {
     using std::cout;
     using std::endl;
+    using std::string;
+/*
+    string cc1 = "Circuitos Lineles I";
+    string &c1 = cc1;
+    string ss1 = "IE0209";
+    string &s1 = ss1;
 
-    Curso *curso1 = new Curso(1, 5, 2, 1, NULL,
-        "Circuitos Lineles I", "IE0209");
+    Curso *curso1 = new Curso(1, 5, 2, 1, NULL, cc1, ss1);
     cout << curso1->toString() << " creado." << endl;
     Curso *curso2 = new Curso(1, 5, 2, 1, NULL,
         "Circuitos Lineles I", "IE0209");
@@ -162,4 +179,5 @@ void testCurso(void) {
     } else {
         cout << "Curso2 no es igual a Curso3." << endl;
     }
+    */
 }

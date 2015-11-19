@@ -15,13 +15,18 @@ DOXY = doxyfiles/
 main: createODIR tests
 
 doxy:
+	mkdir -p docs/
 	rm -r docs/
 	doxygen
 	cp $(DOXY)doxy-boot.js docs/html/doxy-boot.js
 createODIR:
 	mkdir -p $(ODIR)
 
+#LOS BLOQUES AYUDAN A DEBUGUEAR(MUESTRA DONDE COMIENZA COMPILACIÓN CLARAMENTE)
 tests:
+	echo █████████████████ COMENZANDO COMPILACION █████████████████
+	echo █████████████████ COMENZANDO COMPILACION █████████████████
+	echo █████████████████ COMENZANDO COMPILACION █████████████████
 	$(CC) $(BEFORE) $(SRC)tests.cpp -o $(ODIR)tests.exe $(LFLAGS) $(AFTER)
 
 Bloque.o:

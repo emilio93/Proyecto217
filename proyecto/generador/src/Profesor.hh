@@ -60,7 +60,7 @@ class Profesor {
 		/*!
 		 *  Son cursos que el profesor tiene la capacidad de impartir.
 		 */
-		std::vector<Curso*> *cursosDados;
+		std::vector<Curso> *cursosDados;
 
 	public:
 		int getHorario(Profesor *Profesoractual);// Esto debe devolver el horario del profe

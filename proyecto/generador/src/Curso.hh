@@ -66,7 +66,7 @@ class Curso {
 		/*!
 		 * Una lista de bloques a los cuales pertenece el curso.
 		 */
-		std::vector<Bloque*> *bloques;
+		std::vector<Bloque> *bloques;
 
 		//! Nombre del curso.
 		/*!
@@ -82,29 +82,13 @@ class Curso {
 		 */
 		std::string sigla;
 
-		/* Algunos comentraios
-			cupo y grupo, como se había hablado, pertencen a la clase Grupo.
-
-			La representación de un Curso en la base de datos y en el programa
-			es diferente, esto porque la base de datos lo único que hace es
-			guardarlos a su propia manera. (Perdon, no se como explicar esto)
-
-			id es asignado automaticamente por la base de datos, cada inserción
-			de un curso en la tabla Cursos(o como se llame) de la base de datos
-			incrementa un contador, eso es el id. Esto sería un problema de
-			instanciar nosotros los cursos directamente desde el programa. La
-			base de datos ya optimiza y asegura que el id es único, y no
-			representa problemas para contar los elementos en la tabla. Esto
-			aunque parezca trivial de implementar, se puede volver complicado
-			por casos no tomados en cuenta.
-
-			cantidadHoras es asignado a un curso por el usuario y la asignación
-			es ajena a nuestro programa, contamos con que esté en la base de
-			datos.
-
-			clasesEnSemana, nombre y sigla les ocurre lo mismo que a
-			cantidadHoras.
-		 */
+		static int ID;
+		static int CANTIDAD_HORAS;
+		static int CLASES_EN_SEMANA;
+		static int CANTIDAD_GRUPOS;
+		static Bloque &BLOQUE;
+		static std::string NOMBRE;
+		static std::string SIGLA;
 
 	public:
 		//! Asigna un Curso.
@@ -118,9 +102,10 @@ class Curso {
 		 * @param sigla Sigla del curso.
 		 * @param bloque Un bloque al cual pertence el grupo.
 		 */
-		Curso(int id = 0, int cantidadHoras = 0, int clasesEnSemana = 0,
-			int cantidadGrupos = 0, Bloque *bloque = NULL,
-			std::string nombre = "", std::string sigla = "");
+		Curso(int &id = ID, int &cantidadHoras = CANTIDAD_HORAS,
+			int &clasesEnSemana = CLASES_EN_SEMANA,
+			int &cantidadGrupos = CANTIDAD_GRUPOS, Bloque &bloque = BLOQUE,
+			std::string &nombre = NOMBRE, std::string &sigla = SIGLA);
 
 		//! Obtiene el id del curso.
 		/*!
@@ -186,7 +171,7 @@ class Curso {
 		 * curso.
 		 * @return  Nombre del curso.
 		 */
-		std::vector<Bloque*> *getBloques(void);
+		std::vector<Bloque> *getBloques(void);
 
 		//! Asigna los bloques a los que pertenece el curso.
 		/*!
@@ -194,7 +179,7 @@ class Curso {
 		 * el curso
 		 * @param bloques Lista de bloques del curso
 		 */
-		void setBloques(std::vector<Bloque*> *bloques);
+		void setBloques(std::vector<Bloque> *bloques);
 
 		//!Obtiene el nombre del curso.
 		/*!

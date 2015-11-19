@@ -27,6 +27,9 @@ class Plan {
 		//! Nombre del Plan.
 		std::string nombre;
 
+		static int ID;
+		static std::string NOMBRE;
+
 	public:
 		//! Asigna un Plan.
 		/*!
@@ -34,7 +37,7 @@ class Plan {
 		 * @param id Identificador del Plan.
 		 * @param nombre Nombre del Plan.
 		 */
-		Plan(int id, std::string nombre);
+		Plan(int id = ID, std::string nombre = NOMBRE);
 
 		//! Obtiene el id del Plan.
 		/*!
@@ -68,13 +71,13 @@ class Plan {
 		/*!
 		 * @return Un vector con los planes disponibles.
 		 */
-	    static std::vector<Plan*> *getPlanes(void); //esto era parte de un serialization
+	    static std::vector<Plan> *getPlanes(void); //esto era parte de un serialization
 
 		//! Set de bloques. Obtiene los bloques disponibles del plan.
 		/*!
 		 *  @return Un vector con los bloques del plan.
 		*/
-	    std::vector<Bloque*> *getBloques(void);
+	    std::vector<Bloque> *getBloques(void);
 	// método para traer una lista de los bloques ocupamos que retorne una lista
 	//std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
 };

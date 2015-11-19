@@ -21,10 +21,10 @@ class Bloque {
 
 private:
 		int id;
-		Plan *plan;
+		Plan plan;
 		int semestre;
 	public:
-		Bloque(int id, Plan * plan, int semestre);
+		Bloque(int &id, Plan &plan, int &semestre);
 
 		int getId(void);
 		int getSemestre(void);
@@ -34,7 +34,7 @@ private:
 	 *  \return
 	*/
 		//std::set<Curso> cursos;//nosotros treamos la lista de cursos de la base de datos no los ponemos
-		std::vector<Curso*> * getCursos(void);// ocupamos una lista también
+		std::vector<Curso> *getCursos(void);// ocupamos una lista también
 
 };
 

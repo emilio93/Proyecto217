@@ -29,14 +29,14 @@ class Serializacion {
          *  Un set de los cursos que ya han sido creados, sirve para no repetir
          *  la creación de un curso ya existente.
          */
-        static std::vector<Curso*> cursosExistentes;
+        static std::vector<Curso> cursosExistentes;
 
         //! Un set de los profesotes que ya han sido creados.
         /*!
          *  Un set de los cursos que ya han sido creados, sirve para no repetir
          *  la creación de un profesor ya existente.
          */
-        static std::vector<Profesor*> profesoresExistentes;
+        static std::vector<Profesor> profesoresExistentes;
 
         //! Obtiene una conexión con la base de datos.
         /*!
@@ -59,7 +59,7 @@ class Serializacion {
          * @param  profesor El profesor a buscar.
          * @return          El profesor encontrado o NULL si no existe.
          */
-        static Curso *buscarProfesor(Profesor *profesor);
+        static Curso *buscarProfesor(Profesor &profesor);
 
     public:
         //! Obtiene los planes existentes en la base de datos.
@@ -68,7 +68,7 @@ class Serializacion {
          * datos.
          * @return Un set con los planes.
          */
-    	static std::vector<Plan*> *getPlanes(void);
+    	static std::vector<Plan> *getPlanes(void);
 
         //! Obtiene los bloques de un plan.
         /*!
@@ -77,7 +77,7 @@ class Serializacion {
          * @param plan Plan del cual se obtienen los bloques.
          * @return Un vector con los bloques del plan.
          */
-    	static std::vector<Bloque*> *getBloques(Plan *plan);
+    	static std::vector<Bloque> *getBloques(Plan &plan);
 
         //! Obtiene los cursos de un bloque.
         /*!
@@ -86,7 +86,7 @@ class Serializacion {
          * @param bloque Bloque sel cual se obtiene los cursos.
          * @return Un set con los cursos del bloque.
          */
-    	static std::vector<Curso*> *getCursos(Bloque *bloque);
+    	static std::vector<Curso> *getCursos(Bloque &bloque);
 
         //! Obtiene los profesores que dan un curso.
         /*!
@@ -96,7 +96,7 @@ class Serializacion {
          *
          * TODO
          */
-        static std::vector<Profesor*> *getProfesores(Curso *curso);
+        static std::vector<Profesor> *getProfesores(Curso &curso);
 
         //! Obtiene los posibles horarios para un curso.
         /*!
@@ -109,7 +109,7 @@ class Serializacion {
          *
          * TODO
          */
-        static std::vector<std::vector<IPeriodo*>*> *getPeriodos(Curso *curso);
+        static std::vector< std::vector<IPeriodo> > *getPeriodos(Curso &curso);
 
 };
 #endif
