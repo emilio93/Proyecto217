@@ -16,13 +16,11 @@
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Grupo::Grupo(int id, Curso *curso, Profesor *profesor,
-    std::vector<IPeriodo> *horario, int cantidadhoras) {
+Grupo::Grupo(int id, Curso *curso, Profesor *profesor){
     this->id = id;
     this->curso = curso;
     this->profesor = profesor;
-    this->horario = horario;
-    this->cantidadhoras = cantidadhoras;
+
 }
 
 /*******************************************************************************

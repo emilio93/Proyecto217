@@ -30,8 +30,7 @@ class Grupo {
         void elegirProfesor(void);
 
     public:
-        Grupo(int id,Curso *curso, Profesor *profesor,
-            std::vector<IPeriodo> *horario, int cantidadhoras);
+        Grupo(int id,Curso *curso, Profesor *profesor);
 
         // devuelve un puntero al curso de este grupo.
         Curso *getCurso(Grupo *GrupoActual);
