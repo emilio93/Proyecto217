@@ -1,5 +1,6 @@
 /* copyright 2015 palomosFantásticos */
 
+
 #ifndef CLASE_PROFESOR
 #define CLASE_PROFESOR
 
@@ -83,10 +84,23 @@ class Profesor {
             std::string nombre = NOMBRE, std::string apellido = APELLIDO,
             std::vector<Curso> *cursosDados = CURSOS_DADOS);
 
+
         void setId(int id);
         void setHorasLaborales(int horasLaborales);
         int getId(void);
+
+		//! Método getNombre(void)
+		/*!
+		 * Devuelve el nombre del profesor
+		 */
+
         std::string getNombre(void);
+        
+        
+        //! Método getApellido(void)
+		/*!
+		 * Devuelve el apellido del profesor
+		 */
         std::string getApellido(void);
 
         //! Indica si el profesor está disponible en cierto horario.
@@ -100,8 +114,21 @@ class Profesor {
         bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo);
 
         // Esto debe devolver el horario del profe
+        //! Devuelve el horario del profesor actual
+		/*!
+		 * 
+		 * @param Profesor *Profesoractual
+		 */
         int getHorario(void);
 
+
+
+
+        //! Devuelve el horario del profesor actual
+		/*!
+		 * 
+		 * @param Profesor *Profesoractual
+		 */
 
         // Esto debe devolver el horario del profe
         int getHorario(Profesor *Profesoractual);
@@ -120,8 +147,9 @@ class Profesor {
 		 * @param grupo El grupo que se asigna el profesor.
 		 */
         void asignarGrupo(Grupo *grupo);
-        /*podria devolver un horario untilizando la función getHorario()*/
+        /*podria devolver un horario utilizando la función getHorario()*/
 
-        bool igual(Profesor *profesor);
+        bool igual(Profesor *profesor);// Esto no se que hace
 };
+
 #endif
