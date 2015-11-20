@@ -29,7 +29,7 @@ Curso Grupo::*getCurso(Grupo *GrupoActual){
 	
 	//*Curso = Serializacion::getCursos(*GrupoActual);//serialization no tiene un método que le entre "grupo" y diga el curso
 	
-	return *Curso; // devuelve el curso dueño de este grupo
+	return *Curso; // devuelve el curso dueño de este grupo supongo que es el puntero del objeto curso que creo este grupo
 }
 
 void Grupo::setProfesor(Profesor *Profesorasignado){ //set al profesor asignado para este grupo
@@ -40,7 +40,7 @@ void Grupo::ponerEnHorario(Grupo *GrupoActual){//crear algo para set en horario.
 	//Class horario?? tal vez
 	
 }
-std::vector<Profesor> Grupo :: getProfesor(Curso *CursoActual){//objeto o puntero a objeto
+std::vector<Profesor> Grupo :: getProfesor(Curso *CursoActual){//vector de objetos o punteros a objeto
 	//Profesor o serialización quien tiene el método?
 	return Serializacion::getProfesor(Curso *CursoActual);
 }
