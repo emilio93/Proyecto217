@@ -59,7 +59,7 @@ class Serializacion {
          * @param  profesor El profesor a buscar.
          * @return          El profesor encontrado o NULL si no existe.
          */
-        static Curso *buscarProfesor(Profesor *profesor);
+        static Profesor *buscarProfesor(Profesor *profesor);
 
     public:
         //! Obtiene los planes existentes en la base de datos.

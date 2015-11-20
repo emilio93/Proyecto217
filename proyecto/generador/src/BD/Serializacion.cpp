@@ -52,7 +52,7 @@ std::vector<Plan> *Serializacion::getPlanes(void) {
          delete stmt;
          delete con;
      } catch (sql::SQLException &e) {
-         BD::manejarExcepcion(e);
+         BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
      }
      return planes;
 }
@@ -81,7 +81,7 @@ std::vector<Bloque> *Serializacion::getBloques(Plan &plan) {
         delete prep_stmt;
         delete con;
     } catch (sql::SQLException &e) {
-        BD::manejarExcepcion(e);
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
     }
     return bloques;
 }
@@ -111,6 +111,7 @@ std::vector<Curso> *Serializacion::getCursos(Bloque &bloque) {
                 cantidadGrupos, bloque, nombre, sigla);
 
             if (Serializacion::buscarCurso(curso) != NULL) {
+                delete curso;
                 curso = Serializacion::buscarCurso(curso);
             } else {
                 Serializacion::cursosExistentes.push_back(*curso);
@@ -121,7 +122,7 @@ std::vector<Curso> *Serializacion::getCursos(Bloque &bloque) {
         delete prep_stmt;
         delete con;
     } catch (sql::SQLException &e) {
-        BD::manejarExcepcion(e);
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
     }
     return cursos;
 }
@@ -135,7 +136,7 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
         sql::PreparedStatement *prep_stmt;
         sql::ResultSet *res;
 
-        prep_stmt = con->prepareStatement("SELECT Profesor.id, Profesor.horasLaborales, Profesor.nombre, Profesor.apellido FROM Profesor INNER JOIN Profesor");
+        prep_stmt = con->prepareStatement("SELECT Profesor.id, Profesor.horasLaborales, Profesor.nombre, Profesor.apellido FROM Profesor INNER JOIN ProfesoresCurso ON Profesor.id = ProfesoresCurso.idProfesor INNER JOIN Curso ON Curso.id = ProfesoresCurso.idCurso WHERE Curso.id = ?");
 
         prep_stmt->setInt(1, id);
         res = prep_stmt->executeQuery();
@@ -143,14 +144,26 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
         while (res->next()) {
             int idProfe = res->getInt("id");
             int horasLaboralesProfe = res->getInt("horasLaborales");
-            std::string nombreProfe = res->getInt("nombre");
-            std::string apellidoProfe = res->getInt("apellido");
+            std::string nombreProfe = res->getString("nombre").c_str();
+            std::string apellidoProfe = res->getString("apellido").c_str();
+
+            Profesor *profe = new Profesor(idProfe, horasLaboralesProfe,
+                nombreProfe, apellidoProfe);
+
+            if (Serializacion::buscarProfesor(profe) != NULL) {
+                delete profe;
+                profe = Serializacion::buscarProfesor(profe);
+            } else {
+                Serializacion::profesoresExistentes.push_back(*profe);
+            }
+
+            profesores->push_back(*profe);
         }
         delete res;
         delete prep_stmt;
         delete con;
     } catch (sql::SQLException &e) {
-        BD::manejarExcepcion(e);
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
     }
     return profesores;
 }
@@ -174,6 +187,17 @@ Curso *Serializacion::buscarCurso(Curso *curso) {
     for (size_t i = 0; i < Serializacion::cursosExistentes.size(); i++) {
         if (Serializacion::cursosExistentes.at(i).igual(curso)) {
             existente = &Serializacion::cursosExistentes.at(i);
+            break;
+        }
+    }
+    return existente;
+}
+
+Profesor *Serializacion::buscarProfesor(Profesor *profesor) {
+    Profesor *existente = NULL;
+    for (size_t i = 0; i < Serializacion::profesoresExistentes.size(); i++) {
+        if (Serializacion::profesoresExistentes.at(i).igual(profesor)) {
+            existente = &Serializacion::profesoresExistentes.at(i);
             break;
         }
     }
@@ -206,12 +230,11 @@ void testSerializacion(void) {
                 cout << "\t\tCurso " << cursos->at(k).getNombre();
                 cout << " - " << cursos->at(k).getSigla() << endl;
 
-                vector<Profesor> *profesores = cursos->at(i).getProfesores();
+                vector<Profesor> *profesores = cursos->at(k).getProfesores();
 
-                cout << "\t\t\tProfesores del curso: " << endl;
                 for (size_t l = 0; l < profesores->size(); l++) {
-                    cout << "\t\t\t" << profesores->at(l).getNombre() << " ";
-                    cout << profesores->at(l).getApellido() << endl;
+                    cout << "\t\t\tProfesor: " << profesores->at(l).getNombre();
+                    cout << " " << profesores->at(l).getApellido() << endl;
                 }  // Profesores
                 delete profesores;
             }  // Cursos
