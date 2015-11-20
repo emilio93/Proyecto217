@@ -1,12 +1,14 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_BD
 #define CLASE_BD
-
-#include <string>
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
+
+#include <string>
 
 //! Conexión con la base de datos.
 /**
@@ -19,6 +21,7 @@ class BD {
          * La conexión con la base de datos.
          */
         sql::Connection *con;
+
     public:
         //! Obtiene una conexión con la base de datos.
         /*!
@@ -36,8 +39,20 @@ class BD {
         //! Llena la base de datos con instantes útiles.
         /*!
          * Llena la base de datos con instantes cada hora si estos no existen.
+         * @return True si se han agregado instantes.
          */
         bool llenarInstante(void);
+
+        //! LLena los posibles periodos en que se imparten clases de 2 y 3
+        //! horas.
+        /*!
+         * LLena la base de datos con los periodos en que se puede impartir
+         * clases de 2 y 3 horas.
+         * @return  True si se han agregado periodos
+         *
+         * TODO implementar
+         */
+        bool llenarPeriodoCursos(void);
 
         //! Destruye la conexión con la base de datos.
         /*!

@@ -67,6 +67,111 @@ bool BD::llenarInstante(void) {
     return insertados;
 }
 
+bool BD::llenarPeriodoCursos(void) {
+    bool insertados = false;
+
+    unsigned int cantidadDias = 8;
+    unsigned int cursos2horas = 7;
+    unsigned int cursos3horas = 5;
+    unsigned int inicioDia = 7;  // 7AM
+
+    sql::Connection *con = this->conectar();
+    sql::PreparedStatement *main_stmt;
+    sql::PreparedStatement *search_stmt;
+    sql::ResultSet *search_res;
+
+    search_stmt = con->prepareStatement("SELECT id FROM Instante WHERE dia = ? AND hora = ? AND minuto = 0");
+    main_stmt = con->prepareStatement("INSERT INTO Periodo (idInstanteInicio, idInstanteFin) VALUES (?, ?)");
+    for (size_t i = 0; i < cantidadDias; i++) {
+        search_stmt->setInt(1, i);
+        int idInicio;
+        int idFin;
+        for (size_t j = 0; j < cursos2horas; j++) {
+            search_stmt->setInt(2, inicioDia + j*2);
+            try {
+                search_res = search_stmt->executeQuery();
+                if (search_res->rowsCount() > 0) {
+                    search_res->next();
+                    idInicio = search_res->getInt("id");
+                } else {
+                    continue;
+                }
+            } catch (sql::SQLException &e) {
+                std::cout << "Linea: " << __LINE__ << std::endl;
+                BD::manejarExcepcion(e);
+            }
+
+            search_stmt->setInt(2, inicioDia + (j+1)*2);
+            try {
+                search_res = search_stmt->executeQuery();
+                if (search_res->rowsCount() > 0) {
+                    search_res->next();
+                    idFin = search_res->getInt("id");
+                } else {
+                    continue;
+                }
+            } catch (sql::SQLException &e) {
+                std::cout << "Linea: " << __LINE__ << std::endl;
+                BD::manejarExcepcion(e);
+            }
+
+            main_stmt->setInt(1, idInicio);
+            main_stmt->setInt(2, idFin);
+            try {
+                main_stmt->executeQuery();
+                insertados = true;
+            } catch (sql::SQLException &e) {
+                std::string error(e.what());
+                if (error.find("Duplicate entry") == std::string::npos) {
+                    BD::manejarExcepcion(e);
+                }
+            }
+        }
+        for (size_t j = 0; j < cursos3horas; j++) {
+            search_stmt->setInt(2, inicioDia + j*3);
+            try {
+                search_res = search_stmt->executeQuery();
+                if (search_res->rowsCount() > 0) {
+                    search_res->next();
+                    idInicio = search_res->getInt("id");
+                } else {
+                    continue;
+                }
+            } catch (sql::SQLException &e) {
+                std::cout << "Linea: " << __LINE__ << std::endl;
+                BD::manejarExcepcion(e);
+            }
+
+            search_stmt->setInt(2, inicioDia + (j+1)*3);
+            try {
+                search_res = search_stmt->executeQuery();
+                if (search_res->rowsCount() > 0) {
+                    search_res->next();
+                    idFin = search_res->getInt("id");
+                } else {
+                    continue;
+                }
+            } catch (sql::SQLException &e) {
+                std::cout << "Linea: " << __LINE__ << std::endl;
+                BD::manejarExcepcion(e);
+            }
+
+            main_stmt->setInt(1, idInicio);
+            main_stmt->setInt(2, idFin);
+            try {
+                main_stmt->executeQuery();
+                insertados = true;
+            } catch (sql::SQLException &e) {
+                std::string error(e.what());
+                if (error.find("Duplicate entry") == std::string::npos) {
+                    BD::manejarExcepcion(e);
+                }
+            }
+        }
+    }
+    return insertados;
+}
+
 BD::~BD() {
     delete this->con;
 }
@@ -87,6 +192,13 @@ void testBD(void) {
         cout << "Se han insertado valores en tabla Instante" << endl;
     } else {
         cout << "No se han insertado valores en tabla Instante" << endl;
+    }
+
+    cout << "Llenando tabla Periodo" << endl;
+    if (bd->llenarPeriodoCursos()) {
+        cout << "Se han insertado valores en tabla Periodo" << endl;
+    } else {
+        cout << "No se han insertado valores en tabla Periodo" << endl;
     }
 
     cout << "Bien si no hubo errores!" << endl;

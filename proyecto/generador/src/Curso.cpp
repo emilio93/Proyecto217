@@ -26,9 +26,9 @@ std::string Curso::SIGLA = "";
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Curso::Curso(int &id, int &cantidadHoras, int &clasesEnSemana,
-    int &cantidadGrupos, Bloque &bloque, std::string &nombre,
-    std::string &sigla) {
+Curso::Curso(int id, int cantidadHoras, int clasesEnSemana,
+    int cantidadGrupos, Bloque &bloque, std::string nombre,
+    std::string sigla) {
     this->setId(id);
     this->setCantidadHoras(cantidadHoras);
     this->setClasesEnSemana(clasesEnSemana);
@@ -99,13 +99,18 @@ std::string Curso::toString(void) {
     return this->getNombre() + " - " + this->getSigla();
 }
 
-std::vector<Grupo*> *Curso::crearGrupos(void) {
-    std::vector<Grupo*> *grupos = new std::vector<Grupo*>();
+std::vector<Grupo> *Curso::crearGrupos(void) {
+    std::vector<Grupo> *grupos = new std::vector<Grupo>();
     // código
     // TODO(emilio): implementar
     // código
     return grupos;
 }
+
+std::vector<Profesor> *Curso::getProfesores(void) {
+    return Serializacion::getProfesores(*this);
+}
+
 
 bool Curso::igual(Curso *curso) {
     return this->getSigla().compare(curso->getSigla()) == 0 &&

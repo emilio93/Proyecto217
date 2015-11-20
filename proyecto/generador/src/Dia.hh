@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef ENUM_DIA
 #define ENUM_DIA
 

@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_PLAN
 #define CLASE_PLAN
 
@@ -10,7 +12,7 @@ class Bloque;
 
 
 //*********************************************************************
-//							 Class: Plan
+// Class: Plan
 //*********************************************************************
 
 //! Un plan de estudios.
@@ -21,64 +23,67 @@ class Bloque;
  */
 class Plan {
 	private:
-		//! Identificador del Plan.
-		int id;
+        //! Identificador del Plan.
+        int id;
 
-		//! Nombre del Plan.
-		std::string nombre;
+        //! Nombre del Plan.
+        std::string nombre;
 
-		static int ID;
-		static std::string NOMBRE;
+        static int ID;
+        static std::string NOMBRE;
 
 	public:
-		//! Asigna un Plan.
+        //! Asigna un Plan.
 		/*!
 		 * Inicializa los valores del objeto.
 		 * @param id Identificador del Plan.
 		 * @param nombre Nombre del Plan.
 		 */
-		Plan(int id = ID, std::string nombre = NOMBRE);
+        explicit Plan(int id = ID, std::string nombre = NOMBRE);
 
-		//! Obtiene el id del Plan.
+        //! Obtiene el id del Plan.
 		/*!
 		 * Método get del id del Plan.
 		 * @return El id del Plan.
 		 */
-		int getId(void);
+        int getId(void);
 
-		//! Asigna el id del Plan.
+        //! Asigna el id del Plan.
 		/*!
 		 * Método set del id del Plan.
 		 * @param id El id del Plan.
 		 */
-		void setId(int id);
+        void setId(int id);
 
-		//! Obtiene el nombre del Plan.
+        //! Obtiene el nombre del Plan.
 		/*!
 		 * Método get del nombre del Plan.
 		 * @return El nombre del Plan.
 		 */
-		std::string getNombre();
+        std::string getNombre();
 
-		//! Asigna el nombre del Plan.
+        //! Asigna el nombre del Plan.
 		/*!
 		 * Método set del nombre del Plan.
 		 * @param nombre El nombre del Plan.
 		 */
-		void setNombre(std::string nombre);
+        void setNombre(std::string nombre);
 
-		//! Obtiene los planes disponibles.
+        //! Obtiene los planes disponibles.
 		/*!
 		 * @return Un vector con los planes disponibles.
 		 */
-	    static std::vector<Plan> *getPlanes(void); //esto era parte de un serialization
+        static std::vector<Plan> *getPlanes(void);
+        // esto era parte de un serialization
 
-		//! Set de bloques. Obtiene los bloques disponibles del plan.
+        //! Set de bloques. Obtiene los bloques disponibles del plan.
 		/*!
 		 *  @return Un vector con los bloques del plan.
 		*/
-	    std::vector<Bloque> *getBloques(void);
-	// método para traer una lista de los bloques ocupamos que retorne una lista
-	//std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de la base de datos ...
+        std::vector<Bloque> *getBloques(void);
+        // método para traer una lista de los bloques ocupamos que retorne una
+        // lista
+        // std::set<Bloque> bloques;//nosotros no seteamos bloques lo traemos de
+        // la base de datos ...
 };
 #endif

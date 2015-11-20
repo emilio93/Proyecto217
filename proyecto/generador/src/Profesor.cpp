@@ -12,9 +12,40 @@
 #include "Misc.hh"
 
 /*******************************************************************************
+ ** ATRIBUTOS ESTÁTICOS PRIVADOS
+ ******************************************************************************/
+
+int Profesor::ID = 0;
+int Profesor::HORAS_LABORALES = 0;
+std::string Profesor::NOMBRE = "";
+std::string Profesor::APELLIDO = "";
+std::vector<Curso> *Profesor::CURSOS_DADOS = NULL;
+
+/*******************************************************************************
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
+// SIGNATURE
+// Profesor(int id = ID, int horasLaborales = HORAS_LABORALES,
+// std::string nombre = NOMBRE, std::string apellido = APELLIDO,
+// std::vector<Curso> *cursosDados = CURSOS_DADOS);
+Profesor::Profesor(int id, int horasLaborales, std::string nombre,
+    std::string apellido, std::vector<Curso> *cursosDados) {
+    this->id = id;
+    this->horasLaborales = horasLaborales;
+    this->horasAsignadas = 0;  // NINGUNA HASTA EL MOMENTO
+    this->nombre = nombre;
+    this->apellido = apellido;
+    this->cursosDados = cursosDados;
+}
+
+std::string Profesor::getNombre(void) {
+    return this->nombre;
+}
+
+std::string Profesor::getApellido(void) {
+    return this->apellido;
+}
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS

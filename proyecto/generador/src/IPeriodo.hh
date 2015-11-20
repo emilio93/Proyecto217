@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef INTERFACE_PERIODO
 #define INTERFACE_PERIODO
 
@@ -140,8 +142,8 @@ class IPeriodo {
          *  @param resta El periodo que se resta.
          *  @return Un vector con los periodos generados a partir de la resta.
          */
-        virtual std::vector<IPeriodo*> *restar(IPeriodo *total, IPeriodo *resta) = 0;
-
+        virtual std::vector<IPeriodo*> *restar(IPeriodo *total,
+            IPeriodo *resta) = 0;
 };
 
 #endif

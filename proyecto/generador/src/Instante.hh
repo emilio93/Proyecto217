@@ -1,3 +1,5 @@
+/* copyright 2015 palomosFantásticos */
+
 #ifndef CLASE_INSTANTE
 #define CLASE_INSTANTE
 
@@ -11,8 +13,7 @@
  * dias, horas y minutos. Los días se definen en el enum DIA, la horas están en
  * el rango [0,23], los minutos en [0,59].
  */
-class Instante : public IInstante
-{
+class Instante : public IInstante {
     private:
         //! El día del instante.
         /*!
@@ -75,7 +76,7 @@ class Instante : public IInstante
          * Constructor de la clase. Inicializa los valores para el día, la hora
          * y el minuto.
          */
-        Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0);
+        explicit Instante(Dia dia = INDEFINIDO, int hora = 0, int minuto = 0);
 
         //! Convierte un IInstante a Instante.
         /*!

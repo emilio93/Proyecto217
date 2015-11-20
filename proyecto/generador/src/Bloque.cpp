@@ -9,7 +9,7 @@ class Plan;
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Bloque::Bloque(int &id, Plan &plan, int &semestre) {
+Bloque::Bloque(int id, Plan &plan, int semestre) {
     this->id = id;
     this->plan = plan;
     this->semestre = semestre;

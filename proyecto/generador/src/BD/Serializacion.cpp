@@ -109,6 +109,7 @@ std::vector<Curso> *Serializacion::getCursos(Bloque &bloque) {
             std::string sigla =  res->getString("sigla").c_str();
             Curso *curso = new Curso(idCurso, cantidadHoras, clasesEnSemana,
                 cantidadGrupos, bloque, nombre, sigla);
+
             if (Serializacion::buscarCurso(curso) != NULL) {
                 curso = Serializacion::buscarCurso(curso);
             } else {
@@ -140,6 +141,10 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
         res = prep_stmt->executeQuery();
 
         while (res->next()) {
+            int idProfe = res->getInt("id");
+            int horasLaboralesProfe = res->getInt("horasLaborales");
+            std::string nombreProfe = res->getInt("nombre");
+            std::string apellidoProfe = res->getInt("apellido");
         }
         delete res;
         delete prep_stmt;
@@ -179,28 +184,40 @@ Curso *Serializacion::buscarCurso(Curso *curso) {
  ** MÉTODO DE PRUEBA
  ******************************************************************************/
 
-int testSerializacion(void) {
+void testSerializacion(void) {
     using std::cout;
     using std::endl;
+    using std::vector;
 
-    std::vector<Plan> *planes = Serializacion::getPlanes();
+    vector<Plan> *planes = Serializacion::getPlanes();
 
     for (unsigned int i = 0; i < planes->size(); i++) {
         cout << "Plan: " << planes->at(i).getNombre() << endl;
 
-        std::vector<Bloque> *bloques = planes->at(i).getBloques();
+        vector<Bloque> *bloques = planes->at(i).getBloques();
 
         for (unsigned int j = 0; j < bloques->size(); j++) {
             cout << "\tBloque " << bloques->at(j).getId() <<": ";
             cout << "Semestre " << bloques->at(j).getSemestre() << endl;
 
-            std::vector<Curso> *cursos = bloques->at(j).getCursos();
+            vector<Curso> *cursos = bloques->at(j).getCursos();
 
             for (unsigned int k = 0; k < cursos->size(); k++) {
                 cout << "\t\tCurso " << cursos->at(k).getNombre();
                 cout << " - " << cursos->at(k).getSigla() << endl;
+
+                vector<Profesor> *profesores = cursos->at(i).getProfesores();
+
+                cout << "\t\t\tProfesores del curso: " << endl;
+                for (size_t l = 0; l < profesores->size(); l++) {
+                    cout << "\t\t\t" << profesores->at(l).getNombre() << " ";
+                    cout << profesores->at(l).getApellido() << endl;
+                }  // Profesores
+                delete profesores;
             }  // Cursos
+            delete cursos;
         }  // Bloques
+        delete bloques;
     }  // Planes
-    return 0;
+    delete planes;
 }

@@ -24,9 +24,9 @@ createODIR:
 
 #LOS BLOQUES AYUDAN A DEBUGUEAR(MUESTRA DONDE COMIENZA COMPILACIÓN CLARAMENTE)
 tests:
-	echo █████████████████ COMENZANDO COMPILACION █████████████████
-	echo █████████████████ COMENZANDO COMPILACION █████████████████
-	echo █████████████████ COMENZANDO COMPILACION █████████████████
+	# █████████████████████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀███████████████████████ #
+	# █████████████████████████ COMENZANDO COMPILACIÓN ███████████████████████ #
+	# █████████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄███████████████████████ #
 	$(CC) $(BEFORE) $(SRC)tests.cpp -o $(ODIR)tests.exe $(LFLAGS) $(AFTER)
 
 Bloque.o:
