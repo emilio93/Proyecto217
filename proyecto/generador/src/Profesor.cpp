@@ -47,6 +47,13 @@ std::string Profesor::getApellido(void) {
     return this->apellido;
 }
 
+
+bool Profesor::igual(Profesor *profesor) {
+    return this->getNombre() == profesor->getNombre() &&
+        this->getApellido() == profesor->getApellido();
+}
+
+
 /*******************************************************************************
  ** MÉTODOS PRIVADOS
  ******************************************************************************/
