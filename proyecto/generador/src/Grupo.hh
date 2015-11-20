@@ -37,7 +37,12 @@ class Grupo {
         // devuelve una lista de profesores disponibles Emilio dijo que se podia
         std::vector<Profesor> getProfesor(Curso *CursoActual);//este método está raro.
 
-        void setProfesor(Profesor *Profesorasignado);
+        //!
+        /*!
+         * [setProfesor description]
+         * @return  [description]
+         */
+        bool setProfesor(void);
 
         void ponerEnHorario(Grupo *GrupoActual);
         // int buscarProfesor(&List<Profesores>);

@@ -83,11 +83,25 @@ class Profesor {
             std::string nombre = NOMBRE, std::string apellido = APELLIDO,
             std::vector<Curso> *cursosDados = CURSOS_DADOS);
 
+        void setId(int id);
+        void setHorasLaborales(int horasLaborales);
+        int getId(void);
         std::string getNombre(void);
         std::string getApellido(void);
 
+        //! Indica si el profesor está disponible en cierto horario.
+        /*!
+         * [estoyDisponible description]
+         * @param  horarioGrupo [description]
+         * @return              [description]
+         *
+         * TODO Falta implementar
+         */
+        bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo);
+
         // Esto debe devolver el horario del profe
         int getHorario(void);
+
 
         // Esto debe devolver el horario del profe
         int getHorario(Profesor *Profesoractual);

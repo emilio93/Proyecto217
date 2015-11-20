@@ -31,12 +31,24 @@ std::vector<Curso> *Profesor::CURSOS_DADOS = NULL;
 // std::vector<Curso> *cursosDados = CURSOS_DADOS);
 Profesor::Profesor(int id, int horasLaborales, std::string nombre,
     std::string apellido, std::vector<Curso> *cursosDados) {
-    this->id = id;
-    this->horasLaborales = horasLaborales;
+    this->setId(id);
+    this->setHorasLaborales(horasLaborales);
     this->horasAsignadas = 0;  // NINGUNA HASTA EL MOMENTO
     this->nombre = nombre;
     this->apellido = apellido;
     this->cursosDados = cursosDados;
+}
+
+void Profesor::setId(int id) {
+    this->id = id;
+}
+
+void Profesor::setHorasLaborales(int horasLaborales) {
+    this->horasLaborales = horasLaborales;
+}
+
+int Profesor::getId(void) {
+    return this->id;
 }
 
 std::string Profesor::getNombre(void) {
@@ -46,7 +58,6 @@ std::string Profesor::getNombre(void) {
 std::string Profesor::getApellido(void) {
     return this->apellido;
 }
-
 
 bool Profesor::igual(Profesor *profesor) {
     return this->getNombre() == profesor->getNombre() &&
