@@ -1,5 +1,6 @@
 /* copyright 2015 palomosFantásticos */
 
+#include <ctime>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -50,6 +51,8 @@ int main(void) {
     while (elegida != 0) {
         if (Misc::enRango(elegida, 1, 11)) {
             cout << "****INICIO PRUEBA*****" << endl << endl;
+
+            clock_t begin = clock();
             switch (elegida) {
                 case 1:
                     testBloque();
@@ -85,7 +88,10 @@ int main(void) {
                     testSerializacion();
                     break;
             }
+            clock_t end = clock();
+            double duracion = 1000 * (double(end - begin) / CLOCKS_PER_SEC );
             cout << endl << "****FIN PRUEBA*****" << endl;
+            cout << "Duracion: " << duracion << "ms"<< endl;
         } else {
             cout << "No selecciono un número adecuado" << endl;
         }
