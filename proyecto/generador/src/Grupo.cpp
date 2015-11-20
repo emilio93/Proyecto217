@@ -22,6 +22,28 @@ Grupo::Grupo(int id, Curso *curso, Profesor *profesor){
     this->profesor = profesor;
 
 }
+int Grupo ::getId(void){
+	return this->id;
+}
+Curso Grupo::*getCurso(Grupo *GrupoActual){
+	
+	//*Curso = Serializacion::getCursos(*GrupoActual);//serialization no tiene un método que le entre "grupo" y diga el curso
+	
+	return *Curso; // devuelve el curso dueño de este grupo
+}
+
+void Grupo::setProfesor(Profesor *Profesorasignado){ //set al profesor asignado para este grupo
+	this->Profesorasignado = profesor;
+	return
+}
+void Grupo::ponerEnHorario(Grupo *GrupoActual){//crear algo para set en horario..no encuentro ningun archivo con horario. 
+	//Class horario?? tal vez
+	
+}
+std::vector<Profesor> Grupo :: getProfesor(Curso *CursoActual){//objeto o puntero a objeto
+	//Profesor o serialización quien tiene el método?
+	return Serializacion::getProfesor(Curso *CursoActual);
+}
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS

@@ -23,7 +23,7 @@
 class Grupo {
     private:
         int id;
-        Curso *curso;
+        Curso *curso;//punteros u objetos gente?
         Profesor *profesor;
         std::vector<IPeriodo> *horario;
         int cantidadhoras;
@@ -31,14 +31,11 @@ class Grupo {
 
     public:
         Grupo(int id,Curso *curso, Profesor *profesor);
-
+		int getId(void);
         // devuelve un puntero al curso de este grupo.
         Curso *getCurso(Grupo *GrupoActual);
         // devuelve una lista de profesores disponibles Emilio dijo que se podia
-        // implementar en
-        // SQL la parte de pedir profes disponibles pero sino ahi se hace en el
-        // método.
-        std::vector<Profesor> getProfesor(Curso *CursoActual);
+        std::vector<Profesor> getProfesor(Curso *CursoActual);//este método está raro.
 
         void setProfesor(Profesor *Profesorasignado);
 
