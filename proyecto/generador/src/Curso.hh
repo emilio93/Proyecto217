@@ -24,7 +24,7 @@
  * cursos, no muestra los grupos, porque estos son ajenos al plan de
  * estudios, y más bien inherentes al horario que es creado.
  * Un Curso, sin embargo, si puede crear un Grupo y olvidarse de él.
- * Difiere esta clase de la conceptualización dada(la del plan de
+ * Difiere esta clase de la conceptualización dada ( la del plan de
  * estudios) porque se contempla la cantidad de grupos que habrán de este
  * curso.
  *
@@ -191,7 +191,7 @@ class Curso {
 
         //! Asigna los bloques a los que pertenece el curso.
 		/*!
-		 * Método set para la lista de cbloquesursos a los que pertenece
+		 * Método set para la lista de bloques a los que pertenece
 		 * el curso
 		 * @param bloques Lista de bloques del curso
 		 */
