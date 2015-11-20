@@ -117,17 +117,11 @@ class Curso {
 		 * @param sigla Sigla del curso.
 		 * @param bloque Un bloque al cual pertence el grupo.
 		 */
-<<<<<<< HEAD
         Curso(int id = ID, int cantidadHoras = CANTIDAD_HORAS,
             int clasesEnSemana = CLASES_EN_SEMANA,
             int cantidadGrupos = CANTIDAD_GRUPOS, Bloque &bloque = BLOQUE,
             std::string nombre = NOMBRE, std::string sigla = SIGLA);
-=======
-        Curso(int &id = ID, int &cantidadHoras = CANTIDAD_HORAS,
-            int &clasesEnSemana = CLASES_EN_SEMANA,
-            int &cantidadGrupos = CANTIDAD_GRUPOS, Bloque &bloque = BLOQUE,
-            std::string &nombre = NOMBRE, std::string &sigla = SIGLA);
->>>>>>> 888e23643ae905a31ef9234e9ba78fb9464ce27d
+
 
         //! Obtiene el id del curso.
 		/*!
