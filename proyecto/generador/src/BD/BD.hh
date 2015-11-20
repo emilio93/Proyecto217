@@ -34,7 +34,8 @@ class BD {
          * Imprime un error pertinente en caso de excepción.
          * @param e La excepción.
          */
-        static void manejarExcepcion(sql::SQLException &e);
+        static void manejarExcepcion(sql::SQLException &e, int line,
+            const char *function, const char *file);
 
         //! Llena la base de datos con instantes útiles.
         /*!

@@ -27,14 +27,15 @@ sql::Connection *BD::conectar(void) {
         this->con = driver->connect(dbHost, dbUser, dbPass);
         this->con->setSchema(dbName);
     } catch (sql::SQLException &e) {
-        BD::manejarExcepcion(e);
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
     }
     return this->con;
 }
 
-void BD::manejarExcepcion(sql::SQLException &e) {
-    std::cout << "# ERR: SQLException in " << __FILE__;
-    std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__;
+void BD::manejarExcepcion(sql::SQLException &e, int line,
+    const char *function, const char *file) {
+    std::cout << "# ERR: SQLException in " << file;
+    std::cout << "(" << function << ") on line " << line;
     std::cout << std::endl << "# ERR: " << e.what();
     std::cout << " (MySQL error code: " << e.getErrorCode();
     std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
@@ -59,7 +60,7 @@ bool BD::llenarInstante(void) {
             } catch (sql::SQLException &e) {
                 std::string error(e.what());
                 if (error.find("Duplicate entry") == std::string::npos) {
-                    BD::manejarExcepcion(e);
+                    BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
                 }
             }  // TRY CATCH
         }  // FOR HORAS
@@ -97,8 +98,7 @@ bool BD::llenarPeriodoCursos(void) {
                     continue;
                 }
             } catch (sql::SQLException &e) {
-                std::cout << "Linea: " << __LINE__ << std::endl;
-                BD::manejarExcepcion(e);
+                BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
             }
 
             search_stmt->setInt(2, inicioDia + (j+1)*2);
@@ -111,8 +111,7 @@ bool BD::llenarPeriodoCursos(void) {
                     continue;
                 }
             } catch (sql::SQLException &e) {
-                std::cout << "Linea: " << __LINE__ << std::endl;
-                BD::manejarExcepcion(e);
+                BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
             }
 
             main_stmt->setInt(1, idInicio);
@@ -123,7 +122,7 @@ bool BD::llenarPeriodoCursos(void) {
             } catch (sql::SQLException &e) {
                 std::string error(e.what());
                 if (error.find("Duplicate entry") == std::string::npos) {
-                    BD::manejarExcepcion(e);
+                    BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
                 }
             }
         }
@@ -138,8 +137,7 @@ bool BD::llenarPeriodoCursos(void) {
                     continue;
                 }
             } catch (sql::SQLException &e) {
-                std::cout << "Linea: " << __LINE__ << std::endl;
-                BD::manejarExcepcion(e);
+                BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
             }
 
             search_stmt->setInt(2, inicioDia + (j+1)*3);
@@ -152,8 +150,7 @@ bool BD::llenarPeriodoCursos(void) {
                     continue;
                 }
             } catch (sql::SQLException &e) {
-                std::cout << "Linea: " << __LINE__ << std::endl;
-                BD::manejarExcepcion(e);
+                BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
             }
 
             main_stmt->setInt(1, idInicio);
@@ -164,7 +161,7 @@ bool BD::llenarPeriodoCursos(void) {
             } catch (sql::SQLException &e) {
                 std::string error(e.what());
                 if (error.find("Duplicate entry") == std::string::npos) {
-                    BD::manejarExcepcion(e);
+                    BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
                 }
             }
         }
