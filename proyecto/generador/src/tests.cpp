@@ -85,11 +85,14 @@ int main(void) {
                     testBD();
                     break;
                 case 11:
-                    testSerializacion();
+                    for (size_t i = 0; i < 1000; i++) {
+                        /* code */
+                        testSerializacion();
+                    }
                     break;
             }
             clock_t end = clock();
-            double duracion = 1000 * (double(end - begin) / CLOCKS_PER_SEC );
+            double duracion = 1000 * (double(end - begin) / CLOCKS_PER_SEC);
             cout << endl << "****FIN PRUEBA*****" << endl;
             cout << "Duracion: " << duracion << "ms"<< endl;
         } else {

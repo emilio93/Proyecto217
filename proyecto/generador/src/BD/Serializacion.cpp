@@ -26,7 +26,9 @@
  ** ATRIBUTOS ESTÁTICOS PRIVADOS
  ******************************************************************************/
 
-std::vector<Profesor> Serializacion::profesoresExistentes = std::vector<Profesor>();
+std::vector<Profesor> Serializacion::profesoresExistentes =
+    std::vector<Profesor>();
+
 std::vector<Curso> Serializacion::cursosExistentes = std::vector<Curso>();
 
 /*******************************************************************************
@@ -66,7 +68,8 @@ std::vector<Bloque> *Serializacion::getBloques(Plan &plan) {
         sql::PreparedStatement *prep_stmt;
         sql::ResultSet *res;
 
-        prep_stmt = con->prepareStatement("SELECT * from Bloque WHERE idPlan = ?");
+        prep_stmt = con->prepareStatement(
+            "SELECT * from Bloque WHERE idPlan = ?");
 
         prep_stmt->setInt(1, id);
         res = prep_stmt->executeQuery();
@@ -95,7 +98,16 @@ std::vector<Curso> *Serializacion::getCursos(Bloque &bloque) {
         sql::PreparedStatement *prep_stmt;
         sql::ResultSet *res;
 
-        prep_stmt = con->prepareStatement("SELECT Curso.id, Curso.cantidadHoras, Curso.clasesEnSemana, Curso.cantidadGrupos, Curso.nombre, Curso.sigla FROM Curso INNER JOIN CursosBloque ON CursosBloque.idCurso = Curso.id INNER JOIN Bloque ON Bloque.id = CursosBloque.idBloque WHERE Bloque.id = ?");
+        prep_stmt = con->prepareStatement(
+            "SELECT "
+                "Curso.id, Curso.cantidadHoras, Curso.clasesEnSemana, "
+                "Curso.cantidadGrupos, Curso.nombre, Curso.sigla "
+            "FROM Curso "
+            "INNER JOIN CursosBloque "
+            "ON CursosBloque.idCurso = Curso.id "
+            "INNER JOIN Bloque "
+            "ON Bloque.id = CursosBloque.idBloque "
+            "WHERE Bloque.id = ?");
 
         prep_stmt->setInt(1, id);
         res = prep_stmt->executeQuery();
@@ -136,7 +148,16 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
         sql::PreparedStatement *prep_stmt;
         sql::ResultSet *res;
 
-        prep_stmt = con->prepareStatement("SELECT Profesor.id, Profesor.horasLaborales, Profesor.nombre, Profesor.apellido FROM Profesor INNER JOIN ProfesoresCurso ON Profesor.id = ProfesoresCurso.idProfesor INNER JOIN Curso ON Curso.id = ProfesoresCurso.idCurso WHERE Curso.id = ?");
+        prep_stmt = con->prepareStatement(
+            "SELECT "
+                "Profesor.id, Profesor.horasLaborales, Profesor.nombre, "
+                "Profesor.apellido "
+            "FROM Profesor "
+            "INNER JOIN ProfesoresCurso "
+            "ON Profesor.id = ProfesoresCurso.idProfesor "
+            "INNER JOIN Curso "
+            "ON Curso.id = ProfesoresCurso.idCurso "
+            "WHERE Curso.id = ?");
 
         prep_stmt->setInt(1, id);
         res = prep_stmt->executeQuery();
