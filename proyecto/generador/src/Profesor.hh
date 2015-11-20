@@ -62,6 +62,7 @@ class Profesor {
 		 *  Son cursos que el profesor tiene la capacidad de impartir.
 		 */
         std::vector<Curso> *cursosDados;
+<<<<<<< HEAD
 
 
         //! Valor id por defecto.
@@ -89,6 +90,12 @@ class Profesor {
 
         // Esto debe devolver el horario del profe
         int getHorario(void);
+=======
+
+    public:
+        // Esto debe devolver el horario del profe
+        int getHorario(Profesor *Profesoractual);
+>>>>>>> 888e23643ae905a31ef9234e9ba78fb9464ce27d
 
         //! Verifica si el profesor da cierto curso.
 		/*!

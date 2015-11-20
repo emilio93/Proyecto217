@@ -24,7 +24,11 @@ class Bloque {
         Plan plan;
         int semestre;
     public:
+<<<<<<< HEAD
         Bloque(int id, Plan &plan, int semestre);
+=======
+        Bloque(int &id, Plan &plan, int &semestre);
+>>>>>>> 888e23643ae905a31ef9234e9ba78fb9464ce27d
         int getId(void);
         int getSemestre(void);
 
