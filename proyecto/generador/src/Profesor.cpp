@@ -47,6 +47,10 @@ void Profesor::setHorasLaborales(int horasLaborales) {
     this->horasLaborales = horasLaborales;
 }
 
+std::vector<Profesor> *Profesor::getProfesores(Curso &curso) {
+    return NULL;
+}
+
 int Profesor::getId(void) {
     return this->id;
 }

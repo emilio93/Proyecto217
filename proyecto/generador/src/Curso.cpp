@@ -1,6 +1,8 @@
 /* copyright 2015 palomosFantásticos */
 
 #include <stddef.h>
+
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -34,7 +36,7 @@ Curso::Curso(int id, int cantidadHoras, int clasesEnSemana,
     this->setClasesEnSemana(clasesEnSemana);
     this->setCantidadGrupos(cantidadGrupos);
     this->setBloques(new std::vector<Bloque>());
-    this->getBloques()->push_back(bloque);
+    this->agregarBloque(bloque);
     this->setNombre(nombre);
     this->setSigla(sigla);
 }
@@ -77,6 +79,10 @@ std::vector<Bloque> *Curso::getBloques(void) {
 
 void Curso::setBloques(std::vector<Bloque> *bloques) {
     this->bloques = bloques;
+}
+
+void Curso::agregarBloque(Bloque &bloque) {
+        this->bloques->push_back(bloque);
 }
 
 std::string Curso::getNombre(void) {

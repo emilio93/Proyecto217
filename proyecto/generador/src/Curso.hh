@@ -45,8 +45,8 @@ class Curso {
 
         //! Cantidad de horas del curso.
 		/*!
-		 * La cantidad de horas indica cuantas horas de clases se
-		 * imparten en el curso a lo largo de una semana.
+		 * La cantidad de horas indica cuantas horas de clases se imparten en el
+		 * curso a lo largo de una semana.
 		 */
         int cantidadHoras;
 
@@ -59,8 +59,8 @@ class Curso {
 
         //! Cantidad de grupos del curso.
 		/*!
-		 * La cantidad de grupos indica cuantos grupos de este curso
-		 * deben existir.
+		 * La cantidad de grupos indica cuantos grupos de este curso deben
+		 * existir.
 		 */
         int cantidadGrupos;
 
@@ -79,8 +79,7 @@ class Curso {
 
         //! Sigla del curso.
 		/*!
-		 * La sigla del curso, al igual que el nombre, le da identidad al
-		 * curso.
+		 * La sigla del curso, al igual que el nombre, le da identidad al curso.
 		 */
         std::string sigla;
 
@@ -109,7 +108,7 @@ class Curso {
         //! Asigna un Curso.
 		/*!
 		 * Constructor de la clase con sus valores por defecto.
-		 * @param id Id El id del curso.
+		 * @param id El id del curso.
 	     * @param cantidadHoras La cantidad de horas del curso por semana.
 	 	 * @param clasesEnSemana La cantidad clases del curso por semana.
 		 * @param CantidadGrupos La cantidad de gruposd el curso.
@@ -183,19 +182,24 @@ class Curso {
 
         //! Obtiene los bloques a los que pertenece el curso.
 		/*!
-		 * Método get para la lista de bloques a los que pertenece el
-		 * curso.
-		 * @return  Nombre del curso.
+		 * Método get para la lista de bloques a los que pertenece el curso.
+		 * @return  Bloques a los que pertenece el curso.
 		 */
         std::vector<Bloque> *getBloques(void);
 
         //! Asigna los bloques a los que pertenece el curso.
 		/*!
-		 * Método set para la lista de bloques a los que pertenece
-		 * el curso
-		 * @param bloques Lista de bloques del curso
+		 * Método set para la lista de bloques a los que pertenece el curso.
+		 * @param bloques Lista de bloques del curso.
 		 */
         void setBloques(std::vector<Bloque> *bloques);
+
+        //! Agrega un bloque al cual el curso pertenece.
+        /*!
+         * Agrega un bloque al cual el curso pertenece.
+         * @param bloques El nuevo bloque al cual el curso pertenece.
+         */
+        void agregarBloque(Bloque &bloques);
 
         //! Obtiene el nombre del curso.
 		/*!

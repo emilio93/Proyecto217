@@ -25,7 +25,7 @@ class Grupo;
  * manera está al tanto de que grupos le han sido asignados.
  */
 class Profesor {
-    private:
+     private:
         //! El identificador único del profesor.
 		/*!
 		 * Contiene el id asignado al profesor en la base de datos
@@ -79,27 +79,28 @@ class Profesor {
         //! Valor de cursos dados por defecto.
         static std::vector<Curso> *CURSOS_DADOS;  // = NULL
 
-    public:
+     public:
         Profesor(int id = ID, int horasLaborales = HORAS_LABORALES,
             std::string nombre = NOMBRE, std::string apellido = APELLIDO,
             std::vector<Curso> *cursosDados = CURSOS_DADOS);
+
+        static std::vector<Profesor> *getProfesores(Curso &curso);
 
 
         void setId(int id);
         void setHorasLaborales(int horasLaborales);
         int getId(void);
 
-		//! Método getNombre(void)
+        //! Método getNombre(void)
 		/*!
-		 * Devuelve el nombre del profesor
+		 * Devuelve el nombre del profesor.
 		 */
-
         std::string getNombre(void);
-        
-        
+
+
         //! Método getApellido(void)
 		/*!
-		 * Devuelve el apellido del profesor
+		 * Devuelve el apellido del profesor.
 		 */
         std::string getApellido(void);
 
@@ -109,24 +110,21 @@ class Profesor {
          * @param  horarioGrupo [description]
          * @return              [description]
          *
-         * TODO Falta implementar
+         * TODO Falta implementar.
          */
         bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo);
 
         // Esto debe devolver el horario del profe
         //! Devuelve el horario del profesor actual
 		/*!
-		 * 
+		 *
 		 * @param Profesor *Profesoractual
 		 */
         int getHorario(void);
 
-
-
-
         //! Devuelve el horario del profesor actual
 		/*!
-		 * 
+		 *
 		 * @param Profesor *Profesoractual
 		 */
 
@@ -140,7 +138,6 @@ class Profesor {
 		 */
         bool verificarCurso(Curso *cursoPrueba);
 
-
         //! El profesor se asigna un grupo
 		/*!
 		 * Modifica el horario del profesor y horasAsignadas
@@ -149,7 +146,20 @@ class Profesor {
         void asignarGrupo(Grupo *grupo);
         /*podria devolver un horario utilizando la función getHorario()*/
 
-        bool igual(Profesor *profesor);// Esto no se que hace
+        //! Compara si dos profesores son iguales.
+        /*!
+         * Este método compara el nombre y el apellido del profesor. Sería una
+         * desgracia si dos profesores tiene el mismo nombre y apellido.
+         * @param  profesor El profesor con el cual se compara.
+         * @return          True en caso que sean el "mismo" profesor.
+         *
+         * TODO: mejorar manera de identificar la igualdad de profesores.
+         *       quizas se pueda agregar un código que los identifique
+         *       únicamente, ej: Francisco Siles Canales sería FSC(o SIL,
+         *       o FSC). Esto no es necesario por el momento y es fácil de
+         *       agregar.
+         */
+        bool igual(Profesor *profesor);  // Esto no se que hace
 };
 
 #endif
