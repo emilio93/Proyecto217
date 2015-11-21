@@ -54,6 +54,26 @@ bool Profesor::igual(Profesor *profesor) {
 }
 
 
+//Tenemos 2 getHorario() por qué?
+int Profesor getHorario(Profesor *ProfesorActual){
+	
+}
+
+int Profesor getHorario(void){
+	
+}
+
+bool verificarCurso(Curso *cursoPrueba){
+	
+}
+
+void asignarGrupo(Grupo *grupo){
+	//cursosDados.push_back(*grupo);
+	grupo->push_back(*cursosDados);
+}
+
+
+
 /*******************************************************************************
  ** MÉTODOS PRIVADOS
  ******************************************************************************/

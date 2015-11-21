@@ -111,7 +111,7 @@ class Profesor {
 		 * @param Profesor *Profesoractual
 		 */
         // Esto debe devolver el horario del profe
-        int getHorario(Profesor *Profesoractual);
+        int getHorario(Profesor *ProfesorActual);
 
         //! Verifica si el profesor da cierto curso.
 		/*!
