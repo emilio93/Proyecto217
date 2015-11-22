@@ -177,7 +177,6 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
             } else {
                 Serializacion::profesoresExistentes.push_back(*profe);
             }
-
             profesores->push_back(*profe);
         }
         delete res;
@@ -189,7 +188,57 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
     return profesores;
 }
 
-std::vector< std::vector<IPeriodo> > *Serializacion::getPeriodos(Curso &curso) {
+std::vector< std::vector<IPeriodo&> > *Serializacion::getPeriodos(
+    Curso &curso) {
+    return NULL;
+}
+
+std::vector< std::vector<IPeriodo&> > *Serializacion::getPeriodos(
+    Profesor &profesor) {
+    int id = profesor.getId();
+
+    std::vector<Profesor> *profesores = new std::vector<Profesor>();
+    try {
+        sql::Connection *con = Serializacion::getCon();
+        sql::PreparedStatement *prep_stmt;
+        sql::ResultSet *res;
+
+        prep_stmt = con->prepareStatement(
+            "SELECT "
+                "Instante.dia, Instante.hora, Instante.minuto "
+            "FROM Instante "
+            "INNER JOIN Profesores "
+            "ON Profesor.id = ProfesoresCurso.idProfesor "
+            "INNER JOIN Curso "
+            "ON Curso.id = ProfesoresCurso.idCurso "
+            "WHERE Curso.id = ?");
+
+        prep_stmt->setInt(1, id);
+        res = prep_stmt->executeQuery();
+
+        while (res->next()) {
+            int idProfe = res->getInt("id");
+            int horasLaboralesProfe = res->getInt("horasLaborales");
+            std::string nombreProfe = res->getString("nombre").c_str();
+            std::string apellidoProfe = res->getString("apellido").c_str();
+
+            Profesor *profe = new Profesor(idProfe, horasLaboralesProfe,
+                nombreProfe, apellidoProfe);
+
+            if (Serializacion::buscarProfesor(profe) != NULL) {
+                delete profe;
+                profe = Serializacion::buscarProfesor(profe);
+            } else {
+                Serializacion::profesoresExistentes.push_back(*profe);
+            }
+            profesores->push_back(*profe);
+        }
+        delete res;
+        delete prep_stmt;
+        delete con;
+    } catch (sql::SQLException &e) {
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
+    }
     return NULL;
 }
 

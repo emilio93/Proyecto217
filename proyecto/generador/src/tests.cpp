@@ -85,10 +85,7 @@ int main(void) {
                     testBD();
                     break;
                 case 11:
-                    for (size_t i = 0; i < 1000; i++) {
-                        /* code */
-                        testSerializacion();
-                    }
+                    testSerializacion();
                     break;
             }
             clock_t end = clock();
