@@ -46,6 +46,13 @@ class Grupo {
         // int cantidadhoras;
 
         void elegirProfesor(void);
+        
+         //! Documentar
+        /*!
+         * Documentación más extensa
+         * @return  Que devuelve el método.
+         */
+        bool setProfesor(void);
 
      public:
         //! Asigna el id y el curso del grupo.
@@ -85,13 +92,6 @@ class Grupo {
 
         //! Devuelve una lista de posibles profesores para dar el grupo.
         std::vector<Profesor> *getPosiblesProfesores(void);
-
-        //! Documentar
-        /*!
-         * Documentación más extensa
-         * @return  Que devuelve el método.
-         */
-        bool setProfesor(void);
 
         void ponerEnHorario(Grupo *GrupoActual);
         // int buscarProfesor(&List<Profesores>);
