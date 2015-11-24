@@ -63,26 +63,27 @@ std::string Profesor::getApellido(void) {
     return this->apellido;
 }
 
+bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo){
+	//falta implementar
+}
+
 bool Profesor::igual(Profesor *profesor) {
     return this->getNombre() == profesor->getNombre() &&
         this->getApellido() == profesor->getApellido();
 }
 
 
-//Tenemos 2 getHorario() por qué?
-int Profesor getHorario(Profesor *ProfesorActual){
-	
-}
 
-int Profesor getHorario(void){
-	
+std::vector <IPeriodo*> *getHorario(void){
+	//Faltan Implementar
 }
 
 bool verificarCurso(Curso *cursoPrueba){
-	
+	//Falta implementar
 }
 
 void asignarGrupo(Grupo *grupo){
+	//Falta implementar
 	//cursosDados.push_back(*grupo);
 	grupo->push_back(*cursosDados);
 }

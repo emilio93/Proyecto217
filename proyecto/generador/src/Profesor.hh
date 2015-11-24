@@ -79,6 +79,8 @@ class Profesor {
         //! Valor de cursos dados por defecto.
         static std::vector<Curso> *CURSOS_DADOS;  // = NULL
 
+
+
      public:
         Profesor(int id = ID, int horasLaborales = HORAS_LABORALES,
             std::string nombre = NOMBRE, std::string apellido = APELLIDO,
@@ -86,9 +88,22 @@ class Profesor {
 
         static std::vector<Profesor> *getProfesores(Curso &curso);
 
-
+        //! Método setId(int id)
+		/*!
+		 * Asigna el id al profesor
+		 */
         void setId(int id);
+        
+        //! Método setHorasLaborales(int horasLaborales)
+		/*!
+		 * Asigna la cantidad de horas laborales al profesor
+		 */
         void setHorasLaborales(int horasLaborales);
+        
+        //! Método int getId(void)
+		/*!
+		 * Devuelve el id asignado al profesor
+		 */
         int getId(void);
 
         //! Método getNombre(void)
@@ -120,16 +135,9 @@ class Profesor {
 		 *
 		 * @param Profesor *Profesoractual
 		 */
-        int getHorario(void);
+        std::vector <IPeriodo*> *getHorario(void);
 
-        //! Devuelve el horario del profesor actual
-		/*!
-		 *
-		 * @param Profesor *Profesoractual
-		 */
 
-        // Esto debe devolver el horario del profe
-        int getHorario(Profesor *ProfesorActual);
 
         //! Verifica si el profesor da cierto curso.
 		/*!
@@ -144,7 +152,7 @@ class Profesor {
 		 * @param grupo El grupo que se asigna el profesor.
 		 */
         void asignarGrupo(Grupo *grupo);
-        /*podria devolver un horario utilizando la función getHorario()*/
+        /*Podria devolver un horario utilizando la función getHorario()*/
 
         //! Compara si dos profesores son iguales.
         /*!
@@ -159,7 +167,7 @@ class Profesor {
          *       o FSC). Esto no es necesario por el momento y es fácil de
          *       agregar.
          */
-        bool igual(Profesor *profesor);  // Esto no se que hace
+        bool igual(Profesor *profesor); 
 };
 
 #endif
