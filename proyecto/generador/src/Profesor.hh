@@ -48,13 +48,13 @@ class Profesor {
 
         //! Nombre del profesor.
 		/*!
-		 * Nombre del profesor.
+		 * Contiene el Nombre del profesor.
 		 */
         std::string nombre;
 
         //! Apellido del profesor.
 		/*!
-		 * Apellido del profesor.
+		 * Contiene el Apellido del profesor.
 		 */
         std::string apellido;
 
@@ -63,6 +63,12 @@ class Profesor {
 		 *  Son cursos que el profesor tiene la capacidad de impartir.
 		 */
         std::vector<Curso> *cursosDados;
+        
+        //! Los grupos que se han asignado al profesor .
+		/*!
+		 *  Son grupos asignados al profesor
+		 */
+        std::vector<Grupo> *gruposAsignados; 
 
         //! Valor id por defecto.
         static int ID;  // = 0
@@ -78,7 +84,7 @@ class Profesor {
 
         //! Valor de cursos dados por defecto.
         static std::vector<Curso> *CURSOS_DADOS;  // = NULL
-
+		
 
 
      public:
@@ -86,7 +92,7 @@ class Profesor {
             std::string nombre = NOMBRE, std::string apellido = APELLIDO,
             std::vector<Curso> *cursosDados = CURSOS_DADOS);
 
-        static std::vector<Profesor> *getProfesores(Curso &curso);
+        static std::vector<Profesor> *getProfesores(Curso &curso);// Duda con esto
 
         //! Método setId(int id)
 		/*!
@@ -122,10 +128,10 @@ class Profesor {
         //! Indica si el profesor está disponible en cierto horario.
         /*!
          * [estoyDisponible description]
-         * @param  horarioGrupo [description]
-         * @return              [description]
+         * @param  horarioGrupo [vector con punteros a objetos IPeriodo] 
+         * @return              [bool indicando se esta o no disponible para el horario recibido como input]
          *
-         * TODO Falta implementar.
+         * Falta implementar.
          */
         bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo);
 
