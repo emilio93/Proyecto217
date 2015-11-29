@@ -19,22 +19,26 @@
  * El Bloque contiene los cursos que se recomienda que se lleva en un semestre.
  */
 class Bloque {
-    private:
+     private:
+        //! EL identificador del bloque.
         int id;
+
+        //! El plan al cual pertenece el bloque.
         Plan plan;
+
+        //! El semestre en que se cursa el bloque.
         int semestre;
-    public:
+     public:
+         //! Asigna los valores al bloque.
         Bloque(int id, Plan &plan, int semestre);
+
+        //! Método get para el identificador.
         int getId(void);
+
+        //! Método get para el semestre del bloque.
         int getSemestre(void);
 
-        //! Set de cursos
-        /*! \brief
-         *  \return
-        */
-        // std::set<Curso> cursos;
-        // nosotros treamos la lista de cursos de la base de datos no los
-        // ponemos
+        //! Obtiene la lista de cursos del bloque.
         std::vector<Curso> *getCursos(void);  // ocupamos una lista también
 };
 #endif
