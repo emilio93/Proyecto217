@@ -23,6 +23,8 @@ int Bloque::getId(void) {
     return this->id;
 }
 
+int Bloque::getPlan()
+
 std::vector<Curso> *Bloque::getCursos(void) {
     return Serializacion::getCursos(*this);
 }
