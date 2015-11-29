@@ -188,12 +188,12 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
     return profesores;
 }
 
-std::vector< std::vector<IPeriodo&> > *Serializacion::getPeriodos(
+std::vector< std::vector<IPeriodo*> > *Serializacion::getPeriodos(
     Curso &curso) {
     return NULL;
 }
 
-std::vector< std::vector<IPeriodo&> > *Serializacion::getPeriodos(
+std::vector< std::vector<IPeriodo*> > *Serializacion::getPeriodos(
     Profesor &profesor) {
     int id = profesor.getId();
 
