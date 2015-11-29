@@ -28,12 +28,16 @@ class Bloque {
 
         //! El semestre en que se cursa el bloque.
         int semestre;
+
      public:
          //! Asigna los valores al bloque.
         Bloque(int id, Plan &plan, int semestre);
 
         //! Método get para el identificador.
         int getId(void);
+
+        //! Método get para el plan al cuál pertenece el bloque.
+        Plan getPlan(void);
 
         //! Método get para el semestre del bloque.
         int getSemestre(void);

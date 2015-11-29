@@ -23,8 +23,8 @@ int Bloque::getId(void) {
     return this->id;
 }
 
-int Bloque::getPlan() {
-    return 0;
+Plan Bloque::getPlan() {
+    return this->plan;
 }
 
 std::vector<Curso> *Bloque::getCursos(void) {

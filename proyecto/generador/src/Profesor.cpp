@@ -63,8 +63,9 @@ std::string Profesor::getApellido(void) {
     return this->apellido;
 }
 
-bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo){
-	//Falta implementar
+bool Profesor::estoyDisponible(std::vector<IPeriodo> *horarioGrupo) {
+    // Falta implementar
+    return false;
 }
 
 bool Profesor::igual(Profesor *profesor) {
@@ -74,33 +75,34 @@ bool Profesor::igual(Profesor *profesor) {
 
 
 
-std::vector <IPeriodo*> *getHorario(void){
-	//Faltan Implementar
+std::vector <IPeriodo*> *Profesor::getHorario(void) {
+    // Faltan Implementar
+    return NULL;
+}
+
+bool Profesor::verificarCurso(Curso *cursoPrueba) {
+    std::vector<int>::size_type size = this->cursosDados->size();
+
+    bool doyCurso = false;
+
+    for (size_t i = 0; i < size; i++) {
+        if (this->cursosDados->at(i).igual(cursoPrueba)) {
+            doyCurso = true;
+        }
+        /* else {
+
+            return 0;
+        } */
+    }
+    return doyCurso;
 }
 
 
-//Problemas con el this...
-bool verificarCurso(Curso *cursoPrueba){ 
-	//std::vector<Curso> *cursosDados;
-	std::vector<int>::size_type size = this->cursosDados.size();
-	
-	for (int i = 0; i< size; i++){
-		if(cursoPrueba == this->cursosDados[i]){
-			return 1;
-			}
-		else return 0;
-		}
-	 
-}
-
-
-//Problemas con el this...
-void asignarGrupo(Grupo *grupo){
-	
-	//cursosDados.push_back(*grupo);
-	//grupo->push_back(*cursosDados);
-	this->gruposAsignados.push_back(grupo);
-	
+// Problemas con el this...
+void Profesor::asignarGrupo(Grupo *grupo) {
+    // cursosDados.push_back(*grupo);
+    // grupo->push_back(*cursosDados);
+    this->gruposAsignados->push_back(*grupo);
 }
 
 
