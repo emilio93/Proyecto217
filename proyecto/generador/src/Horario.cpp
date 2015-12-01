@@ -26,4 +26,79 @@
 void testHorario(void) {
     using std::cout;
     using std::endl;
+    Horario horario = Horario();
+    horario.menuPrincipal();
+}
+
+void Horario::generarHorario(void) {
+    using std::cout;
+    using std::endl;
+
+    cout << "Obteniendo planes...";
+    std::vector<Plan> *planes = Plan::getPlanes();
+    cout << "Listo." << endl;
+
+    for (size_t i = 0; i < planes->size(); i++) {
+        cout << "Obteniendo semestres del plan " << planes->at(i).getNombre();
+        cout << "...";
+        std::vector<Bloque> *bloques = planes->at(i).getBloques();
+        cout << "Listo." << endl;
+
+        for (size_t j = 0; j < bloques->size(); j++) {
+            cout << "\tObteniendo cursos del semestre ";
+            cout << bloques->at(j).getSemestre() << "...";
+            std::vector<Curso> *cursos = bloques->at(j).getCursos();
+            cout << "Listo." << endl;
+
+            for (size_t k = 0; k < cursos->size(); k++) {
+                cout << "\t\tAlistando curso " << cursos->at(k).toString();
+                cout << endl;
+            }
+        }
+    }
+}
+
+void Horario::menuPrincipal(void) {
+    using std::string;
+    using std::cout;
+    using std::endl;
+
+    bool horarioCreado = false;
+
+    if (horarioCreado) {
+        cout << "ATENCIÓN: En este momento hay un horario creado, si vuelve a ";
+        cout << "generar uno sobreescribir'a el existente." << endl;
+    }
+
+    int it = 1;
+    cout << "MENU PRINCIPAL" << endl;
+    cout << "¿Que desea hacer?" << endl;
+
+    cout << "\t" << it++ <<" - Generar Horario" << endl;
+    cout << "\t" << it++ <<" - Listar Datos" << endl;
+    cout << "\t" << it++ <<" - Insertar Datos" << endl;
+    cout << "\t" << it++ <<" - Eliminar Datos" << endl;
+    cout << "\t" << it++ <<" - Guardar en base de datos" << endl;
+    it = 0;
+    cout << "\t" << it++ <<" - Salir" << endl;
+
+    int valor = Misc::solicitarInt("Ingrese un valor");
+    switch (valor) {
+        case 1:
+            this->generarHorario();
+            // Realizar acción.
+            break;
+        case 2:
+            // Realizar acción.
+            break;
+        case 3:
+            // Realizar acción.
+            break;
+        case 4:
+            // Realizar acción.
+            break;
+        case 5:
+            // Realizar acción.
+            break;
+    }
 }
