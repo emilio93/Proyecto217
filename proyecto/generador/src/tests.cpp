@@ -37,9 +37,7 @@ int test(void) {
     cout << "\t11 - Clase Serializacion" << endl;
     cout << "test #: ";
 
-    int respuesta;
-    cin >> respuesta;
-    return respuesta;
+    return Misc::solicitarInt("", 0, 11);
 }
 
 //! Programa para probar las clases.
@@ -89,7 +87,7 @@ int main(void) {
                     break;
             }
             clock_t end = clock();
-            double duracion = 1000 * (double(end - begin) / CLOCKS_PER_SEC);
+            double duracion = 1000 * (static_cast<double>(end - begin) / CLOCKS_PER_SEC);
             cout << endl << "****FIN PRUEBA*****" << endl;
             cout << "Duracion: " << duracion << "ms"<< endl;
         } else {

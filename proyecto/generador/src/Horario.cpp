@@ -53,6 +53,25 @@ void Horario::generarHorario(void) {
             for (size_t k = 0; k < cursos->size(); k++) {
                 cout << "\t\tAlistando curso " << cursos->at(k).toString();
                 cout << endl;
+
+                cout << "\t\t\tObteniendo profesores para el curso...";
+                std::vector<Profesor> *profes = cursos->at(k).getProfesores();
+                cout << "Listo. [Profesores obtenidos: " << profes->size();
+                cout << "]" << endl;
+
+                cout << "\t\t\tObteniendo posibles horarios para el curso...";
+                // std::vector<IHorario*> *horariosCurso = cursos->at(k).getHorarios();
+                cout << "No se hace. [Horarios obtenidos: 0";
+                cout << "]" << endl;
+
+                for (int l = 0; l < cursos->at(k).getCantidadGrupos(); l++) {
+                    cout << "\t\t\tInicializando grupo " << l+1 << "...";
+                    Grupo grupo = Grupo(&cursos->at(k));
+                    cout << "Listo." << endl;
+
+                    cout << "\t\t\t\tSeleccionando Horario...No se hace" << endl;
+                    cout << "\t\t\t\tSeleccionando Profesor...No se hace" << endl;
+                }
             }
         }
     }

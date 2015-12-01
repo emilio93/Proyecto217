@@ -8,8 +8,11 @@
 #include <vector>
 
 class Horario {
-    public:
     private:
+    public:
+        void menuPrincipal(void);
+
+        void generarHorario(void);
 };
 
 #endif

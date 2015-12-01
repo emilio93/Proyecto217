@@ -27,8 +27,7 @@ class Grupo {
         int id;
 
         //! Es el curso al cual pertenece el grupo.
-        Curso *curso;  // punteros u objetos gente?
-                       // Puntero está bien.
+        Curso *curso;
 
         //! El profesor asignado al grupo.
         /*!
@@ -46,7 +45,7 @@ class Grupo {
         // int cantidadhoras;
 
         void elegirProfesor(void);
-        
+
          //! Documentar
         /*!
          * Documentación más extensa
@@ -55,8 +54,8 @@ class Grupo {
         bool setProfesor(void);
 
      public:
-        //! Asigna el id y el curso del grupo.
-        Grupo(int id, Curso *curso);
+        //! Asigna el curso del grupo.
+        Grupo(Curso *curso);
 
         //! Documentar
         int getId(void);

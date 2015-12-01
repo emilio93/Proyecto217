@@ -6,6 +6,7 @@
 #include <stddef.h>
 
 #include <iostream>
+#include <limits>
 #include <string>
 #include <sstream>
 
@@ -14,7 +15,7 @@
  * Clase de métodos miscelaneos. Se compone de métodos static varios.
  */
 class Misc {
-    public:
+     public:
         template<typename T>
         //! Indica si un número está dentro de un rango.
         /*!
@@ -48,6 +49,26 @@ class Misc {
             std::ostringstream stm;
             stm << n;
             return stm.str();
+        }
+
+        static int solicitarInt(std::string mensaje, int min = 0, int max = 0) {
+            int valor;
+            bool rangoSeleccionado = (min == max) || (min == 0 && max == 0) ?
+                false: true;
+
+            std::cout << mensaje << std::endl;
+            std::cin >> valor;
+
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            if (!std::cin.good() ||
+                (rangoSeleccionado && (valor < min || valor > max))) {
+                std::cout << "Valor incorrecto.";
+                return Misc::solicitarInt(mensaje, min, max);
+            }
+
+            return valor;
         }
 };
 

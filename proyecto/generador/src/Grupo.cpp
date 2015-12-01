@@ -52,8 +52,7 @@ estaba su código.
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Grupo::Grupo(int id, Curso *curso) {
-    this->setId(id);
+Grupo::Grupo(Curso *curso) {
     this->setCurso(curso);
     // El profesor no va en el constructor.
 }
