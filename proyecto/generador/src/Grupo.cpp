@@ -54,7 +54,7 @@ estaba su código.
 
 Grupo::Grupo(Curso *curso) {
     this->setCurso(curso);
-    // El profesor no va en el constructor.
+    
 }
 
 int Grupo::getId(void) {

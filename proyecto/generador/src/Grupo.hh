@@ -27,8 +27,8 @@ class Grupo {
         int id;
 
         //! Es el curso al cual pertenece el grupo.
-        Curso *curso;
-
+        Curso *curso;  
+      
         //! El profesor asignado al grupo.
         /*!
          * El profesor es elegido por el Grupo, de esta manera no es elegido
@@ -37,64 +37,58 @@ class Grupo {
          * la asignación del Grupo.
          */
         Profesor *profesor;
-
-        //! Es el horario en que se imparte el grupo.
+	
+      
         std::vector<IPeriodo*> *horario;
-
-        // Esto viene del curso.
-        // int cantidadhoras;
-
-        void elegirProfesor(void);
-
-         //! Documentar
-        /*!
-         * Documentación más extensa
-         * @return  Que devuelve el método.
-         */
+		//! Es el horario en que se imparte el grupo.
+  
         bool setProfesor(void);
-
+        /*!
+         * asigna el profesor disponible al curso.
+         *@return un booleano que indica si se pudo asignar el profesor.
+         */
+         
+		std::vector<Listaexcepciones*> *curso_sin_profesor; 
+		/*!no creo que esto sea bueno puntero a puntero 
+		pero necesito un lugar donde guardar los objetos curso
+		que no tienen profe
+		*/
+		
+		
      public:
-        //! Asigna el curso del grupo.
-        Grupo(Curso *curso);
-
-        //! Documentar
+        
+        Grupo(int id, Curso *curso);
+		//! Asigna el id y el curso del grupo.
+     
         int getId(void);
-
-        //! Documentar
-        void setId(int id);
-
-        //! Documentar
+		//! trae id del grupo
+       
+        Grupo *setId(int id);
+		//! asigna el id del grupo
+        
         Curso *getCurso(void);
-
-        // devuelve un puntero al curso de este grupo.
-        Curso *getCurso(Grupo *GrupoActual);
-
-        //! Documentar
-        void setCurso(Curso *curso);
-
-        //! Documentar
+		//! obtiene el puntero al curso dueño de este grupo.
+       
+        Grupo *setCurso(Curso *curso);
+		//! asigna el curso obtenido a este curso
+        
         Profesor *getProfesor(void);
-
-        //! Documentar
-        void setProfesor(Profesor *profesor);
-
-        //! Documentar
+		//! obtiene el puntero a profesor
+        
+        Grupo *setProfesor(Profesor *profesor);
+		//! asigna el profesor al profesor del curso
+             
         std::vector<IPeriodo*> *getHorario(void);
+		//!obtiene puntero a vector de punteros Iperiodo
+       
+        Grupo *setHorario(std::vector<IPeriodo*> *horario);
+		//! asigna ese horario en el vector de punteros a 
+		//! Iperiodo con el puntero obtenido en *getHorario
 
-        //! Documentar
-        void setHorario(std::vector<IPeriodo*> *horario);
-
-
-        // devuelve una lista de (posibles) profesores disponibles Emilio dijo
-        // que se podia
-        // este método está raro.
-
-        //! Devuelve una lista de posibles profesores para dar el grupo.
         std::vector<Profesor> *getPosiblesProfesores(void);
-
-        void ponerEnHorario(Grupo *GrupoActual);
-        // int buscarProfesor(&List<Profesores>);
-        // Creo que este busca un
-        // profesor de la lista disponible que pueda ser usado para el grupo.
+		//! obtiene un puntero al vector con la lista de 
+		//! profesores disponibles para el grupo
+		
+		        
 };
 #endif
