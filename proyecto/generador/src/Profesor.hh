@@ -133,7 +133,7 @@ class Profesor {
          *
          * Falta implementar.
          */
-        bool estoyDisponible(std::vector<IPeriodo> *horarioGrupo);
+        bool estoyDisponible(std::vector<IPeriodo*> *horarioGrupo);
 
         // Esto debe devolver el horario del profe
         //! Devuelve el horario del profesor actual
