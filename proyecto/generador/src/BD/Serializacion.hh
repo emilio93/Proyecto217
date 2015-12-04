@@ -111,7 +111,7 @@ class Serializacion {
          */
         static std::vector< std::vector<IPeriodo*> > *getPeriodos(Curso &curso);
 
-        
+
         static std::vector< std::vector<IPeriodo*> > *getPeriodos(
             Profesor &profesor);
 };
