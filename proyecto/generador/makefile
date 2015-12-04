@@ -14,6 +14,8 @@ DOXY = doxyfiles/
 
 main: createODIR tests
 
+silent: createODIR silenttests
+
 doxy:
 	mkdir -p docs/
 	rm -r docs/
@@ -28,6 +30,13 @@ tests:
 	# █████████████████████████ COMENZANDO COMPILACIÓN ███████████████████████ #
 	# █████████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄███████████████████████ #
 	$(CC) $(BEFORE) $(SRC)tests.cpp -o $(ODIR)tests.exe $(LFLAGS) $(AFTER)
+
+#LOS BLOQUES AYUDAN A DEBUGUEAR(MUESTRA DONDE COMIENZA COMPILACIÓN CLARAMENTE)
+silenttests:
+	# █████████████████████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀███████████████████████ #
+	# █████████████████████████ COMENZANDO COMPILACIÓN ███████████████████████ #
+	# █████████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄███████████████████████ #
+	$(CC) $(BEFORE) $(SRC)tests.cpp -o $(ODIR)tests.exe $(LFLAGS) $(AFTER) -w
 
 Bloque.o:
 	$(CC) $(SRC)Bloque.cpp $(CFLAGS) -o $(ODIR)Bloque.o
