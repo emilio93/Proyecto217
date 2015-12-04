@@ -63,7 +63,7 @@ std::string Profesor::getApellido(void) {
     return this->apellido;
 }
 
-bool Profesor::estoyDisponible(std::vector<IPeriodo> *horarioGrupo) {
+bool Profesor::estoyDisponible(std::vector<IPeriodo*> *horarioGrupo) {
     // Falta implementar
     return false;
 }
