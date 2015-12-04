@@ -15,10 +15,12 @@
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Grupo::Grupo(int id, Curso *curso,int contador) {
-    this->id = id;
+Grupo::Grupo(Curso *curso, int contador) {
     this->curso = curso;
     contador = 0;
+}
+Grupo::Grupo(Curso *curso) {
+    this->curso = curso;
 }
 
 int Grupo::getId(void) {
@@ -27,7 +29,7 @@ int Grupo::getId(void) {
 
 void Grupo::setId(int id) {
     this->id = id;
-    
+
 }
 
 Curso *Grupo::getCurso(void) {
@@ -36,16 +38,16 @@ Curso *Grupo::getCurso(void) {
 
 void Grupo::setCurso(Curso *curso) {
     this->curso = curso;
-  
+
 }
 
 Profesor *Grupo::getProfesor(void) {
     return this->profesor;
 }
 
-void Grupo::setProfesor(Profesor *profesor4) {
+void Grupo::setProfesor(Profesor *profesor) {
     this->profesor = profesor;
-    
+
 }
 
 std::vector<IPeriodo*> *Grupo::getHorario() {
@@ -54,7 +56,7 @@ std::vector<IPeriodo*> *Grupo::getHorario() {
 
 void Grupo::setHorario(std::vector<IPeriodo*> *horario){
     this->horario = horario;
-    
+
 }
 
 std::vector<Profesor> *Grupo::getPosiblesProfesores(void) {
@@ -65,24 +67,24 @@ std::vector<Profesor> *Grupo::getPosiblesProfesores(void) {
  ** MÉTODOS PRIVADOS
  ******************************************************************************/
 
-bool Grupo::asignarProfesor(void) {  
+bool Grupo::asignarProfesor(void) {
     bool asignado = false;
     std::vector<Profesor> *profesores = this->getPosiblesProfesores();
-	int i = 0;
+	size_t i = 0;
     for (i = 0; i < profesores->size(); i++) {
 		//se busca un profesor disponible para este grupo
         if (profesores->at(i).estoyDisponible(this->getHorario())) {
-            this->setProfesor(profesores->at(i));
+            this->setProfesor(&profesores->at(i));
             asignado = true;
             break;
         }
-         
+
     }
 
     if (!asignado) {
-		
+
 		//std::vector<int>::iterator it = ; //iterador no me sirve
-		grupo_sin_profesor->insert(grupo_sin_profesor->begin() + contador,this->getCurso()); 
+		grupo_sin_profesor->insert(grupo_sin_profesor->begin() + contador,this->getCurso());
 		//inserta el puntero al curso de este grupo a la lista
 		contador ++;
     }
