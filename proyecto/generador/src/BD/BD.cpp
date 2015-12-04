@@ -15,17 +15,19 @@
 #include "../Instante.hh"
 #include "../Dia.hh"
 
-sql::Connection *BD::conectar(void) {
-    std::string dbUser = "root";
-    std::string dbPass = "pass";
-    std::string dbHost = "tcp://127.0.0.1:3306";
-    std::string dbName = "horarios";
+std::string BD::USER = "root";
+std::string BD::PASS = "pass";
+std::string BD::HOST = "tcp://127.0.0.1:3306";
+std::string BD::NAME = "horarios";
 
+sql::Connection *BD::conectar(bool db) {
     try {
         sql::Driver * driver;
         driver = get_driver_instance();
-        this->con = driver->connect(dbHost, dbUser, dbPass);
-        this->con->setSchema(dbName);
+        this->con = driver->connect(BD::HOST, BD::USER, BD::PASS);
+        if (db) {
+            this->con->setSchema(BD::NAME);
+        }
     } catch (sql::SQLException &e) {
         BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
     }
@@ -41,6 +43,52 @@ void BD::manejarExcepcion(sql::SQLException &e, int line,
     std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
 }
 
+bool BD::chequearBaseDeDatos(void) {
+    bool correcto = true;
+    sql::Connection *con = this->conectar(false);
+    sql::PreparedStatement *prep_stmt;
+    sql::ResultSet *res;
+    try {
+        prep_stmt = con->prepareStatement(
+            "SELECT * FROM information_schema.schemata "
+            "WHERE schema_name = ? LIMIT 1");
+        prep_stmt->setString(1, BD::NAME);
+        res = prep_stmt->executeQuery();
+        correcto = correcto && res->rowsCount() != 0;
+
+        if (correcto) {
+            prep_stmt = con->prepareStatement(
+                "SELECT * "
+                "FROM information_schema.tables "
+                "WHERE table_schema = 'horarios' "
+                    "AND table_name = ? "
+                "LIMIT 1");
+
+            std::string tablas[] = { "Bloque", "Curso", "CursosBloque", "Grupo",
+                "GruposHorario", "Horario", "HorariosCurso", "Instante",
+                "Periodo", "PeriodoGrupo", "PeriodoProfesor", "Plan",
+                "Profesor", "ProfesoresCurso"};
+
+            for (size_t i = 0; i < sizeof(tablas)/sizeof(tablas[0]); i++) {
+                prep_stmt->setString(1, tablas[i]);
+                res = prep_stmt->executeQuery();
+                correcto = correcto && res->rowsCount() != 0;
+                if (!correcto) {
+                    break;
+                }
+            }
+        }
+    } catch (sql::SQLException &e) {
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
+    }
+
+    delete con;
+    delete prep_stmt;
+    delete res;
+
+    return correcto;
+}
+
 bool BD::llenarInstante(void) {
     bool insertados = false;
     unsigned int cantidadDias = 8;  // 7 + INDEFINIDO
@@ -49,7 +97,10 @@ bool BD::llenarInstante(void) {
     sql::PreparedStatement *prep_stmt;
     // sql::ResultSet *res;
 
-    prep_stmt = con->prepareStatement("INSERT INTO Instante (dia, hora, minuto) VALUES (?, ?, 0)");
+    prep_stmt = con->prepareStatement(
+        "INSERT "
+        "INTO Instante (dia, hora, minuto) "
+        "VALUES (?, ?, 0)");
     for (size_t i = 0; i < cantidadDias; i++) {
         prep_stmt->setInt(1, i);
         for (size_t j = 0; j < cantidadHoras; j++) {
@@ -81,8 +132,10 @@ bool BD::llenarPeriodoCursos(void) {
     sql::PreparedStatement *search_stmt;
     sql::ResultSet *search_res;
 
-    search_stmt = con->prepareStatement("SELECT id FROM Instante WHERE dia = ? AND hora = ? AND minuto = 0");
-    main_stmt = con->prepareStatement("INSERT INTO Periodo (idInstanteInicio, idInstanteFin) VALUES (?, ?)");
+    search_stmt = con->prepareStatement(
+        "SELECT id FROM Instante WHERE dia = ? AND hora = ? AND minuto = 0");
+    main_stmt = con->prepareStatement(
+        "INSERT INTO Periodo (idInstanteInicio, idInstanteFin) VALUES (?, ?)");
     for (size_t i = 0; i < cantidadDias; i++) {
         search_stmt->setInt(1, i);
         int idInicio;
@@ -180,6 +233,15 @@ void testBD(void) {
     cout << "Creando objeto BD..." << endl;
     BD *bd = new BD();
     cout << "OK!" << std::endl;
+
+    cout << "Chequeando correctitud de la base de datos..." << endl;
+    if (bd->chequearBaseDeDatos()) {
+        cout << "OK!" << std::endl;
+    } else {
+        cout << "La base de datos no cumple los requerimientos" << endl;
+        return;
+    }
+
     cout << "Conectando a base de datos..." << endl;
 
     sql::Connection * con = bd->conectar();
