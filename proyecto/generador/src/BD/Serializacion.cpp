@@ -16,9 +16,14 @@
 
 #include "Serializacion.hh"
 #include "BD.hh"
+#include "../Dia.hh"
 #include "../Plan.hh"
 #include "../Bloque.hh"
 #include "../Curso.hh"
+#include "../Instante.hh"
+#include "../IInstante.hh"
+#include "../Periodo.hh"
+#include "../IPeriodo.hh"
 #include "../Profesor.hh"
 
 
@@ -190,7 +195,74 @@ std::vector<Profesor> *Serializacion::getProfesores(Curso &curso) {
 
 std::vector< std::vector<IPeriodo*> > *Serializacion::getPeriodos(
     Curso &curso) {
-    return NULL;
+    int id = curso.getId();
+    std::vector< std::vector<IPeriodo*> > *posiblesHorarios =
+        new std::vector< std::vector<IPeriodo*> >();
+    try {
+        sql::Connection *con = Serializacion::getCon();
+        sql::PreparedStatement *stmtInicio;
+        sql::PreparedStatement *stmtFin;
+        sql::ResultSet *resInicio;
+        sql::ResultSet *resFin;
+
+        stmtInicio = con->prepareStatement(
+            "SELECT "
+                "Instante.dia, Instante.hora, Instante.minuto, "
+            "FROM Instante "
+            "INNER JOIN Periodo "
+            "ON Instante.id = Periodo.idInstanteInicio "
+            "INNER JOIN HorariosCurso "
+            "ON Periodo.id = HorariosCurso.idPeriodo "
+            "WHERE Curso.id = ?");
+
+        stmtFin = con->prepareStatement(
+            "SELECT "
+                "Instante.dia, Instante.hora, Instante.minuto, "
+            "FROM Instante "
+            "INNER JOIN Periodo "
+            "ON Instante.id = Periodo.idInstanteFin "
+            "INNER JOIN HorariosCurso "
+            "ON Periodo.id = HorariosCurso.idPeriodo "
+            "WHERE Curso.id = ?");
+
+        stmtInicio->setInt(1, id);
+        stmtFin->setInt(1, id);
+
+        resInicio = stmtInicio->executeQuery();
+        resFin = stmtFin->executeQuery();
+
+        int c = 0;
+
+        std::vector<IPeriodo*> horario = std::vector<IPeriodo*>();
+        while (resInicio->next() && resFin->next()) {
+            if (++c == curso.getClasesEnSemana()) {
+                posiblesHorarios->push_back(horario);
+                std::vector<IPeriodo*> horario = std::vector<IPeriodo*>();
+                c = 0;
+            }
+            IPeriodo *periodoHorario = new Periodo(
+                new Instante(
+                    intToDia(resInicio->getInt("dia")),
+                    resInicio->getInt("hora"),
+                    resInicio->getInt("minuto")),
+                new Instante(
+                    intToDia(resFin->getInt("dia")),
+                    resFin->getInt("hora"),
+                    resFin->getInt("minuto")));
+            horario.push_back(periodoHorario);
+        }
+
+        delete resInicio;
+        delete resFin;
+
+        delete stmtInicio;
+        delete stmtFin;
+
+        delete con;
+    } catch (sql::SQLException &e) {
+        BD::manejarExcepcion(e, __LINE__, __FUNCTION__, __FILE__);
+    }
+    return posiblesHorarios;
 }
 
 std::vector< std::vector<IPeriodo*> > *Serializacion::getPeriodos(
