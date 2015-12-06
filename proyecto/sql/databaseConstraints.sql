@@ -32,6 +32,11 @@
 --      id
 --      nombre
 --
+-- HorariosCurso
+--      id
+--      idCurso ---> Curso.id
+--      idPeriodo -> Periodo.id
+--
 -- Instante
 --      id
 --      dia
@@ -72,25 +77,28 @@
 --
 -- Bloque.idPlan --------------> Plan.id
 -- Bloque.idCurso -------------> Curso.id
-
+--
 -- CursosBloque.idBloque ------> Bloque.id
 -- CursosBloque.idCurso -------> Curso.id
-
+--
 -- Grupo.idCurso --------------> Curso.id
 -- Grupo.idProfesor -----------> Profesor.id
-
+--
 -- GruposHorario.idHorario ----> Horario.id
 -- GruposHorario.idGrupo ------> Grupo.id
-
+--
+-- idCurso --------------------> Curso.id
+-- idPeriodo ------------------> Periodo.id
+--
 -- Periodo.idInstanteInicio ---> Instante.id
 -- Periodo.idInstanteFin ------> Instante.id
-
+--
 -- PeriodoGrupo.idGrupo -------> Grupo.id
 -- PeriodoGrupo.idPeriodo -----> Periodo.id
-
+--
 -- PeriodoProfesor.idProfesor -> Profesor.id
 -- PeriodoProfesor.idPeriodo --> Periodo.id
-
+--
 -- ProfesoresCurso.idCurso ----> Curso.id
 -- ProfesoresCurso.idProfesor -> Profesor.id
 
@@ -117,6 +125,12 @@ ALTER TABLE `GruposHorario`
   ADD CONSTRAINT `GruposHorario_ibfk_1` FOREIGN KEY (`idHorario`) REFERENCES `Horario` (`id`)
   ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `GruposHorario_ibfk_2` FOREIGN KEY (`idGrupo`) REFERENCES `Grupo` (`id`)
+  ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `HorariosCurso`
+  ADD CONSTRAINT `HorariosCurso_ibfk_1` FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`)
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `HorariosCurso_ibfk_2` FOREIGN KEY (`idPeriodo`) REFERENCES `Periodo` (`id`)
   ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `Periodo`

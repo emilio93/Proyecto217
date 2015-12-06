@@ -5,21 +5,22 @@ SET time_zone = "-06:00";
 CREATE DATABASE IF NOT EXISTS `horarios` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `horarios`;
 
--- LISTA DE TABLAS
+-- LISTA DE TABLAS -orden alfabético-
 --
--- Bloque
--- Curso
--- CursosBloque
--- Grupo
--- GruposHorario
--- Horario
--- Instante
--- Periodo
--- PeriodoGrupo
--- PeriodoProfesor
--- Plan
--- Profesor
--- ProfesoresCurso
+-- 1  Bloque
+-- 2  Curso
+-- 3  CursosBloque
+-- 4  Grupo
+-- 5  GruposHorario
+-- 6  Horario
+-- 7  HorariosCurso
+-- 8  Instante
+-- 9  PeriodoGrupo
+-- 10 Periodo
+-- 11 PeriodoProfesor
+-- 12 Plan
+-- 13 Profesor
+-- 14 ProfesoresCurso
 
 DROP TABLE IF EXISTS `Bloque`;
 CREATE TABLE IF NOT EXISTS `Bloque` (
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `GruposHorario` (
   `idHorario` int(11) NOT NULL,
   `idGrupo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `idHorario` (`idHorario`,`idGrupo`),
+  KEY `idHorario` (`idHorario`),
   KEY `idGrupo` (`idGrupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 TRUNCATE TABLE `GruposHorario`;
@@ -84,6 +85,17 @@ CREATE TABLE IF NOT EXISTS `Horario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 TRUNCATE TABLE `Horario`;
+
+DROP TABLE IF EXISTS `HorariosCurso`;
+CREATE TABLE IF NOT EXISTS `HorariosCurso` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idCurso` int(11) NOT NULL,
+  `idPeriodo` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idCurso` (`idCurso`),
+  KEY `idPeriodo` (`idPeriodo`),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+TRUNCATE TABLE `HorariosCurso`;
 
 DROP TABLE IF EXISTS `Instante`;
 CREATE TABLE IF NOT EXISTS `Instante` (
@@ -142,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `Profesor` (
   `horasLaborales` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 TRUNCATE TABLE `Profesor`;
 
