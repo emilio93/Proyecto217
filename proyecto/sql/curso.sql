@@ -14,5 +14,3 @@ INSERT INTO `Curso` (`cantidadHoras`, `clasesEnSemana`, `cantidadGrupos`, `nombr
 (4, 2, 2, 'Teoría del Campo I', 'IE0307'),
 (4, 2, 2, 'Laboratorio Eléctrico I', 'IE0308'),
 (4, 2, 2, 'Electrónica II', 'IE0413');
-
--- --------------------------------------------------------

@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `HorariosCurso` (
   `idPeriodo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idCurso` (`idCurso`),
-  KEY `idPeriodo` (`idPeriodo`),
+  KEY `idPeriodo` (`idPeriodo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 TRUNCATE TABLE `HorariosCurso`;
 
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `Profesor` (
   `horasLaborales` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 TRUNCATE TABLE `Profesor`;
 

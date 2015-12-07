@@ -3,7 +3,7 @@
 -- Bloque
 --      id
 --      idPlan --> Plan.id
---      idCurso -> Curso.id
+--      semestre
 --
 -- Curso
 --      id
@@ -76,7 +76,6 @@
 -- LISTA DE RELACIONES
 --
 -- Bloque.idPlan --------------> Plan.id
--- Bloque.idCurso -------------> Curso.id
 --
 -- CursosBloque.idBloque ------> Bloque.id
 -- CursosBloque.idCurso -------> Curso.id
@@ -105,8 +104,6 @@
 
 ALTER TABLE `Bloque`
   ADD CONSTRAINT `Bloque_ibfk_1` FOREIGN KEY (`idPlan`) REFERENCES `Plan` (`id`)
-  ON DELETE CASCADE ON UPDATE CASCADE;
-  ADD CONSTRAINT `Bloque_ibfk_2` FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`)
   ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `CursosBloque`
