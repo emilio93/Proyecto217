@@ -2,6 +2,10 @@
 -- Dumping data for table `Curso`
 --
 
+TRUNCATE TABLE `Curso`;
+
+ALTER TABLE `Curso` AUTO_INCREMENT = 1;
+
 INSERT INTO `Curso` (`cantidadHoras`, `clasesEnSemana`, `cantidadGrupos`, `nombre`, `sigla`) VALUES
 (4, 2, 3, 'Circuitos Lineales I', 'IE0209'),
 (4, 2, 3, 'Circuitos Lineales II', 'IE0309'),
