@@ -131,7 +131,7 @@ bool Curso::igual(Curso *curso) {
 // NINGUNO POR EL MOMENTO
 
 /**
- * @breif Main para probar la implementación de la clase.
+ * @brief Main para probar la implementación de la clase.
  */
 void testCurso(void) {
     using std::cout;
