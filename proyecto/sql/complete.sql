@@ -223,7 +223,7 @@ INSERT INTO `Profesor` (`horasLaborales`, `nombre`, `apellido`) VALUES
 (30, 'Luis Alejandro', 'Golcher'),
 (30, 'Diego', 'Dumani'),
 (30, 'Jaime', 'Cascante'),
-(40, 'Andres', 'Arguello'),
+(40, 'Andres', 'Argüello'),
 (30, 'Fabian', 'Abarca'),
 (40, 'Francisco', 'Rivas'),
 (30, 'Osvaldo', 'Fernandez'),
@@ -369,6 +369,9 @@ INSERT INTO `CursosBloque` (`idBloque`, `idCurso`) VALUES
 ALTER TABLE `ProfesoresCurso` AUTO_INCREMENT = 1;
 
 INSERT INTO `ProfesoresCurso` (`idCurso`, `idProfesor`) VALUES
+(1,  3),
+(1,  34),
+(1,  35),
 (3, 1),
 (5, 2),
 (3, 3),
