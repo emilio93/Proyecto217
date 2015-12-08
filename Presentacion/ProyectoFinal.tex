@@ -25,6 +25,9 @@
 % does not look nice, try deleting the line with the fontenc.
 \usepackage{helvet}
 \usepackage[labelformat=empty]{caption}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{blindtext}
 
 % colored hyperlinks
 \newcommand{\chref}[2]{%
@@ -103,30 +106,30 @@ Emilio Rojas - B15680\\
 %%%%%%%
 \section{Introducción}
 
+%\begin{frame}{Introducción}{}
+%\begin{block}{}
+%	 El problema, objetivos y solución...
+%%para colocar una figura...descomente esto!
+%\begin{figure}[!h]
+% \begin{flushleft}
+%\includegraphics[width=0.2\textwidth]{./AAUgraphics/cburbuja.png}
+%\end{flushleft}
+%\end{figure}
+%
+%\begin{figure}[!h]
+% \begin{flushright}
+% \includegraphics[width=0.3\textwidth]{./AAUgraphics/problem1.png}
+% \end{flushright}
+%\end{figure}
+%
+%\end{block}
+%\end{frame}
+
+
+
 \begin{frame}{Introducción}{}
 \begin{block}{}
-	 El problema
-%para colocar una figura...descomente esto!
-\begin{figure}[!h]
- \begin{flushleft}
-\includegraphics[width=0.2\textwidth]{./AAUgraphics/cburbuja.png}
-\end{flushleft}
-\end{figure}
-
-\begin{figure}[!h]
- \begin{flushright}
- \includegraphics[width=0.3\textwidth]{./AAUgraphics/problem1.png}
- \end{flushright}
-\end{figure}
-
-\end{block}
-\end{frame}
-
-
-
-\begin{frame}{Introducción}{}
-\begin{block}{}
-	 El problema
+	 El problema, objetivos y solución...
 %para colocar una figura...descomente esto!
 \begin{figure}[!h]
  \begin{flushleft}
@@ -143,56 +146,36 @@ Emilio Rojas - B15680\\
 \end{block}
 \end{frame}
 
-\section{Objetivos}
-\begin{frame}{Objetivo General}
-\begin{block}{}
-  \begin{itemize}
-  \item Implementar una librería en C++ con la capacidad de generar un horario de cursos.
-  \end{itemize} 
-  
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.50\textwidth]{./AAUgraphics/cpintura.png}
-%\caption{ \scriptsize }
-\end{figure}
-  
-  
-\end{block}
-\end{frame}
-
-\begin{frame}{Objetivo General}
-\begin{block}{}
-
-\begin{itemize}
-	\item Generar la estructura para una base de datos que contenga la información referente a profesores y cursos.
-	\item Asignar a partir de la base de datos, profesores a los cursos tomando en cuenta limitaciones de horario de los mismos y cantidad de grupos por 	curso.
-	\item Obtener un horario en el cual los cursos de cada bloque tenga al menos una posibilidad de ser matriculados todos sin que allá un traslape de 	horarios entre ellos.
-\end{itemize}
-  
-\end{block}
-\end{frame}
+%\section{Objetivos}
+%\begin{frame}{Objetivo General}
+%\begin{block}{}
+%  \begin{itemize}
+%  \item Implementar una librería en C++ con la capacidad de generar un horario de cursos.
+%  \end{itemize} 
+%  
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=0.50\textwidth]{./AAUgraphics/cpintura.png}
+%%\caption{ \scriptsize }
+%\end{figure}
+%  
+%  
+%\end{block}
+%\end{frame}
 
 
 
-\section{Implementación}
-\begin{frame}{Herramientas}
-\begin{block}{}
-\begin{itemize}
-	\item \textbf{C++:} Herramienta principal para el desarrollo de la librería
-	
-	\item \textbf{MySQL:} Servidor de base de datos utilizada
-	
-	\item \textbf{Otras Herramientas:} Apache, PHP, PHPAdmin.
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.40\textwidth]{./AAUgraphics/tools.jpg}
-%\caption{ \scriptsize }
-\end{figure}
-	
- \end{itemize}
-\end{block}
-\end{frame}
+%\begin{frame}{Objetivo General}
+%\begin{block}{}
+%
+%\begin{itemize}
+%	\item Generar la estructura para una base de datos que contenga la información referente a profesores y cursos.
+%	\item Asignar a partir de la base de datos, profesores a los cursos tomando en cuenta limitaciones de horario de los mismos y cantidad de grupos por 	curso.
+%	\item Obtener un horario en el cual los cursos de cada bloque tenga al menos una posibilidad de ser matriculados todos sin que allá un traslape de 	horarios entre ellos.
+%\end{itemize}
+%  
+%\end{block}
+%\end{frame}
 
 
 
@@ -200,19 +183,19 @@ Emilio Rojas - B15680\\
 
 \begin{frame}{Diagrama de Clases}
 \begin{center}
-    \includegraphics[width=\textwidth]{diagramaClases1}
+    \includegraphics[width=\textwidth]{./AAUgraphics/clase1.png}
 \end{center}
 \end{frame}
 
 \begin{frame}{Diagrama de Clases}
 \begin{center}
-    \includegraphics[width=\textwidth]{diagramaClases2}
+    \includegraphics[width=0.65\textwidth]{./AAUgraphics/clase2.png}
 \end{center}
 \end{frame}
 
 \begin{frame}{Diagrama de Clases}
 \begin{center}
-    \includegraphics[width=\textwidth]{diagramaClases3}
+    \includegraphics[width=0.9\textwidth]{./AAUgraphics/clase3.png}
 \end{center}
 \end{frame}
 
@@ -221,7 +204,7 @@ Emilio Rojas - B15680\\
 
 
 
-\section{Diagrama de Flujo }
+\section{Diagrama de Flujo}
 % motivation for creating this theme
 \begin{frame}{Algoritmo y Diagrama de Flujo (simplificado)}{}
 \begin{block}{}
@@ -253,45 +236,57 @@ Emilio Rojas - B15680\\
 \end{frame}
 
 
-\begin{frame}{Cronograma}{}
-\begin{block}{}
-
-
-%Imagen
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.90\textwidth]{./AAUgraphics/ganttcolor.png}
-%\caption{ \scriptsize }
-\end{figure}
-
-\end{block}
-\end{frame}
+%\begin{frame}{Cronograma}{}
+%\begin{block}{}
+%
+%
+%%Imagen
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=0.90\textwidth]{./AAUgraphics/ganttcolor.png}
+%%\caption{ \scriptsize }
+%\end{figure}
+%
+%\end{block}
+%\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
+%\section{Implementación}
+\begin{frame}{Herramientas}
+\begin{block}{}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.40\textwidth]{./AAUgraphics/sql.png}
+%\caption{ \scriptsize }
+\end{figure}
+	
+\end{block}
+\end{frame}
 
 
-
-\section{En conclusión y logros hasta el momento }
+\section{Conclusión}
 \begin{frame}{Logros}
 \begin{block}{}
 \begin{itemize}
-         \item Declaración de todas las clases.
-         \item Creación de la base de datos.
-         \item Conexión con la base de datos y btención de resultados a
-            consultas.
-        \item Implementación de algunas clases y pruebas con estas.
+         \item Logros
+         
+		\begin{figure}[!h]
+		\begin{center}
+		\includegraphics[width=.4\textwidth]{./AAUgraphics/logro.jpg}
+		%\caption{ \scriptsize }
+		\end{center}
+		\end{figure}         
+         
+         
+         \item Problemas
 
 \end{itemize}
 
 
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=.4\textwidth]{./AAUgraphics/logro.jpg}
-%\caption{ \scriptsize }
-\end{center}
-\end{figure}
+
 
 \end{block}
 \end{frame}
