@@ -232,6 +232,9 @@ INSERT INTO `Profesor` (`horasLaborales`, `nombre`, `apellido`) VALUES
 (30, 'Walter', 'Herrera'),
 (30, 'Juan', 'Arteaga'),
 (40, 'Rodolfo', 'Brenes'),
+(25, 'Rodrigo', 'Castro'),
+(25, 'Ignacio', 'Ramirez'),
+(20, 'José', 'Paez');
 
 
 --
@@ -372,7 +375,15 @@ INSERT INTO `ProfesoresCurso` (`idCurso`, `idProfesor`) VALUES
 (1,  3),
 (1,  34),
 (1,  35),
+(2,  25),
+(2,  38),
+(2,  43),
 (3, 1),
-(5, 2),
 (3, 3),
-(3, 4);
+(3, 4),
+(4, 20),
+(4, 29),
+(5, 2),
+(6, 44),
+(6, 45);
+
