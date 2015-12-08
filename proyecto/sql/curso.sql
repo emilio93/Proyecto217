@@ -13,7 +13,7 @@ INSERT INTO `Curso` (`cantidadHoras`, `clasesEnSemana`, `cantidadGrupos`, `nombr
 (4, 2, 2, 'Modelos Probabilísticos de Señales y Sistemas', 'IE0405'),
 (4, 2, 2, 'Teoría del Campo I', 'IE0307'),
 (6, 1, 1, 'Laboratorio Eléctrico I', 'IE0308'),
-(4, 2, 2, 'Electrónica II', 'IE0413'),,  
+(4, 2, 2, 'Electrónica II', 'IE0413'), 
 (4, 2, 3, 'Circuitos Digitales II', 'IE0309'),
 (4, 2, 1, 'Dispositivos Semiconductores', 'IE0311'),
 (4, 2, 2, 'Análisis de Sistemas', 'IE0409'),
