@@ -1,0 +1,173 @@
+<div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Buscar" ng-model="txtBuscar">
+</div>
+<br>
+
+<table class="table table-striped text-center">
+    <tr>
+        <th class="col-md-1 text-center">Sigla</th>
+        <th class="col-md-4 text-center">Nombre</th>
+        <th class="col-md-1 text-center">Horas/Semana</th>
+        <th class="col-md-1 text-center">Clases/Semana</th>
+        <th class="col-md-1 text-center"># Grupos</th>
+        <th class="col-md-4 text-center">Acción</th>
+    </tr>
+
+    <form>
+    <tr>
+        <td><input type="text" class="form-control input-sm" placeholder="Sigla" value="" ng-model="sigla"></td>
+        <td><input type="text" class="form-control input-sm" placeholder="Nombre" value="" ng-model="nombre"></td>
+        <td><input type="number" size="3" class="form-control input-sm" placeholder="Horas" value="" ng-model="cantidadHoras"></td>
+        <td><input type="number" size="3" class="form-control input-sm" placeholder="Clases" value="" ng-model="clasesEnSemana"></td>
+        <td><input type="number" size="3" class="form-control input-sm" placeholder="Grupos" value="" ng-model="cantidadGrupos"></td>
+        <td>
+            <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar"  ng-click="addCurso()">
+                <i class="fa fa-plus-circle"></i> Agregar
+            </button>
+        </td>
+    </tr>
+    </form>
+
+    <tbody ng-repeat="curso in cursos | filter:txtBuscar" ng-controller="cursoCtrl">
+        <tr>
+            <td style="display:none;" ng-model="curso.id">{{curso.id}}</td>
+            <td >
+                <span ng-if="!editando">{{curso.sigla}}</span>
+                <input type="text" class="form-control input-sm text-center" ng-model="curso.sigla" ng-if="editando">
+            </td>
+            <td>
+                <span ng-if="!editando">{{curso.nombre}}</span>
+                <input type="text" class="form-control input-sm text-center" ng-model="curso.nombre" ng-if="editando">
+            </td>
+            <td>
+                <span ng-if="!editando">{{curso.cantidadHoras}}</span>
+                <input type="number" class="form-control input-sm text-center" ng-model="curso.cantidadHoras" ng-if="editando" >
+            </td>
+            <td>
+                <span ng-if="!editando">{{curso.clasesEnSemana}}</span>
+                <input type="number" class="form-control input-sm text-center" ng-model="curso.clasesEnSemana" ng-if="editando">
+            </td>
+
+            <td>
+                <span ng-if="!editando">{{curso.cantidadGrupos}}</span>
+                <input type="number" class="form-control input-sm text-center" ng-model="curso.cantidadGrupos" ng-if="editando">
+            </td>
+
+            <td>
+                <button type="submit" class="btn btn-info btn-sm col-md-4" title="Detalles" ng-click="mostrarDetalles = !mostrarDetalles; loadData()">
+                    <i class="fa fa-info-circle"></i> Detalles
+                </button>
+                <button type="submit" class="btn btn-warning btn-sm col-md-4" title="Editar"
+                ng-click="editando = !editando; txtBtnEdit = editando? 'Guardar': 'Editar'; saveData()">
+                    <i class="fa fa-pencil"></i> {{txtBtnEdit}}
+                </button>
+                <button type="submit" class="btn btn-danger btn-sm col-md-4" title="Eliminar" ng-click="deleteCurso(curso)">
+                    <i class="fa fa-trash"></i> Eliminar
+                </button>
+            </td>
+        </tr>
+
+        <tr ng-show="mostrarDetalles">
+            <td colspan="6" class="text-left">
+
+                <div class="col-md-5">
+                    <b>Planes a los cuales pertenece: </b><br>
+                    <table class="table text-center">
+                        <tr>
+                            <th>Plan</th>
+                            <th>Semestre</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td
+                                <select class="form-control" ng-model="planNuevo">
+                                    <option ng-repeat="plan in opt.planes" value="{{plan.id}}">{{plan}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" ng-model="semestreNuevo">
+                                    <option ng-repeat="semestre in opt.semestres" value="{{semestre.id}}">{{semestre}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar">
+                                    <i class="fa fa-plus-circle"></i>&nbsp; Agregar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="plan in planesCurso">
+                            <td>{{plan.plan}}</td>
+                            <td>{{plan.semestre}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-info btn-sm col-md-6" title="Detalles">
+                                    <i class="fa fa-info-circle"></i>
+                                </button>
+                                <button type="submit" class="btn btn-danger btn-sm col-md-6" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-md-4">
+                    <b>Profesores que lo imparten: </b>
+                    <br>
+                    <table class="table text-center">
+                        <tr>
+                            <th class="col-md-10">Nombre</th>
+                            <th class="col-md-2"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control" ng-model="profeNuevo">
+                                    <option ng-repeat="profesor in opt.profesores" value="{{profesor.id}}">{{profesor.nombre}} {{profesor.apellido}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar" ng-click="agregarProfeACurso()">
+                                    <i class="fa fa-plus-circle"></i>&nbsp; Agregar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="profesor in profesoresCurso">
+                            <td>{{profesor.nombre + ' ' + profesor.apellido}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-info btn-sm col-md-6" title="Detalles">
+                                    <i class="fa fa-info-circle"></i>
+                                </button>
+                                <button type="submit" class="btn btn-danger btn-sm col-md-6" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-md-3">
+                    <b>Horarios en que se puede dar: </b>
+                    <table class="table text-center">
+                        <tr ng-repeat="horario in horariosCurso">
+                            <td>
+                                <span ng-repeat="clase in horario">{{clase.dia + ': ' + clase.inicio + '-' + clase.fin + '. '}}</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm btn-block" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar">
+                                    <i class="fa fa-plus-circle"></i>&nbsp; Agregar Horario Disponible
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

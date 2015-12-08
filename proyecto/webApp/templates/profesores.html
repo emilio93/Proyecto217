@@ -1,0 +1,120 @@
+<div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+    <input class="form-control" type="text" placeholder="Buscar" ng-model="txtBuscar">
+</div>
+<br>
+
+
+<table class="table table-striped text-center">
+    <tr>
+        <th class="col-md-4 text-center">Nombre</th>
+        <th class="col-md-3 text-center">Apellido</th>
+        <th class="col-md-2 text-center">Horas Laborales</th>
+        <th class="col-md-3 text-center">Acción</th>
+    </tr>
+
+    <tr>
+        <td><input type="text" class="form-control input-sm" placeholder="Nombre" value="" ng-model="nombre"></td>
+        <td><input type="text" class="form-control input-sm" placeholder="Apellido" value="" ng-model="apellido"></td>
+        <td><input type="number" size="3" class="form-control input-sm" placeholder="Horas Laborales" value="" ng-model="horasLaborales"></td>
+        <td>
+            <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar"  ng-click="addProfe()">
+                <i class="fa fa-plus-circle"></i> Agregar
+            </button>
+        </td>
+    </tr>
+
+    <tbody ng-repeat="profesor in profesores | filter:txtBuscar" ng-controller="profeCtrl">
+        <tr>
+            <td style="display:none;" ng-model="profesor.id">{{profesor.id}}</td>
+            <td >
+                <span ng-if="!editando">{{profesor.nombre}}</span>
+                <input type="text" class="form-control input-sm text-center" ng-model="profesor.nombre" ng-if="editando">
+            </td>
+            <td>
+                <span ng-if="!editando">{{profesor.apellido}}</span>
+                <input type="text" class="form-control input-sm text-center" ng-model="profesor.apellido" ng-if="editando">
+            </td>
+            <td>
+                <span ng-if="!editando">{{profesor.horasLaborales}}</span>
+                <input type="number" class="form-control input-sm text-center" ng-model="profesor.horasLaborales" ng-if="editando" >
+            </td>
+
+            <td>
+                <button type="submit" class="btn btn-info btn-sm col-md-4" title="Detalles" ng-click="mostrarDetalles = !mostrarDetalles; loadData()">
+                    <i class="fa fa-info-circle"></i> Detalles
+                </button>
+                <button type="submit" class="btn btn-warning btn-sm col-md-4" title="Editar"
+                ng-click="editando = !editando; txtBtnEdit = editando? 'Guardar': 'Editar'; saveData()">
+                    <i class="fa fa-pencil"></i> {{txtBtnEdit}}
+                </button>
+                <button type="submit" class="btn btn-danger btn-sm col-md-4" title="Eliminar" ng-click="deleteProfe(profesor)">
+                    <i class="fa fa-trash"></i> Eliminar
+                </button>
+            </td>
+        </tr>
+
+
+        <tr ng-show="mostrarDetalles">
+            <td colspan="6" class="text-left">
+
+                <div class="col-md-6">
+                    <b>Cursos que puede impartir: </b><br>
+                    <table class="table text-center">
+                        <tr>
+                            <th>Curso</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control" ng-model="cursoNuevo">
+                                    <option ng-repeat="curso in opt.cursos" value="{{curso.id}}">{{curso.sigla}} - {{curso.nombre}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar" ng-click="addCursoAProfe()">
+                                    <i class="fa fa-plus-circle"></i>&nbsp; Agregar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="curso in cursosProfe">
+                            <td>{{curso.sigla}} - {{curso.nombre}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-info btn-sm col-md-6" title="Detalles">
+                                    <i class="fa fa-info-circle"></i>
+                                </button>
+                                <button type="submit" class="btn btn-danger btn-sm col-md-6" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-md-6">
+                    <b>Horarios en que está disponible: </b>
+                    <table class="table text-center">
+                        <tr ng-repeat="horario in horariosProfe">
+                            <td>
+                                <span ng-repeat="periodo in horario">{{periodo.dia + ': ' + periodo.inicio + '-' + periodo.fin + '. '}}</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm btn-block" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-success btn-sm btn-block" title="Agregar">
+                                    <i class="fa fa-plus-circle"></i>&nbsp; Agregar Horario Disponible
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
