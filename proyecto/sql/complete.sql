@@ -388,3 +388,8 @@ INSERT INTO `ProfesoresCurso` (`idCurso`, `idProfesor`) VALUES
 (6, 45),
 (37, 38);
 
+ALTER TABLE `HorariosCurso` AUTO_INCREMENT = 1;
+
+INSERT INTO `HorariosCurso` (`idPeriodo`, `idCurso`) VALUES
+(n,n),
+(n,n);
