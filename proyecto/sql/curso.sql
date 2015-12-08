@@ -21,5 +21,5 @@ INSERT INTO `Curso` (`cantidadHoras`, `clasesEnSemana`, `cantidadGrupos`, `nombr
 (4, 2, 1, 'Estructuras de Computadoras Digitales II', 'IE0521'),
 (6, 2, 2, 'Máquinas Eléctricas I','IE0315'),
 (4, 2, 2, 'Sistemas de Control', 'IE0431');
-(6, 2, 1, 'Laboratorio Eléctrico I', 'IE0408'),
+(6, 2, 1, 'Laboratorio Eléctrico II', 'IE0408'),
 -- --------------------------------------------------------
