@@ -193,7 +193,13 @@ INSERT INTO `Profesor` (`horasLaborales`, `nombre`, `apellido`) VALUES
 (36, 'Teodoro', 'Willink'),
 (40, 'Francisco', 'Siles'),
 (30, 'Sergio', 'Valverde'),
-(48, 'Geovanny', 'Martinez');
+(48, 'Geovanny', 'Martinez'),
+(30, 'Sergio', 'Valverde'),
+(30, 'Sergio', 'Valverde'),
+(30, 'Sergio', 'Valverde'),
+(30, 'Sergio', 'Valverde'),
+(30, 'Sergio', 'Valverde'),
+(30, 'Sergio', 'Valverde'),
 
 --
 -- Dumping data for table `Curso`
