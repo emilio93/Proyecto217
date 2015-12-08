@@ -170,7 +170,7 @@ void hacerTest(bool test, std::string str) {
 }
 
 /**
- * @breif Main para probar la implementación de la clase.
+ * @brief Main para probar la implementación de la clase.
  */
 void testPeriodo(void) {
     using std::cout;

@@ -1,14 +1,21 @@
 --
 -- Dumping data for table `Bloque`
 --
-ALTER TABLE Bloque
-DROP FOREIGN KEY `Bloque_ibfk_1`;
+-- ALTER TABLE Bloque
+-- DROP FOREIGN KEY `Bloque_ibfk_1`;
+
+ALTER TABLE `CursosBloque`
+DROP FOREIGN KEY `CursosBloque_ibfk_1`;
 
 TRUNCATE TABLE `Bloque`;
 
-ALTER TABLE `Bloque`
-  ADD CONSTRAINT `Bloque_ibfk_1` FOREIGN KEY (`idPlan`) REFERENCES `Plan` (`id`)
+ALTER TABLE `CursosBloque`
+  ADD CONSTRAINT `CursosBloque_ibfk_1` FOREIGN KEY (`idBloque`) REFERENCES `Bloque` (`id`)
   ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ALTER TABLE `Bloque`
+--   ADD CONSTRAINT `Bloque_ibfk_1` FOREIGN KEY (`idPlan`) REFERENCES `Plan` (`id`)
+--   ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `Bloque` AUTO_INCREMENT = 1;
 

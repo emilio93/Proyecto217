@@ -38,7 +38,7 @@ std::vector<Curso> *Bloque::getCursos(void) {
 // NINGUNO POR EL MOMENTO
 
 /**
- * @breif Main para probar la implementación de la clase.
+ * @brief Main para probar la implementación de la clase.
  */
 void testBloque(void) {
     using std::cout;

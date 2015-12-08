@@ -86,8 +86,8 @@
 -- GruposHorario.idHorario ----> Horario.id
 -- GruposHorario.idGrupo ------> Grupo.id
 --
--- idCurso --------------------> Curso.id
--- idPeriodo ------------------> Periodo.id
+-- HorariosCurso.idCurso ------> Curso.id
+-- HorariosCurso.idPeriodo ----> Periodo.id
 --
 -- Periodo.idInstanteInicio ---> Instante.id
 -- Periodo.idInstanteFin ------> Instante.id

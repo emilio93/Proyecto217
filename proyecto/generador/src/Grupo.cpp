@@ -79,7 +79,7 @@ bool Grupo::asignarProfesor(void) {
 
 
 /**
- * @breif Main para probar la implementación de la clase.
+ * @brief Main para probar la implementación de la clase.
  */
 void testGrupo(void) {
     using std::cout;

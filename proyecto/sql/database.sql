@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "-06:00";
 
-CREATE DATABASE IF NOT EXISTS `horarios` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `horarios` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 USE `horarios`;
 
 -- LISTA DE TABLAS -orden alfabético-
@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS `Bloque` (
   `idPlan` int(11) NOT NULL,
   `semestre` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `idPlan` (`idPlan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Bloque`;
+  KEY `idPlan` (`idPlan`),
+  FOREIGN KEY (`idPlan`) REFERENCES `Plan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Curso`;
 CREATE TABLE IF NOT EXISTS `Curso` (
@@ -41,8 +41,7 @@ CREATE TABLE IF NOT EXISTS `Curso` (
   `nombre` varchar(255) NOT NULL,
   `sigla` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Curso`;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `CursosBloque`;
 CREATE TABLE IF NOT EXISTS `CursosBloque` (
@@ -52,9 +51,10 @@ CREATE TABLE IF NOT EXISTS `CursosBloque` (
   PRIMARY KEY (`id`),
   KEY `idBloque` (`idBloque`),
   KEY `idCurso` (`idCurso`),
-  Key `unico` (`idBloque`, `idCurso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `CursosBloque`;
+  Key `unico` (`idBloque`, `idCurso`),
+  FOREIGN KEY (`idBloque`) REFERENCES `Bloque` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`)  ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Grupo`;
 CREATE TABLE IF NOT EXISTS `Grupo` (
@@ -63,9 +63,10 @@ CREATE TABLE IF NOT EXISTS `Grupo` (
   `idProfesor` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idCurso` (`idCurso`,`idProfesor`),
-  KEY `idProfesor` (`idProfesor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Grupo`;
+  KEY `idProfesor` (`idProfesor`),
+  FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idProfesor`) REFERENCES `Profesor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `GruposHorario`;
 CREATE TABLE IF NOT EXISTS `GruposHorario` (
@@ -74,17 +75,17 @@ CREATE TABLE IF NOT EXISTS `GruposHorario` (
   `idGrupo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idHorario` (`idHorario`),
-  KEY `idGrupo` (`idGrupo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `GruposHorario`;
+  KEY `idGrupo` (`idGrupo`),
+  FOREIGN KEY (`idHorario`) REFERENCES `Horario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idGrupo`) REFERENCES `Grupo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Horario`;
 CREATE TABLE IF NOT EXISTS `Horario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Horario`;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `HorariosCurso`;
 CREATE TABLE IF NOT EXISTS `HorariosCurso` (
@@ -93,9 +94,10 @@ CREATE TABLE IF NOT EXISTS `HorariosCurso` (
   `idPeriodo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idCurso` (`idCurso`),
-  KEY `idPeriodo` (`idPeriodo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `HorariosCurso`;
+  KEY `idPeriodo` (`idPeriodo`),
+  FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idPeriodo`) REFERENCES `Periodo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Instante`;
 CREATE TABLE IF NOT EXISTS `Instante` (
@@ -104,8 +106,7 @@ CREATE TABLE IF NOT EXISTS `Instante` (
   `hora` int(11) NOT NULL,
   `minuto` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Instante`;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Periodo`;
 CREATE TABLE IF NOT EXISTS `Periodo` (
@@ -114,9 +115,10 @@ CREATE TABLE IF NOT EXISTS `Periodo` (
   `idInstanteFin` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idInstanteInicio` (`idInstanteInicio`,`idInstanteFin`),
-  KEY `idInstanteFin` (`idInstanteFin`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Periodo`;
+  KEY `idInstanteFin` (`idInstanteFin`),
+  FOREIGN KEY (`idInstanteInicio`) REFERENCES `Instante` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idInstanteFin`) REFERENCES `Instante` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `PeriodoGrupo`;
 CREATE TABLE IF NOT EXISTS `PeriodoGrupo` (
@@ -125,9 +127,10 @@ CREATE TABLE IF NOT EXISTS `PeriodoGrupo` (
   `idPeriodo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idGrupo` (`idGrupo`,`idPeriodo`),
-  KEY `idPeriodo` (`idPeriodo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `PeriodoGrupo`;
+  KEY `idPeriodo` (`idPeriodo`),
+  FOREIGN KEY (`idGrupo`) REFERENCES `Grupo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idPeriodo`) REFERENCES `Periodo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `PeriodoProfesor`;
 CREATE TABLE IF NOT EXISTS `PeriodoProfesor` (
@@ -136,17 +139,17 @@ CREATE TABLE IF NOT EXISTS `PeriodoProfesor` (
   `idPeriodo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idPeriodo` (`idPeriodo`,`idProfesor`),
-  KEY `idProfesor` (`idProfesor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `PeriodoProfesor`;
+  KEY `idProfesor` (`idProfesor`),
+  FOREIGN KEY (`idProfesor`) REFERENCES `Profesor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idPeriodo`) REFERENCES `Periodo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Plan`;
 CREATE TABLE IF NOT EXISTS `Plan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Plan`;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Profesor`;
 CREATE TABLE IF NOT EXISTS `Profesor` (
@@ -155,8 +158,7 @@ CREATE TABLE IF NOT EXISTS `Profesor` (
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `Profesor`;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `ProfesoresCurso`;
 CREATE TABLE IF NOT EXISTS `ProfesoresCurso` (
@@ -165,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `ProfesoresCurso` (
   `idProfesor` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idCurso` (`idCurso`,`idProfesor`),
-  KEY `idProfesor` (`idProfesor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-TRUNCATE TABLE `ProfesoresCurso`;
+  KEY `idProfesor` (`idProfesor`),
+  FOREIGN KEY (`idCurso`) REFERENCES `Curso` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`idProfesor`) REFERENCES `Profesor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
