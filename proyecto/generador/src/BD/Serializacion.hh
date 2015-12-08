@@ -23,7 +23,7 @@
  * base de datos en los objetos pertinentes.
  */
 class Serializacion {
-    private:
+     private:
         //! Un set de los cursos que ya han sido creados.
         /*!
          *  Un set de los cursos que ya han sido creados, sirve para no repetir
@@ -61,7 +61,7 @@ class Serializacion {
          */
         static Profesor *buscarProfesor(Profesor *profesor);
 
-    public:
+     public:
         //! Obtiene los planes existentes en la base de datos.
         /*!
          * Obtiene una lista de los planes disponibles en la base de
@@ -111,8 +111,18 @@ class Serializacion {
          */
         static std::vector< std::vector<IPeriodo*> > *getPeriodos(Curso &curso);
 
+        //! Obtiene los periodos en que un profesor está disponilbe.
+        /*!
+         * Obtiene los periodos en que un profesor está disponilbe.
+         * @param profesor El profesor del cual se obtienen los periodos.
+         */
+        static std::vector<IPeriodo*> *getPeriodos(Profesor &profesor);
 
-        static std::vector< std::vector<IPeriodo*> > *getPeriodos(
-            Profesor &profesor);
+        /*!
+         * Busca el id de un Periodo especificado. En caso de no encontrarlo lo
+         * crea y devuelve el id de este.
+         * @return El id del periodo especificado.
+         */
+        static int buscarIdPeriodo(IPeriodo *periodo);
 };
 #endif

@@ -15,10 +15,6 @@
  ** MÉTODOS PÚBLICOS
  ******************************************************************************/
 
-Grupo::Grupo(Curso *curso, int contador) {
-    this->curso = curso;
-    contador = 0;
-}
 Grupo::Grupo(Curso *curso) {
     this->curso = curso;
 }
@@ -47,21 +43,17 @@ void Grupo::setProfesor(Profesor *profesor) {
     this->profesor = profesor;
 }
 
-std::vector<IPeriodo*> *Grupo::getHorario() {
+std::vector< std::vector<IPeriodo*> > *Grupo::getHorario() {
     return this->horario;
 }
 
-void Grupo::setHorario(std::vector<IPeriodo*> *horario) {
+void Grupo::setHorario(std::vector< std::vector<IPeriodo*> > *horario) {
     this->horario = horario;
 }
 
 std::vector<Profesor> *Grupo::getPosiblesProfesores(void) {
     return this->getCurso()->getProfesores();
 }
-
-/*******************************************************************************
- ** MÉTODOS PRIVADOS
- ******************************************************************************/
 
 bool Grupo::asignarProfesor(void) {
     bool asignado = false;
@@ -77,14 +69,14 @@ bool Grupo::asignarProfesor(void) {
     }
 
     if (!asignado) {
-        // std::vector<int>::iterator it = ;  // iterador no me sirve
-        grupo_sin_profesor->insert(grupo_sin_profesor->begin() + contador,
-            this->getCurso());
-        // inserta el puntero al curso de este grupo a la lista
-        contador++;
     }
     return asignado;
 }
+
+/*******************************************************************************
+ ** MÉTODOS PRIVADOS
+ ******************************************************************************/
+
 
 /**
  * @breif Main para probar la implementación de la clase.

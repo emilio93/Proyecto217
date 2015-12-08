@@ -43,6 +43,6 @@ class Bloque {
         int getSemestre(void);
 
         //! Obtiene la lista de cursos del bloque.
-        std::vector<Curso> *getCursos(void);  // ocupamos una lista también
+        std::vector<Curso> *getCursos(void);
 };
 #endif

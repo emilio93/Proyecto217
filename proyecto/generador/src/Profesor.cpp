@@ -63,8 +63,8 @@ std::string Profesor::getApellido(void) {
     return this->apellido;
 }
 
-bool Profesor::estoyDisponible(std::vector<IPeriodo*> *horarioGrupo) {
-    // Falta implementar
+bool Profesor::estoyDisponible(std::vector< std::vector<IPeriodo*> > *horarioGrupo) {
+    this->getHorario();
     return false;
 }
 
@@ -73,11 +73,10 @@ bool Profesor::igual(Profesor *profesor) {
         this->getApellido() == profesor->getApellido();
 }
 
+std::vector<IPeriodo*> *Profesor::getHorario(void) {
+    std::vector<IPeriodo*> *horario = Serializacion::getPeriodos(*this);
 
-
-std::vector <IPeriodo*> *Profesor::getHorario(void) {
-    // Faltan Implementar
-    return NULL;
+    return Serializacion::getPeriodos(*this);
 }
 
 bool Profesor::verificarCurso(Curso *cursoPrueba) {
@@ -89,23 +88,15 @@ bool Profesor::verificarCurso(Curso *cursoPrueba) {
         if (this->cursosDados->at(i).igual(cursoPrueba)) {
             doyCurso = true;
         }
-        /* else {
-
-            return 0;
-        } */
     }
     return doyCurso;
 }
 
-
-// Problemas con el this...
 void Profesor::asignarGrupo(Grupo *grupo) {
-    // cursosDados.push_back(*grupo);
-    // grupo->push_back(*cursosDados);
-    this->gruposAsignados->push_back(*grupo);
+    if (this->estoyDisponible(grupo->getHorario())) {
+        this->gruposAsignados->push_back(*grupo);
+    }
 }
-
-
 
 /*******************************************************************************
  ** MÉTODOS PRIVADOS

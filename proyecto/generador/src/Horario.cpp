@@ -60,10 +60,16 @@ void Horario::generarHorario(void) {
                 cout << "]" << endl;
 
                 cout << "\t\t\tObteniendo posibles horarios para el curso...";
-                // std::vector<IHorario*> *horariosCurso = cursos->at(k).getHorarios();
-                cout << "No se hace. [Horarios obtenidos: 0";
+                std::vector< std::vector<IPeriodo*> > *horariosCurso =
+                    cursos->at(k).getHorarios();
+                cout << "Listo. [Horarios obtenidos: " << horariosCurso->size();
                 cout << "]" << endl;
 
+                cout << "Creando los grupos del curso...";
+                std::vector<Grupo> *grupos = cursos->at(i).crearGrupos();
+                cout << "Listo. [creados: 0, no creados: 0]" << endl;
+
+                /*
                 for (int l = 0; l < cursos->at(k).getCantidadGrupos(); l++) {
                     cout << "\t\t\tInicializando grupo " << l+1 << "...";
                     Grupo grupo = Grupo(&cursos->at(k));
@@ -72,6 +78,7 @@ void Horario::generarHorario(void) {
                     cout << "\t\t\t\tSeleccionando Horario...No se hace" << endl;
                     cout << "\t\t\t\tSeleccionando Profesor...No se hace" << endl;
                 }
+                */
             }
         }
     }
@@ -86,10 +93,10 @@ void Horario::menuPrincipal(void) {
 
     if (horarioCreado) {
         cout << "ATENCIÓN: En este momento hay un horario creado, si vuelve a ";
-        cout << "generar uno sobreescribir'a el existente." << endl;
+        cout << "generar uno sobreescribirá el existente." << endl;
     }
 
-    int it = 1;
+    int it = 0;
     cout << "MENU PRINCIPAL" << endl;
     cout << "¿Que desea hacer?" << endl;
 
@@ -99,25 +106,24 @@ void Horario::menuPrincipal(void) {
     cout << "\t" << it++ <<" - Eliminar Datos" << endl;
     cout << "\t" << it++ <<" - Guardar en base de datos" << endl;
     it = 0;
-    cout << "\t" << it++ <<" - Salir" << endl;
+    cout << "\t" << it <<" - Salir" << endl;
 
     int valor = Misc::solicitarInt("Ingrese un valor");
     switch (valor) {
         case 1:
             this->generarHorario();
-            // Realizar acción.
             break;
         case 2:
-            // Realizar acción.
+            cout << "Esta opción no está disponible." << endl;
             break;
         case 3:
-            // Realizar acción.
+            cout << "Esta opción no está disponible." << endl;
             break;
         case 4:
-            // Realizar acción.
+            cout << "Esta opción no está disponible." << endl;
             break;
         case 5:
-            // Realizar acción.
+            cout << "Esta opción no está disponible." << endl;
             break;
     }
 }

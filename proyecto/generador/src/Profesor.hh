@@ -63,12 +63,12 @@ class Profesor {
 		 *  Son cursos que el profesor tiene la capacidad de impartir.
 		 */
         std::vector<Curso> *cursosDados;
-        
+
         //! Los grupos que se han asignado al profesor .
 		/*!
 		 *  Son grupos asignados al profesor
 		 */
-        std::vector<Grupo> *gruposAsignados; 
+        std::vector<Grupo> *gruposAsignados;
 
         //! Valor id por defecto.
         static int ID;  // = 0
@@ -84,7 +84,7 @@ class Profesor {
 
         //! Valor de cursos dados por defecto.
         static std::vector<Curso> *CURSOS_DADOS;  // = NULL
-		
+
 
 
      public:
@@ -92,34 +92,38 @@ class Profesor {
             std::string nombre = NOMBRE, std::string apellido = APELLIDO,
             std::vector<Curso> *cursosDados = CURSOS_DADOS);
 
-        static std::vector<Profesor> *getProfesores(Curso &curso);// Duda con esto
+        //! Obtiene los profesores para un curso desde la base de datos.
+        /*!
+         * Obtiene los profesores para un curso desde la base de datos.
+         */
+        static std::vector<Profesor> *getProfesores(Curso &curso);
 
-        //! Método setId(int id)
+        //! Asigna el id al profesor.
 		/*!
-		 * Asigna el id al profesor
+		 * Asigna el id al profesor.
 		 */
         void setId(int id);
-        
-        //! Método setHorasLaborales(int horasLaborales)
+
+        //! Asigna la cantidad de horas laborales al profesor.
 		/*!
-		 * Asigna la cantidad de horas laborales al profesor
+		 * Asigna la cantidad de horas laborales al profesor.
 		 */
         void setHorasLaborales(int horasLaborales);
-        
-        //! Método int getId(void)
+
+        //! Devuelve el id asignado al profesor.
 		/*!
-		 * Devuelve el id asignado al profesor
+		 * Devuelve el id asignado al profesor.
 		 */
         int getId(void);
 
-        //! Método getNombre(void)
+        //! Devuelve el nombre del profesor.
 		/*!
 		 * Devuelve el nombre del profesor.
 		 */
         std::string getNombre(void);
 
 
-        //! Método getApellido(void)
+        //! Devuelve el apellido del profesor.
 		/*!
 		 * Devuelve el apellido del profesor.
 		 */
@@ -127,23 +131,17 @@ class Profesor {
 
         //! Indica si el profesor está disponible en cierto horario.
         /*!
-         * [estoyDisponible description]
-         * @param  horarioGrupo [vector con punteros a objetos IPeriodo] 
-         * @return              [bool indicando se esta o no disponible para el horario recibido como input]
-         *
-         * Falta implementar.
+         * @param  horarioGrupo vector con punteros a objetos IPeriodo
+         * @return bool indicando se esta o no disponible para el
+         * horario recibido como input.
          */
-        bool estoyDisponible(std::vector<IPeriodo*> *horarioGrupo);
+        bool estoyDisponible(std::vector< std::vector<IPeriodo*> > *horarioGrupo);
 
-        // Esto debe devolver el horario del profe
-        //! Devuelve el horario del profesor actual
+        //! Devuelve el horario del profesor.
 		/*!
-		 *
 		 * @param Profesor *Profesoractual
 		 */
         std::vector <IPeriodo*> *getHorario(void);
-
-
 
         //! Verifica si el profesor da cierto curso.
 		/*!
@@ -158,7 +156,6 @@ class Profesor {
 		 * @param grupo El grupo que se asigna el profesor.
 		 */
         void asignarGrupo(Grupo *grupo);
-        /*Podria devolver un horario utilizando la función getHorario()*/
 
         //! Compara si dos profesores son iguales.
         /*!
@@ -173,7 +170,7 @@ class Profesor {
          *       o FSC). Esto no es necesario por el momento y es fácil de
          *       agregar.
          */
-        bool igual(Profesor *profesor); 
+        bool igual(Profesor *profesor);
 };
 
 #endif

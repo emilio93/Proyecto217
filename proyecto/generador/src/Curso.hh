@@ -10,6 +10,7 @@
 #include "Bloque.hh"
 #include "Grupo.hh"
 #include "IPeriodo.hh"
+#include "Profesor.hh"
 
 //! Representación de un curso.
 /*!
@@ -35,7 +36,7 @@
  * 			std::list<Bloque> * bloquesPadre(void);
  */
 class Curso {
-    private:
+     private:
         //! Identificador del Curso
 		/*!
 		 * El id es un identificador único para cada Curso, su valor es
@@ -256,9 +257,15 @@ class Curso {
          * curso.
          * @return Una lista de los profesores que pueden dar el curso.
          *
-         * TODO implementar
          */
         std::vector<Profesor> *getProfesores(void);
+
+        //! Obtiene una lista de horarios en que se puede dar este curso.
+        /*!
+         * Obtiene una lista de los horarios en que se puede impartir este
+         * curso.
+         */
+        std::vector< std::vector<IPeriodo*> > *getHorarios(void);
 
         //! Compara si dos cursos son iguales
 		/*!

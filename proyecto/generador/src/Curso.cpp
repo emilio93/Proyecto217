@@ -107,14 +107,28 @@ std::string Curso::toString(void) {
 
 std::vector<Grupo> *Curso::crearGrupos(void) {
     std::vector<Grupo> *grupos = new std::vector<Grupo>();
-    // código
-    // TODO(emilio): implementar
-    // código
+
+    std::vector< std::vector<IPeriodo*> > *posiblesHorarios =
+        this->getHorarios();
+
+    std:std::vector<Profesor> *profes = this->getProfesores();
+
+    for (size_t i = 0; i < this->getCantidadGrupos(); i++) {
+        Grupo grupo = Grupo(this);
+
+        for (size_t j = 0; j < posiblesHorarios->size(); j++) {
+
+        }
+    }
     return grupos;
 }
 
 std::vector<Profesor> *Curso::getProfesores(void) {
     return Serializacion::getProfesores(*this);
+}
+
+std::vector< std::vector<IPeriodo*> > *Curso::getHorarios(void) {
+    return Serializacion::getPeriodos(*this);
 }
 
 
