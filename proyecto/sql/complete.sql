@@ -223,15 +223,18 @@ INSERT INTO `Profesor` (`horasLaborales`, `nombre`, `apellido`) VALUES
 (30, 'Luis Alejandro', 'Golcher'),
 (30, 'Diego', 'Dumani'),
 (30, 'Jaime', 'Cascante'),
-(40, 'Andres', 'Arguello'),
+(40, 'Andres', 'Argüello'),
 (30, 'Fabian', 'Abarca'),
 (40, 'Francisco', 'Rivas'),
 (30, 'Osvaldo', 'Fernandez'),
-(30, 'Jorge', 'Badilla'),
+(40, 'Jorge', 'Badilla'),
 (40, 'Joaquin', 'Cordero'),
 (30, 'Walter', 'Herrera'),
 (30, 'Juan', 'Arteaga'),
 (40, 'Rodolfo', 'Brenes'),
+(25, 'Rodrigo', 'Castro'),
+(25, 'Ignacio', 'Ramirez'),
+(20, 'José', 'Paez');
 
 
 --
@@ -369,7 +372,24 @@ INSERT INTO `CursosBloque` (`idBloque`, `idCurso`) VALUES
 ALTER TABLE `ProfesoresCurso` AUTO_INCREMENT = 1;
 
 INSERT INTO `ProfesoresCurso` (`idCurso`, `idProfesor`) VALUES
+(1,  3),
+(1,  34),
+(1,  35),
+(2,  25),
+(2,  38),
+(2,  43),
 (3, 1),
-(5, 2),
 (3, 3),
-(3, 4);
+(3, 4),
+(4, 20),
+(4, 29),
+(5, 2),
+(6, 44),
+(6, 45),
+(37, 38);
+
+ALTER TABLE `HorariosCurso` AUTO_INCREMENT = 1;
+
+INSERT INTO `HorariosCurso` (`idPeriodo`, `idCurso`) VALUES
+(n,n),
+(n,n);

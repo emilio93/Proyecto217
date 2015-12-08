@@ -55,22 +55,10 @@ std::vector<Profesor> *Grupo::getPosiblesProfesores(void) {
     return this->getCurso()->getProfesores();
 }
 
-bool Grupo::asignarProfesor(void) {
+bool Grupo::asignarProfesor(Profesor *profesor) {
     bool asignado = false;
-    std::vector<Profesor> *profesores = this->getPosiblesProfesores();
-    size_t i = 0;
-    for (i = 0; i < profesores->size(); i++) {
-        // se busca un profesor disponible para este grupo
-        if (profesores->at(i).estoyDisponible(this->getHorario())) {
-            this->setProfesor(&profesores->at(i));
-            asignado = true;
-            break;
-        }
-    }
-
-    if (!asignado) {
-    }
-    return asignado;
+    profesor->asignarGrupo(this);
+    this->setProfesor(profesor);
 }
 
 /*******************************************************************************

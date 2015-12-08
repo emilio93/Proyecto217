@@ -106,6 +106,7 @@ std::string Curso::toString(void) {
 }
 
 std::vector<Grupo> *Curso::crearGrupos(void) {
+    std::cout << std::endl << "Comenzando creación de cursos" << std::endl;
     std::vector<Grupo> *grupos = new std::vector<Grupo>();
 
     std::vector< std::vector<IPeriodo*> > *posiblesHorarios =
@@ -117,7 +118,23 @@ std::vector<Grupo> *Curso::crearGrupos(void) {
         Grupo grupo = Grupo(this);
 
         for (size_t j = 0; j < posiblesHorarios->size(); j++) {
-
+            int cuenta = 0;
+            bool a = false;
+            bool b = false;
+            for (size_t k = 0; k < profes->size(); k++) {
+                for (size_t l = 0; l < profes->at(k).getHorario()->size(); l++) {
+                    for (size_t m = 0; m < this->getClasesEnSemana(); m++) {
+                        cuenta = posiblesHorarios->at(j).at(m)->enInclusivo(
+                            profes->at(k).getHorario()->at(l))? ++cuenta: cuenta;
+                        if (cuenta == this->getClasesEnSemana()) {
+                            grupo.asignarProfesor(&profes->at(k));
+                            std::cout << "Grupo asignado: " << grupo.getCurso()->getNombre() <<
+                            " Profesor: " << profes->at(k).getNombre() << " " << profes->at(k).getApellido() << std::endl;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
     return grupos;
