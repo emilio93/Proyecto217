@@ -93,9 +93,7 @@ bool Profesor::verificarCurso(Curso *cursoPrueba) {
 }
 
 void Profesor::asignarGrupo(Grupo *grupo) {
-    if (this->estoyDisponible(grupo->getHorario())) {
-        this->gruposAsignados->push_back(*grupo);
-    }
+    this->gruposAsignados->push_back(*grupo);
 }
 
 /*******************************************************************************

@@ -63,7 +63,7 @@ class Grupo {
          * asigna el profesor disponible al curso.
          *@return un booleano que indica si se pudo asignar el profesor.
          */
-        bool asignarProfesor(void);
+        bool asignarProfesor(Profesor *profesor);
 
         //! Trae id del grupo.
         int getId(void);

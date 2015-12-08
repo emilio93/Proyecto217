@@ -34,6 +34,7 @@ void Horario::generarHorario(void) {
     using std::cout;
     using std::endl;
 
+
     cout << "Obteniendo planes...";
     std::vector<Plan> *planes = Plan::getPlanes();
     cout << "Listo." << endl;
@@ -53,7 +54,7 @@ void Horario::generarHorario(void) {
             for (size_t k = 0; k < cursos->size(); k++) {
                 cout << "\t\tAlistando curso " << cursos->at(k).toString();
                 cout << endl;
-
+/*
                 cout << "\t\t\tObteniendo profesores para el curso...";
                 std::vector<Profesor> *profes = cursos->at(k).getProfesores();
                 cout << "Listo. [Profesores obtenidos: " << profes->size();
@@ -64,7 +65,7 @@ void Horario::generarHorario(void) {
                     cursos->at(k).getHorarios();
                 cout << "Listo. [Horarios obtenidos: " << horariosCurso->size();
                 cout << "]" << endl;
-
+*/
                 cout << "Creando los grupos del curso...";
                 std::vector<Grupo> *grupos = cursos->at(i).crearGrupos();
                 cout << "Listo. [creados: 0, no creados: 0]" << endl;
@@ -96,7 +97,7 @@ void Horario::menuPrincipal(void) {
         cout << "generar uno sobreescribirá el existente." << endl;
     }
 
-    int it = 0;
+    int it = 1;
     cout << "MENU PRINCIPAL" << endl;
     cout << "¿Que desea hacer?" << endl;
 
